@@ -9,34 +9,42 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    --foreground: 213 84% 16%;
+    
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 213 84% 16%;
+    
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 213 84% 16%;
+    
+    /* Navy Blue Primary - Deep professional navy */
+    --primary: 213 84% 16%;
+    --primary-foreground: 0 0% 98%;
+    
+    /* Teal Accent - Professional turquoise */
+    --accent: 178 64% 45%;
+    --accent-foreground: 0 0% 98%;
+    
+    --secondary: 213 20% 95%;
+    --secondary-foreground: 213 84% 16%;
+    
+    --muted: 213 20% 96%;
+    --muted-foreground: 213 16% 55%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 213 20% 90%;
+    --input: 213 20% 90%;
+    --ring: 213 84% 16%;
+    
+    /* Custom gradients and effects */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.15);
+    --shadow-soft: 0 4px 20px -8px hsl(var(--primary) / 0.1);
+    
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +109,107 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  }
+}
+
+@layer components {
+  /* Hero gradients */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .hero-overlay {
+    background: linear-gradient(rgba(41, 70, 129, 0.7), rgba(41, 70, 129, 0.5));
+  }
+  
+  /* Professional animations */
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .slide-in {
+    animation: slideIn 0.6s ease-out forwards;
+  }
+  
+  .professional-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .professional-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elegant);
+  }
+  
+  /* Service tabs */
+  .service-tab {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .service-tab::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--gradient-hero);
+    transition: width 0.3s ease;
+  }
+  
+  .service-tab.active::before,
+  .service-tab:hover::before {
+    width: 100%;
+  }
+  
+  /* Team card animations */
+  .team-card {
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-card:hover {
+    transform: rotateY(5deg) rotateX(5deg);
+  }
+  
+  .team-card-content {
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+  }
+  
+  .team-card:hover .team-card-content {
+    transform: translateZ(20px);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: var(--gradient-hero);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
