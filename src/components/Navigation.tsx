@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -7,33 +8,30 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import StudentPortal from '@/components/StudentPortal';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
 
   const navItems = [
-    { name: 'Home', href: '#hero' },
-    { name: 'About Us', href: '#about' },
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
     { 
       name: 'Services', 
-      href: '#services',
+      href: '/services',
       dropdown: [
-        { name: 'Training', href: '#training' },
-        { name: 'Consultancy', href: '#consultancy' },
-        { name: 'Research', href: '#research' },
-        { name: 'Volunteering', href: '#volunteering' }
+        { name: 'Training', href: '/training' },
+        { name: 'Consultancy', href: '/consultancy' },
+        { name: 'Research', href: '/research' },
+        { name: 'Volunteering', href: '/volunteering' }
       ]
     },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ];
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsOpen(false);
+  const isActiveRoute = (href: string) => {
+    return location.pathname === href;
   };
 
   return (
@@ -58,20 +56,25 @@ const Navigation = () => {
                       <DropdownMenuTrigger asChild>
                         <Button 
                           variant="ghost" 
-                          className="text-foreground hover:text-accent hover:bg-accent/10"
+                          className={`text-foreground hover:text-accent hover:bg-accent/10 ${
+                            item.dropdown.some(subItem => isActiveRoute(subItem.href)) ? 'text-accent bg-accent/10' : ''
+                          }`}
                         >
                           {item.name}
                           <ChevronDown className="ml-1 h-4 w-4" />
                         </Button>
                       </DropdownMenuTrigger>
-                      <DropdownMenuContent>
+                      <DropdownMenuContent className="bg-background border border-border shadow-lg">
                         {item.dropdown.map((subItem) => (
-                          <DropdownMenuItem
-                            key={subItem.name}
-                            onClick={() => scrollToSection(subItem.href)}
-                            className="cursor-pointer hover:bg-accent/10"
-                          >
-                            {subItem.name}
+                          <DropdownMenuItem key={subItem.name} asChild>
+                            <Link
+                              to={subItem.href}
+                              className={`cursor-pointer hover:bg-accent/10 ${
+                                isActiveRoute(subItem.href) ? 'bg-accent/10 text-accent' : ''
+                              }`}
+                            >
+                              {subItem.name}
+                            </Link>
                           </DropdownMenuItem>
                         ))}
                       </DropdownMenuContent>
@@ -79,15 +82,27 @@ const Navigation = () => {
                   ) : (
                     <Button
                       variant="ghost"
-                      onClick={() => scrollToSection(item.href)}
-                      className="text-foreground hover:text-accent hover:bg-accent/10"
+                      asChild
+                      className={`text-foreground hover:text-accent hover:bg-accent/10 ${
+                        isActiveRoute(item.href) ? 'text-accent bg-accent/10' : ''
+                      }`}
                     >
-                      {item.name}
+                      <Link to={item.href}>
+                        {item.name}
+                      </Link>
                     </Button>
                   )}
                 </div>
               ))}
-              <StudentPortal />
+              <Button
+                variant="ghost"
+                asChild
+                className={`text-foreground hover:text-accent hover:bg-accent/10 ${
+                  isActiveRoute('/student-portal') ? 'text-accent bg-accent/10' : ''
+                }`}
+              >
+                <Link to="/student-portal">Student Portal</Link>
+              </Button>
             </div>
           </div>
 
@@ -124,26 +139,45 @@ const Navigation = () => {
                       <Button
                         key={subItem.name}
                         variant="ghost"
-                        onClick={() => scrollToSection(subItem.href)}
-                        className="w-full text-left justify-start pl-6 text-foreground hover:text-accent hover:bg-accent/10"
+                        asChild
+                        className={`w-full text-left justify-start pl-6 text-foreground hover:text-accent hover:bg-accent/10 ${
+                          isActiveRoute(subItem.href) ? 'text-accent bg-accent/10' : ''
+                        }`}
+                        onClick={() => setIsOpen(false)}
                       >
-                        {subItem.name}
+                        <Link to={subItem.href}>
+                          {subItem.name}
+                        </Link>
                       </Button>
                     ))}
                   </div>
                 ) : (
                   <Button
                     variant="ghost"
-                    onClick={() => scrollToSection(item.href)}
-                    className="w-full text-left justify-start text-foreground hover:text-accent hover:bg-accent/10"
+                    asChild
+                    className={`w-full text-left justify-start text-foreground hover:text-accent hover:bg-accent/10 ${
+                      isActiveRoute(item.href) ? 'text-accent bg-accent/10' : ''
+                    }`}
+                    onClick={() => setIsOpen(false)}
                   >
-                    {item.name}
+                    <Link to={item.href}>
+                      {item.name}
+                    </Link>
                   </Button>
                 )}
               </div>
             ))}
             <div className="px-3 py-2">
-              <StudentPortal />
+              <Button
+                variant="ghost"
+                asChild
+                className={`w-full text-left justify-start text-foreground hover:text-accent hover:bg-accent/10 ${
+                  isActiveRoute('/student-portal') ? 'text-accent bg-accent/10' : ''
+                }`}
+                onClick={() => setIsOpen(false)}
+              >
+                <Link to="/student-portal">Student Portal</Link>
+              </Button>
             </div>
           </div>
         </div>

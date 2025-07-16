@@ -1,0 +1,338 @@
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { Search, FileText, BarChart3, Globe, BookOpen, Download, Calendar, Users } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+
+const Research = () => {
+  const researchServices = [
+    {
+      icon: BarChart3,
+      title: "Baseline and Endline Studies",
+      description: "Comprehensive baseline assessments and endline evaluations to measure program impact and effectiveness.",
+      features: [
+        "Pre-implementation baseline data collection",
+        "Post-implementation impact assessment",
+        "Comparative analysis and reporting",
+        "Stakeholder engagement throughout"
+      ]
+    },
+    {
+      icon: FileText,
+      title: "Impact Assessments and Evaluations",
+      description: "Rigorous impact evaluations using internationally recognized methodologies and frameworks.",
+      features: [
+        "Theory of change development",
+        "Mixed-methods evaluation design",
+        "Cost-effectiveness analysis",
+        "Recommendation development"
+      ]
+    },
+    {
+      icon: Globe,
+      title: "Market Research and Feasibility Studies",
+      description: "In-depth market analysis and feasibility assessments for informed decision-making.",
+      features: [
+        "Market landscape analysis",
+        "Competitor assessment",
+        "Financial feasibility modeling",
+        "Risk analysis and mitigation"
+      ]
+    },
+    {
+      icon: Search,
+      title: "Data Collection and Management",
+      description: "Professional data collection services with robust quality assurance and management systems.",
+      features: [
+        "Survey design and implementation",
+        "Data quality assurance protocols",
+        "Database development and management",
+        "Real-time monitoring dashboards"
+      ]
+    },
+    {
+      icon: BarChart3,
+      title: "Statistical Analysis and Reporting",
+      description: "Advanced statistical analysis and comprehensive reporting for evidence-based insights.",
+      features: [
+        "Descriptive and inferential statistics",
+        "Multivariate analysis techniques",
+        "Data visualization and dashboards",
+        "Executive summary development"
+      ]
+    },
+    {
+      icon: BookOpen,
+      title: "Literature Reviews and Systematic Reviews",
+      description: "Comprehensive literature reviews and systematic reviews following international standards.",
+      features: [
+        "Systematic search strategies",
+        "Critical appraisal of evidence",
+        "Meta-analysis when appropriate",
+        "Evidence synthesis and recommendations"
+      ]
+    }
+  ];
+
+  const recentResearch = [
+    {
+      title: "Impact of Digital Literacy Training on Rural Communities",
+      description: "A comprehensive study examining the effects of digital literacy programs on economic opportunities in rural Liberia.",
+      date: "2024",
+      category: "Impact Assessment",
+      status: "Published",
+      downloadUrl: "#"
+    },
+    {
+      title: "Healthcare Access Barriers in Post-Conflict Settings",
+      description: "Systematic review of healthcare accessibility challenges and potential solutions in post-conflict environments.",
+      date: "2024",
+      category: "Systematic Review",
+      status: "In Progress",
+      downloadUrl: null
+    },
+    {
+      title: "Community-Based Natural Resource Management Effectiveness",
+      description: "Evaluation of community-led conservation initiatives and their impact on environmental sustainability.",
+      date: "2023",
+      category: "Evaluation",
+      status: "Published",
+      downloadUrl: "#"
+    },
+    {
+      title: "Youth Employment Program Baseline Study",
+      description: "Baseline assessment for a national youth employment initiative focusing on skills development and job creation.",
+      date: "2023",
+      category: "Baseline Study",
+      status: "Published",
+      downloadUrl: "#"
+    }
+  ];
+
+  const researchAreas = [
+    "Health and Nutrition",
+    "Education and Capacity Building",
+    "Economic Development",
+    "Environmental Sustainability",
+    "Social Protection",
+    "Gender and Social Inclusion",
+    "Governance and Policy",
+    "Technology and Innovation"
+  ];
+
+  const methodology = [
+    {
+      title: "Quantitative Research",
+      description: "Statistical surveys, experiments, and numerical data analysis"
+    },
+    {
+      title: "Qualitative Research",
+      description: "Interviews, focus groups, ethnographic studies, and thematic analysis"
+    },
+    {
+      title: "Mixed Methods",
+      description: "Integrated approaches combining quantitative and qualitative methods"
+    },
+    {
+      title: "Participatory Research",
+      description: "Community-engaged research with stakeholder involvement throughout"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      <main className="pt-16">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
+              Research & Data Services
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Rigorous research and comprehensive data analysis services to support evidence-based programming and informed decision-making.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90 text-white"
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Our Services
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-white"
+                onClick={() => document.getElementById('research')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Recent Research
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Research Areas */}
+        <section className="py-16 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Research Areas</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We conduct research across diverse sectors to address critical development challenges
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-4">
+              {researchAreas.map((area, index) => (
+                <Card key={index} className="border-0 shadow-sm hover:shadow-md transition-shadow">
+                  <CardContent className="p-4 text-center">
+                    <p className="font-medium text-primary">{area}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Research Services */}
+        <section id="services" className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Our Research Services</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Comprehensive research services following international standards and ethical guidelines
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {researchServices.map((service, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                      <service.icon className="h-6 w-6 text-accent" />
+                    </div>
+                    <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground mb-4">{service.description}</p>
+                    
+                    <div className="space-y-2">
+                      {service.features.map((feature, featureIndex) => (
+                        <div key={featureIndex} className="flex items-start">
+                          <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 mr-2 flex-shrink-0" />
+                          <span className="text-sm text-muted-foreground">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Methodology */}
+        <section className="py-16 bg-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Our Research Methodology</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We employ diverse research methodologies to ensure robust and credible findings
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {methodology.map((method, index) => (
+                <Card key={index} className="border-0 shadow-lg text-center">
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold text-primary mb-2">{method.title}</h3>
+                    <p className="text-muted-foreground text-sm">{method.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Research */}
+        <section id="research" className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Recent Research</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Explore our latest research publications and ongoing studies
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {recentResearch.map((research, index) => (
+                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <Badge 
+                        variant="outline" 
+                        className={research.status === 'Published' ? 'border-green-500 text-green-600' : 'border-orange-500 text-orange-600'}
+                      >
+                        {research.status}
+                      </Badge>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 mr-1" />
+                        {research.date}
+                      </div>
+                    </div>
+                    
+                    <h3 className="text-xl font-bold text-primary mb-3">{research.title}</h3>
+                    <p className="text-muted-foreground mb-4">{research.description}</p>
+                    
+                    <div className="flex justify-between items-center">
+                      <Badge className="bg-accent/10 text-accent">{research.category}</Badge>
+                      {research.downloadUrl && (
+                        <Button size="sm" variant="outline" className="group">
+                          <Download className="h-4 w-4 mr-2 group-hover:translate-y-0.5 transition-transform" />
+                          Download
+                        </Button>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-20 bg-primary text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">Need Research Support?</h2>
+            <p className="text-xl mb-8 opacity-90">
+              Let us help you generate the evidence you need for informed decision-making and impactful programming.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-white text-white hover:bg-white hover:text-primary"
+                onClick={() => window.location.href = '/contact'}
+              >
+                <Users className="mr-2 h-5 w-5" />
+                Discuss Your Needs
+              </Button>
+              <Button 
+                size="lg" 
+                className="bg-accent hover:bg-accent/90"
+                onClick={() => window.location.href = '/consultancy'}
+              >
+                <Search className="mr-2 h-5 w-5" />
+                Research Consultancy
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Research;
