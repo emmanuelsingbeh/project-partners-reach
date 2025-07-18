@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Project Partners Research and Data Solutions Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto">
+                    <span class="ml-2 text-xl font-bold text-primary">Project Partners</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-primary transition-colors flex items-center">
+                            Services
+                            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="training.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Training</a>
+                            <a href="consultancy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Consultancy</a>
+                            <a href="research.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Research</a>
+                            <a href="volunteering.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Volunteering</a>
+                        </div>
+                    </div>
+                    
+                    <a href="blog.html" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <div id="authButtons" class="flex space-x-4">
+                        <button id="loginBtn" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors">Login</button>
+                        <div id="userMenu" class="relative hidden">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+                                <span id="userName"></span>
+                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                                <a href="student-portal.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Student Portal</a>
+                                <a href="admin.html" id="adminLink" class="block px-4 py-2 text-sm text-primary bg-gray-100">Admin Dashboard</a>
+                                <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="training.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Training</a>
+            <a href="consultancy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Consultancy</a>
+            <a href="research.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a>
+            <a href="volunteering.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Volunteering</a>
+            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Auth Required Notice -->
+    <div id="authRequired" class="min-h-screen flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-24 h-24 mx-auto mb-6 bg-red-100 rounded-full flex items-center justify-center">
+                <svg class="w-12 h-12 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                </svg>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Access Denied</h2>
+            <p class="text-gray-600 mb-8">Administrator access required. Please log in with admin credentials.</p>
+            <button id="loginFromAdmin" class="bg-primary text-white px-6 py-3 rounded-md hover:bg-primary-dark transition-colors">
+                Login as Admin
+            </button>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard Content -->
+    <div id="adminContent" class="hidden">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-primary to-secondary text-white py-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold">Admin Dashboard</h1>
+                <p class="text-lg mt-2">Manage courses, students, and platform content</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600">Total Students</p>
+                            <p class="text-2xl font-bold text-gray-900" id="totalStudents">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600">Active Courses</p>
+                            <p class="text-2xl font-bold text-gray-900" id="totalCourses">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600">Total Enrollments</p>
+                            <p class="text-2xl font-bold text-gray-900" id="totalEnrollments">0</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600">Contact Messages</p>
+                            <p class="text-2xl font-bold text-gray-900" id="totalMessages">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="bg-white rounded-lg shadow-md mb-8">
+                <div class="border-b border-gray-200">
+                    <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                        <button id="studentsTab" class="admin-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm active">
+                            Students
+                        </button>
+                        <button id="coursesTab" class="admin-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm">
+                            Courses
+                        </button>
+                        <button id="enrollmentsTab" class="admin-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm">
+                            Enrollments
+                        </button>
+                        <button id="messagesTab" class="admin-tab border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm">
+                            Messages
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Students Tab Content -->
+                <div id="studentsContent" class="tab-content p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Student Management</h2>
+                        <button onclick="refreshStudents()" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">
+                            Refresh
+                        </button>
+                    </div>
+                    <div id="studentsList" class="space-y-4">
+                        <div class="text-center py-8 text-gray-500">
+                            <p>Loading students...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courses Tab Content -->
+                <div id="coursesContent" class="tab-content p-6 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Course Management</h2>
+                        <button onclick="openCourseModal()" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">
+                            Add Course
+                        </button>
+                    </div>
+                    <div id="coursesList" class="space-y-4">
+                        <div class="text-center py-8 text-gray-500">
+                            <p>Loading courses...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Enrollments Tab Content -->
+                <div id="enrollmentsContent" class="tab-content p-6 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Enrollment Management</h2>
+                        <button onclick="refreshEnrollments()" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">
+                            Refresh
+                        </button>
+                    </div>
+                    <div id="enrollmentsList" class="space-y-4">
+                        <div class="text-center py-8 text-gray-500">
+                            <p>Loading enrollments...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages Tab Content -->
+                <div id="messagesContent" class="tab-content p-6 hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-gray-900">Contact Messages</h2>
+                        <button onclick="refreshMessages()" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">
+                            Refresh
+                        </button>
+                    </div>
+                    <div id="messagesList" class="space-y-4">
+                        <div class="text-center py-8 text-gray-500">
+                            <p>Loading messages...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="courseModalTitle" class="text-2xl font-bold text-gray-900">Add New Course</h3>
+                        <button id="closeCourse" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form id="courseForm">
+                        <div class="grid md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="courseTitle" class="block text-sm font-medium text-gray-700 mb-2">Title *</label>
+                                <input type="text" id="courseTitle" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="courseInstructor" class="block text-sm font-medium text-gray-700 mb-2">Instructor *</label>
+                                <input type="text" id="courseInstructor" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div class="grid md:grid-cols-3 gap-4 mb-4">
+                            <div>
+                                <label for="courseDuration" class="block text-sm font-medium text-gray-700 mb-2">Duration</label>
+                                <input type="text" id="courseDuration" placeholder="e.g., 8 weeks" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="courseLevel" class="block text-sm font-medium text-gray-700 mb-2">Level</label>
+                                <select id="courseLevel" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate">Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="coursePrice" class="block text-sm font-medium text-gray-700 mb-2">Price ($)</label>
+                                <input type="number" id="coursePrice" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="courseDescription" class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                            <textarea id="courseDescription" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <div class="flex justify-end space-x-4">
+                            <button type="button" id="cancelCourse" class="px-4 py-2 text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50">
+                                Cancel
+                            </button>
+                            <button type="submit" id="submitCourse" class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark">
+                                Save Course
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="modalTitle" class="text-2xl font-bold text-gray-900">Admin Login</h3>
+                        <button id="closeModal" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form id="authForm">
+                        <div class="mb-4">
+                            <label for="authEmail" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="authEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="authPassword" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" id="authPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors">Login</button>
+                    </form>
+                    <div id="authMessage" class="mt-4 text-center hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto mb-4">
+                    <p class="text-gray-400">Empowering Liberia through research excellence and data-driven solutions.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="training.html" class="hover:text-white transition-colors">Training</a></li>
+                        <li><a href="consultancy.html" class="hover:text-white transition-colors">Consultancy</a></li>
+                        <li><a href="research.html" class="hover:text-white transition-colors">Research</a></li>
+                        <li><a href="volunteering.html" class="hover:text-white transition-colors">Volunteering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Monrovia, Liberia</li>
+                        <li>info@projectpartners.lr</li>
+                        <li>+231 XXX XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Project Partners Research and Data Solutions Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentUser = null;
+        let isAdmin = false;
+
+        // Check if user is authenticated and has admin access
+        document.addEventListener('DOMContentLoaded', async function() {
+            await checkAdminAccess();
+        });
+
+        async function checkAdminAccess() {
+            try {
+                const { data: { user } } = await supabase.auth.getUser();
+                currentUser = user;
+                
+                if (currentUser) {
+                    // Check if user is admin (simplified check - in production, use proper role-based system)
+                    isAdmin = currentUser.email && (currentUser.email.includes('admin') || currentUser.email.includes('@projectpartners.lr'));
+                    
+                    if (isAdmin) {
+                        document.getElementById('authRequired').classList.add('hidden');
+                        document.getElementById('adminContent').classList.remove('hidden');
+                        await loadDashboardData();
+                    } else {
+                        document.getElementById('authRequired').classList.remove('hidden');
+                        document.getElementById('adminContent').classList.add('hidden');
+                    }
+                } else {
+                    document.getElementById('authRequired').classList.remove('hidden');
+                    document.getElementById('adminContent').classList.add('hidden');
+                }
+                
+                updateAuthUI();
+            } catch (error) {
+                console.error('Error checking admin access:', error);
+            }
+        }
+
+        async function loadDashboardData() {
+            try {
+                await Promise.all([
+                    loadStats(),
+                    loadStudents(),
+                    loadCourses(),
+                    loadEnrollments(),
+                    loadMessages()
+                ]);
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+
+        async function loadStats() {
+            try {
+                // Load total students
+                const { count: studentsCount } = await supabase
+                    .from('profiles')
+                    .select('*', { count: 'exact', head: true });
+                
+                // Load total courses
+                const { count: coursesCount } = await supabase
+                    .from('courses')
+                    .select('*', { count: 'exact', head: true });
+                
+                // Load total enrollments
+                const { count: enrollmentsCount } = await supabase
+                    .from('enrollments')
+                    .select('*', { count: 'exact', head: true });
+                
+                // Load total messages
+                const { count: messagesCount } = await supabase
+                    .from('contact_messages')
+                    .select('*', { count: 'exact', head: true });
+
+                document.getElementById('totalStudents').textContent = studentsCount || 0;
+                document.getElementById('totalCourses').textContent = coursesCount || 0;
+                document.getElementById('totalEnrollments').textContent = enrollmentsCount || 0;
+                document.getElementById('totalMessages').textContent = messagesCount || 0;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadStudents() {
+            try {
+                const { data: students, error } = await supabase
+                    .from('profiles')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                const studentsList = document.getElementById('studentsList');
+                
+                if (students && students.length > 0) {
+                    studentsList.innerHTML = students.map(student => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">${student.full_name || 'N/A'}</h4>
+                                    <p class="text-sm text-gray-600">${student.email || 'N/A'}</p>
+                                    <p class="text-sm text-gray-500">Student ID: ${student.student_id || 'N/A'}</p>
+                                    <p class="text-sm text-gray-500">Joined: ${new Date(student.created_at).toLocaleDateString()}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    studentsList.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <p>No students registered yet.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading students:', error);
+            }
+        }
+
+        async function loadCourses() {
+            try {
+                const { data: courses, error } = await supabase
+                    .from('courses')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                const coursesList = document.getElementById('coursesList');
+                
+                if (courses && courses.length > 0) {
+                    coursesList.innerHTML = courses.map(course => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">${course.title}</h4>
+                                    <p class="text-sm text-gray-600">Instructor: ${course.instructor_name}</p>
+                                    <p class="text-sm text-gray-500">${course.duration} • ${course.level} • $${course.price}</p>
+                                    <p class="text-sm text-gray-600 mt-2">${course.description || 'No description'}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs rounded-full ${
+                                        course.status === 'Active' ? 'bg-green-100 text-green-800' :
+                                        course.status === 'Coming Soon' ? 'bg-yellow-100 text-yellow-800' :
+                                        'bg-gray-100 text-gray-800'
+                                    }">${course.status}</span>
+                                    <div class="mt-2 space-x-2">
+                                        <button onclick="editCourse('${course.id}')" class="text-blue-600 hover:text-blue-800 text-sm">Edit</button>
+                                        <button onclick="deleteCourse('${course.id}')" class="text-red-600 hover:text-red-800 text-sm">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    coursesList.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <p>No courses created yet.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading courses:', error);
+            }
+        }
+
+        async function loadEnrollments() {
+            try {
+                const { data: enrollments, error } = await supabase
+                    .from('enrollments')
+                    .select(`
+                        *,
+                        profiles (full_name, email, student_id),
+                        courses (title)
+                    `)
+                    .order('enrollment_date', { ascending: false });
+
+                if (error) throw error;
+
+                const enrollmentsList = document.getElementById('enrollmentsList');
+                
+                if (enrollments && enrollments.length > 0) {
+                    enrollmentsList.innerHTML = enrollments.map(enrollment => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">${enrollment.profiles?.full_name || 'N/A'}</h4>
+                                    <p class="text-sm text-gray-600">Course: ${enrollment.courses?.title || 'N/A'}</p>
+                                    <p class="text-sm text-gray-500">Student ID: ${enrollment.profiles?.student_id || 'N/A'}</p>
+                                    <p class="text-sm text-gray-500">Enrolled: ${new Date(enrollment.enrollment_date).toLocaleDateString()}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs rounded-full ${
+                                        enrollment.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                                        enrollment.status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
+                                        'bg-gray-100 text-gray-800'
+                                    }">${enrollment.status}</span>
+                                    <p class="text-sm text-gray-500 mt-1">Progress: ${enrollment.progress || 0}%</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    enrollmentsList.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <p>No enrollments yet.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading enrollments:', error);
+            }
+        }
+
+        async function loadMessages() {
+            try {
+                const { data: messages, error } = await supabase
+                    .from('contact_messages')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                const messagesList = document.getElementById('messagesList');
+                
+                if (messages && messages.length > 0) {
+                    messagesList.innerHTML = messages.map(message => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-900">${message.name}</h4>
+                                    <p class="text-sm text-gray-600">${message.email}</p>
+                                    <p class="text-sm text-gray-500">Subject: ${message.subject || 'No subject'}</p>
+                                    <p class="text-sm text-gray-600 mt-2">${message.message.substring(0, 150)}${message.message.length > 150 ? '...' : ''}</p>
+                                    <p class="text-sm text-gray-500 mt-2">Received: ${new Date(message.created_at).toLocaleDateString()}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="px-2 py-1 text-xs rounded-full ${
+                                        message.status === 'New' ? 'bg-red-100 text-red-800' :
+                                        message.status === 'Read' ? 'bg-yellow-100 text-yellow-800' :
+                                        'bg-green-100 text-green-800'
+                                    }">${message.status}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    messagesList.innerHTML = `
+                        <div class="text-center py-8 text-gray-500">
+                            <p>No messages received yet.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading messages:', error);
+            }
+        }
+
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.admin-tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => {
+                        t.classList.remove('active', 'border-primary', 'text-primary');
+                        t.classList.add('border-transparent', 'text-gray-500');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active', 'border-primary', 'text-primary');
+                    this.classList.remove('border-transparent', 'text-gray-500');
+
+                    // Hide all content
+                    contents.forEach(content => content.classList.add('hidden'));
+
+                    // Show corresponding content
+                    const targetId = this.id.replace('Tab', 'Content');
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+        });
+
+        // Course management functions
+        function openCourseModal() {
+            document.getElementById('courseModal').classList.remove('hidden');
+        }
+
+        function editCourse(courseId) {
+            // TODO: Implement edit functionality
+            console.log('Edit course:', courseId);
+        }
+
+        async function deleteCourse(courseId) {
+            if (confirm('Are you sure you want to delete this course?')) {
+                try {
+                    const { error } = await supabase
+                        .from('courses')
+                        .delete()
+                        .eq('id', courseId);
+
+                    if (error) throw error;
+
+                    alert('Course deleted successfully!');
+                    await loadCourses();
+                    await loadStats();
+                } catch (error) {
+                    console.error('Error deleting course:', error);
+                    alert('Error deleting course. Please try again.');
+                }
+            }
+        }
+
+        // Course form submission
+        document.getElementById('courseForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const courseData = {
+                title: document.getElementById('courseTitle').value,
+                instructor_name: document.getElementById('courseInstructor').value,
+                duration: document.getElementById('courseDuration').value,
+                level: document.getElementById('courseLevel').value,
+                price: parseFloat(document.getElementById('coursePrice').value) || 0,
+                description: document.getElementById('courseDescription').value
+            };
+
+            const submitBtn = document.getElementById('submitCourse');
+            submitBtn.textContent = 'Saving...';
+            submitBtn.disabled = true;
+
+            try {
+                const { data, error } = await supabase
+                    .from('courses')
+                    .insert([courseData]);
+
+                if (error) throw error;
+
+                alert('Course created successfully!');
+                document.getElementById('courseModal').classList.add('hidden');
+                document.getElementById('courseForm').reset();
+                await loadCourses();
+                await loadStats();
+
+            } catch (error) {
+                console.error('Error creating course:', error);
+                alert('Error creating course. Please try again.');
+            } finally {
+                submitBtn.textContent = 'Save Course';
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Modal close functionality
+        document.getElementById('closeCourse').addEventListener('click', function() {
+            document.getElementById('courseModal').classList.add('hidden');
+        });
+
+        document.getElementById('cancelCourse').addEventListener('click', function() {
+            document.getElementById('courseModal').classList.add('hidden');
+        });
+
+        // Refresh functions
+        async function refreshStudents() {
+            await loadStudents();
+        }
+
+        async function refreshEnrollments() {
+            await loadEnrollments();
+        }
+
+        async function refreshMessages() {
+            await loadMessages();
+        }
+
+        // Login from admin button
+        document.getElementById('loginFromAdmin').addEventListener('click', function() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        });
+
+        // Listen for auth state changes
+        supabase.auth.onAuthStateChange(async (event, session) => {
+            currentUser = session?.user || null;
+            await checkAdminAccess();
+        });
+    </script>
+</body>
+</html>

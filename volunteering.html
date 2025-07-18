@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering - Project Partners Research and Data Solutions Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto">
+                    <span class="ml-2 text-xl font-bold text-primary">Project Partners</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">About</a>
+                    
+                    <div class="relative group">
+                        <button class="text-primary font-medium transition-colors flex items-center">
+                            Services
+                            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="training.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Training</a>
+                            <a href="consultancy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Consultancy</a>
+                            <a href="research.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Research</a>
+                            <a href="volunteering.html" class="block px-4 py-2 text-sm text-primary bg-gray-100">Volunteering</a>
+                        </div>
+                    </div>
+                    
+                    <a href="blog.html" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <div id="authButtons" class="flex space-x-4">
+                        <button id="loginBtn" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors">Login</button>
+                        <div id="userMenu" class="relative hidden">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+                                <span id="userName"></span>
+                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                                <a href="student-portal.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Student Portal</a>
+                                <a href="admin.html" id="adminLink" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Admin Dashboard</a>
+                                <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="about.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">About</a>
+            <a href="training.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Training</a>
+            <a href="consultancy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Consultancy</a>
+            <a href="research.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a>
+            <a href="volunteering.html" class="block px-4 py-2 text-primary bg-gray-100">Volunteering</a>
+            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-secondary text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6">Join Our Volunteer Team</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Make a meaningful impact by contributing your skills and expertise to advance research and education in Liberia</p>
+            <a href="#volunteer-form" class="bg-white text-primary px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                Apply to Volunteer
+            </a>
+        </div>
+    </section>
+
+    <!-- Volunteer Opportunities -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Volunteer Opportunities</h2>
+                <p class="text-xl text-gray-600">Multiple ways to contribute your skills and make a difference</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Research Assistant</h3>
+                    <p class="text-gray-600 mb-4">Support ongoing research projects with data collection, literature reviews, and analysis assistance.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Flexible schedule</li>
+                        <li>• Research experience</li>
+                        <li>• Certificate of participation</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Training Facilitator</h3>
+                    <p class="text-gray-600 mb-4">Share your expertise by facilitating workshops and training sessions for students and professionals.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Skill sharing opportunities</li>
+                        <li>• Professional development</li>
+                        <li>• Networking benefits</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Data Analyst</h3>
+                    <p class="text-gray-600 mb-4">Help analyze research data using statistical software and contribute to meaningful insights.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Technical skill development</li>
+                        <li>• Real-world experience</li>
+                        <li>• Portfolio building</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Content Writer</h3>
+                    <p class="text-gray-600 mb-4">Create educational content, blog posts, and research summaries for our publications.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Writing portfolio enhancement</li>
+                        <li>• Publication opportunities</li>
+                        <li>• Editorial experience</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Field Data Collector</h3>
+                    <p class="text-gray-600 mb-4">Participate in field research activities and community-based data collection initiatives.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Community engagement</li>
+                        <li>• Travel opportunities</li>
+                        <li>• Hands-on experience</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-8">
+                    <div class="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Technical Support</h3>
+                    <p class="text-gray-600 mb-4">Provide IT support, website maintenance, and technical assistance for digital initiatives.</p>
+                    <ul class="text-sm text-gray-500">
+                        <li>• Technical skill building</li>
+                        <li>• IT experience</li>
+                        <li>• Innovation projects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Application Form -->
+    <section id="volunteer-form" class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Volunteer Application</h2>
+                <p class="text-xl text-gray-600">Join our mission to advance research and education in Liberia</p>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <form id="volunteerForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                            <input type="text" id="location" name="location" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="skills" class="block text-sm font-medium text-gray-700 mb-2">Skills & Expertise</label>
+                        <textarea id="skills" name="skills" rows="4" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                  placeholder="Please describe your relevant skills, experience, and areas of expertise..."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="availability" class="block text-sm font-medium text-gray-700 mb-2">Availability</label>
+                        <textarea id="availability" name="availability" rows="3" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                  placeholder="Please describe your availability (days, times, duration commitment)..."></textarea>
+                    </div>
+
+                    <div>
+                        <label for="motivation" class="block text-sm font-medium text-gray-700 mb-2">Why do you want to volunteer with us?</label>
+                        <textarea id="motivation" name="motivation" rows="4" 
+                                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                                  placeholder="Tell us about your motivation and what you hope to achieve through volunteering..."></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">Areas of Interest (Select all that apply)</label>
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="research" class="mr-2 text-primary focus:ring-primary">
+                                Research Assistance
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="training" class="mr-2 text-primary focus:ring-primary">
+                                Training & Facilitation
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="data-analysis" class="mr-2 text-primary focus:ring-primary">
+                                Data Analysis
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="content-writing" class="mr-2 text-primary focus:ring-primary">
+                                Content Writing
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="field-work" class="mr-2 text-primary focus:ring-primary">
+                                Field Data Collection
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" name="interests" value="technical" class="mr-2 text-primary focus:ring-primary">
+                                Technical Support
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitVolunteerForm" 
+                            class="w-full bg-primary text-white py-3 px-6 rounded-md hover:bg-primary-dark transition-colors font-medium">
+                        Submit Application
+                    </button>
+                </form>
+                
+                <div id="volunteerMessage" class="mt-4 text-center hidden"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto mb-4">
+                    <p class="text-gray-400">Empowering Liberia through research excellence and data-driven solutions.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="training.html" class="hover:text-white transition-colors">Training</a></li>
+                        <li><a href="consultancy.html" class="hover:text-white transition-colors">Consultancy</a></li>
+                        <li><a href="research.html" class="hover:text-white transition-colors">Research</a></li>
+                        <li><a href="volunteering.html" class="hover:text-white transition-colors">Volunteering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Monrovia, Liberia</li>
+                        <li>info@projectpartners.lr</li>
+                        <li>+231 XXX XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Project Partners Research and Data Solutions Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Volunteer form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const volunteerForm = document.getElementById('volunteerForm');
+            const submitBtn = document.getElementById('submitVolunteerForm');
+            const volunteerMessage = document.getElementById('volunteerMessage');
+
+            volunteerForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(volunteerForm);
+                
+                // Get selected interests
+                const interests = Array.from(document.querySelectorAll('input[name="interests"]:checked'))
+                    .map(checkbox => checkbox.value);
+
+                const volunteerData = {
+                    full_name: formData.get('fullName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone') || null,
+                    skills: formData.get('skills') || null,
+                    availability: formData.get('availability') || null,
+                    motivation: formData.get('motivation') || null,
+                    interests: interests.join(', ') || null
+                };
+
+                // Show loading state
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+
+                try {
+                    const { data, error } = await supabase
+                        .from('volunteer_applications')
+                        .insert([volunteerData]);
+
+                    if (error) throw error;
+
+                    // Show success message
+                    volunteerMessage.className = 'mt-4 text-center text-green-600';
+                    volunteerMessage.textContent = 'Thank you for your application! We\'ll review it and get back to you soon.';
+                    volunteerMessage.classList.remove('hidden');
+                    
+                    // Reset form
+                    volunteerForm.reset();
+                    
+                } catch (error) {
+                    console.error('Error submitting volunteer application:', error);
+                    volunteerMessage.className = 'mt-4 text-center text-red-600';
+                    volunteerMessage.textContent = 'Sorry, there was an error submitting your application. Please try again.';
+                    volunteerMessage.classList.remove('hidden');
+                } finally {
+                    // Reset button
+                    submitBtn.textContent = 'Submit Application';
+                    submitBtn.disabled = false;
+                    
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        volunteerMessage.classList.add('hidden');
+                    }, 5000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

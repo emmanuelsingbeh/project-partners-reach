@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Project Partners Research and Data Solutions Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto">
+                    <span class="ml-2 text-xl font-bold text-primary">Project Partners</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                    <a href="about.html" class="text-primary font-medium">About</a>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-primary transition-colors flex items-center">
+                            Services
+                            <svg class="ml-1 h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="training.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Training</a>
+                            <a href="consultancy.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Consultancy</a>
+                            <a href="research.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Research</a>
+                            <a href="volunteering.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Volunteering</a>
+                        </div>
+                    </div>
+                    
+                    <a href="blog.html" class="text-gray-700 hover:text-primary transition-colors">Blog</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+                    <div id="authButtons" class="flex space-x-4">
+                        <button id="loginBtn" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors">Login</button>
+                        <div id="userMenu" class="relative hidden">
+                            <button id="userMenuBtn" class="flex items-center space-x-2 text-gray-700 hover:text-primary">
+                                <span id="userName"></span>
+                                <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                </svg>
+                            </button>
+                            <div id="userDropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden">
+                                <a href="student-portal.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Student Portal</a>
+                                <a href="admin.html" id="adminLink" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hidden">Admin Dashboard</a>
+                                <button id="logoutBtn" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-primary">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden hidden bg-white border-t">
+            <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
+            <a href="about.html" class="block px-4 py-2 text-primary bg-gray-100">About</a>
+            <a href="training.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Training</a>
+            <a href="consultancy.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Consultancy</a>
+            <a href="research.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Research</a>
+            <a href="volunteering.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Volunteering</a>
+            <a href="blog.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Blog</a>
+            <a href="contact.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary to-secondary text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6">About Project Partners</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Leading Liberia's research revolution through innovative data solutions and capacity building</p>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        To empower individuals, professionals, and organisations with evidence-based insights 
+                        through high-quality research, data-driven solutions, and capacity-building services.
+                    </p>
+                </div>
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Our Vision</h2>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        To be a leading hub in Liberia for innovative research support, data excellence, 
+                        and scientific capacity-building.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Meet Our Team</h2>
+                <p class="text-xl text-gray-600">Expert professionals dedicated to research excellence</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">LT</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Levi Tuwleh</h3>
+                        <p class="text-primary font-medium mb-4">Program/M&E Officer</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="levi">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">DU</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Dr. Utham</h3>
+                        <p class="text-primary font-medium mb-4">Research & Development Manager</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="utham">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">JW</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Joseph Worlo</h3>
+                        <p class="text-primary font-medium mb-4">Logistics/Supply Chain Specialist</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="joseph">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">BS</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Barzee Sumo</h3>
+                        <p class="text-primary font-medium mb-4">Field Data Collection Coordinator</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="barzee">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 5 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">AK</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Alpha Daoda Kanneh</h3>
+                        <p class="text-primary font-medium mb-4">GIS/Remote Sensing Lead</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="alpha">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Team Member 6 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden team-card">
+                    <div class="p-6 text-center">
+                        <div class="w-24 h-24 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold">ES</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Emmanuel Singbeh</h3>
+                        <p class="text-primary font-medium mb-4">IT & Data Systems Support Officer</p>
+                        <button class="portfolio-btn bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors" 
+                                data-member="emmanuel">
+                            View Portfolio
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-2xl w-full max-h-96 overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="modalName" class="text-2xl font-bold text-gray-900"></h3>
+                        <button id="closePortfolio" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="modalContent" class="text-gray-600"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-md w-full">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="modalTitle" class="text-2xl font-bold text-gray-900">Login</h3>
+                        <button id="closeModal" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form id="authForm">
+                        <div class="mb-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div class="mb-4">
+                            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <input type="password" id="password" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div id="signupFields" class="hidden">
+                            <div class="mb-4">
+                                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                <input type="text" id="fullName" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary-dark transition-colors">Login</button>
+                    </form>
+                    <div class="mt-4 text-center">
+                        <span id="toggleText" class="text-gray-600">Don't have an account?</span>
+                        <button id="toggleAuth" class="text-primary hover:underline ml-1">Sign up</button>
+                    </div>
+                    <div id="authMessage" class="mt-4 text-center hidden"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="public/lovable-uploads/5c3d50fc-24e4-4100-a5bc-a664a950d012.png" alt="Logo" class="h-10 w-auto mb-4">
+                    <p class="text-gray-400">Empowering Liberia through research excellence and data-driven solutions.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Services</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="training.html" class="hover:text-white transition-colors">Training</a></li>
+                        <li><a href="consultancy.html" class="hover:text-white transition-colors">Consultancy</a></li>
+                        <li><a href="research.html" class="hover:text-white transition-colors">Research</a></li>
+                        <li><a href="volunteering.html" class="hover:text-white transition-colors">Volunteering</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Monrovia, Liberia</li>
+                        <li>info@projectpartners.lr</li>
+                        <li>+231 XXX XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Project Partners Research and Data Solutions Hub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Team portfolio data
+        const teamPortfolios = {
+            levi: {
+                name: "Levi Tuwleh",
+                position: "Program/M&E Officer",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 5+ years in program management and monitoring & evaluation</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Project lifecycle management</li>
+                        <li>Monitoring and evaluation frameworks</li>
+                        <li>Data collection and analysis</li>
+                        <li>Stakeholder engagement</li>
+                        <li>Grant writing and proposal development</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> Master's in Development Studies</p>
+                    <p><strong>Key Projects:</strong> Led M&E for multiple NGO projects focusing on education and health interventions in rural Liberia.</p>
+                `
+            },
+            utham: {
+                name: "Dr. Utham",
+                position: "Research & Development Manager / Data Analyst",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 8+ years in research and data analysis</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Quantitative and qualitative research methods</li>
+                        <li>Statistical analysis and modeling</li>
+                        <li>Scientific writing and publication</li>
+                        <li>Research design and methodology</li>
+                        <li>Data visualization and reporting</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> PhD in Research Methodology</p>
+                    <p><strong>Publications:</strong> 15+ peer-reviewed publications in international journals.</p>
+                `
+            },
+            joseph: {
+                name: "Joseph Worlo",
+                position: "Logistics/Supply Chain Specialist",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 6+ years in logistics and supply chain management</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Supply chain optimization</li>
+                        <li>Inventory management</li>
+                        <li>Vendor relations and procurement</li>
+                        <li>Distribution and warehousing</li>
+                        <li>Cost reduction strategies</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> Bachelor's in Business Administration</p>
+                    <p><strong>Certifications:</strong> Certified Supply Chain Professional (CSCP)</p>
+                `
+            },
+            barzee: {
+                name: "Barzee Sumo",
+                position: "Field Data Collection/Training Coordinator",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 4+ years in field data collection and training</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Field survey design and implementation</li>
+                        <li>Enumerator training and supervision</li>
+                        <li>Data quality assurance</li>
+                        <li>Community engagement</li>
+                        <li>Mobile data collection tools (KoBo, ODK)</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> Bachelor's in Social Sciences</p>
+                    <p><strong>Projects:</strong> Coordinated data collection for 20+ research projects across Liberia.</p>
+                `
+            },
+            alpha: {
+                name: "Alpha Daoda Kanneh",
+                position: "GIS/Remote Sensing Lead",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 7+ years in GIS and remote sensing</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Geographic Information Systems (GIS)</li>
+                        <li>Remote sensing and satellite imagery analysis</li>
+                        <li>Spatial data analysis and modeling</li>
+                        <li>Cartography and map production</li>
+                        <li>GPS and field mapping</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> Master's in Geographic Information Science</p>
+                    <p><strong>Software:</strong> Expert in ArcGIS, QGIS, ERDAS Imagine, and Google Earth Engine.</p>
+                `
+            },
+            emmanuel: {
+                name: "Emmanuel Singbeh",
+                position: "IT & Data Systems Support Officer",
+                content: `
+                    <p class="mb-4"><strong>Experience:</strong> 5+ years in IT and data systems</p>
+                    <p class="mb-4"><strong>Expertise:</strong></p>
+                    <ul class="list-disc ml-6 mb-4">
+                        <li>Database design and management</li>
+                        <li>Web development and maintenance</li>
+                        <li>Data backup and security</li>
+                        <li>Network administration</li>
+                        <li>Training and technical support</li>
+                    </ul>
+                    <p class="mb-4"><strong>Education:</strong> Bachelor's in Computer Science</p>
+                    <p><strong>Certifications:</strong> Microsoft Certified Professional, CompTIA Network+</p>
+                `
+            }
+        };
+
+        // Portfolio modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const portfolioBtns = document.querySelectorAll('.portfolio-btn');
+            const portfolioModal = document.getElementById('portfolioModal');
+            const closePortfolio = document.getElementById('closePortfolio');
+            const modalName = document.getElementById('modalName');
+            const modalContent = document.getElementById('modalContent');
+
+            portfolioBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const member = this.dataset.member;
+                    const portfolio = teamPortfolios[member];
+                    
+                    if (portfolio) {
+                        modalName.textContent = portfolio.name;
+                        modalContent.innerHTML = portfolio.content;
+                        portfolioModal.classList.remove('hidden');
+                    }
+                });
+            });
+
+            closePortfolio.addEventListener('click', function() {
+                portfolioModal.classList.add('hidden');
+            });
+
+            portfolioModal.addEventListener('click', function(e) {
+                if (e.target === portfolioModal) {
+                    portfolioModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
