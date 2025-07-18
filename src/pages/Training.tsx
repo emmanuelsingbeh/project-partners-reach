@@ -5,8 +5,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Training = () => {
+  const navigate = useNavigate();
+
+  const handleRegistration = (programTitle: string) => {
+    console.log(`Registration for: ${programTitle}`);
+    alert(`Registration process initiated for ${programTitle}. You will be redirected to the registration system.`);
+    navigate(`/training-registration/${encodeURIComponent(programTitle)}`);
+  };
+
   const trainingPrograms = [
     {
       title: "Research Methodology and Data Analysis",
@@ -129,12 +138,6 @@ const Training = () => {
     }
   ];
 
-  const handleRegistration = (programTitle: string) => {
-    // This would typically integrate with the backend
-    console.log(`Registration for: ${programTitle}`);
-    alert(`Registration process initiated for ${programTitle}. You will be redirected to the registration system.`);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -234,13 +237,14 @@ const Training = () => {
                       <div className="flex justify-between items-center mb-4">
                         <span className="text-lg font-semibold text-primary">{program.price}</span>
                       </div>
-                      <Button 
-                        onClick={() => handleRegistration(program.title)}
-                        className={`w-full ${program.featured ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'} text-white group`}
-                      >
-                        Register Now
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
+                     <Button 
+  onClick={() => handleRegistration(program.title)}
+  className={`w-full ${program.featured ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'} text-white group`}
+>
+  Register Now
+  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+</Button>
+
                     </div>
                   </CardContent>
                 </Card>

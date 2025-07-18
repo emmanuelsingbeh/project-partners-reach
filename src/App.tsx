@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop"; // <-- import here
-
+import TrainingRegistration from './pages/TrainingRegistration';
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Training from "./pages/Training";
@@ -38,6 +38,7 @@ const App = () => (
           <Route path="/student-portal" element={<StudentPortal />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
