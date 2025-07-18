@@ -56,13 +56,13 @@ const TrainingRegistration = () => {
             Fill out the form below to register for our training programs.
           </p>
           <Button 
-            size="lg" 
-            className="bg-accent hover:bg-accent/90 text-white"
-            onClick={() => document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            View Form
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+  size="lg" 
+  className="bg-accent hover:bg-accent/90 text-white"
+  onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+>
+  View Our Trainings 
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Button>
         </div>
       </section>
 
