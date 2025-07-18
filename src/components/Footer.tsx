@@ -1,6 +1,8 @@
+import { FC } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -32,29 +34,29 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#about" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/about" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/consultancy" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Our Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#training" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/training" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Training Programs
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#volunteering" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/volunteering" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Volunteer Opportunities
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-primary-foreground/80 hover:text-accent transition-colors">
+                <Link to="/contact" className="text-primary-foreground/80 hover:text-accent transition-colors">
                   Contact Us
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -96,7 +98,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/60 text-sm">
-              © 2024 Project Partners Research & Data Solutions Hub. All rights reserved.
+              © 2025 Project Partners Research & Data Solutions Hub. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="#" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">
