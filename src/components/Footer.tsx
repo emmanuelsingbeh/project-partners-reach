@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from '@/assets/logo.png';
 
 const Footer: FC = () => {
   return (
@@ -9,6 +10,12 @@ const Footer: FC = () => {
         <div className="grid md:grid-cols-4 gap-8">
           {/* Organization Info */}
           <div className="md:col-span-2">
+            {/* Responsive Logo */}
+            <img
+              src={logo}
+              alt="Project Partners Logo"
+              className="h-6 sm:h-8 md:h-10 lg:h-12 xl:h-16 w-auto mb-4"
+            />
             <h3 className="text-xl font-bold mb-4">
               Project Partners Research & Data Solutions Hub
             </h3>

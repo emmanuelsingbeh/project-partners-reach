@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import logo from '@/assets/logo.png';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,9 +31,7 @@ const Navigation = () => {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const isActiveRoute = (href: string) => {
-    return location.pathname === href;
-  };
+  const isActiveRoute = (href: string) => location.pathname === href;
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/95 backdrop-blur-sm border-b border-border">
@@ -40,10 +39,18 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-lg md:text-xl font-bold text-primary">
-              <span className="hidden sm:inline">Project Partners Research & Data Solutions Hub</span>
-              <span className="sm:hidden">Project Partners</span>
-            </h1>
+            <Link to="/" className="flex items-center">
+              <img 
+  src={logo} 
+  alt="Project Partners Logo" 
+  className="h-6 sm:h-8 md:h-10 lg:h-12 xl:h-16 w-auto" 
+/>
+
+              {/* Optionally show text beside logo on md+ screens */}
+              <span className="ml-3 hidden sm:inline text-lg md:text-xl font-bold text-primary">
+                Project Partners Research & Data Solutions Hub
+              </span>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
