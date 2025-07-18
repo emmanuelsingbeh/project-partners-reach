@@ -4,6 +4,8 @@ import { ArrowRight, BookOpen, Users, Search, Heart, Star } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/Footer';
+import { Link } from "react-router-dom";
+
 
 const Index = () => {
   const services = [
@@ -62,36 +64,30 @@ const Index = () => {
         
         {/* Services Overview */}
         <section className="py-20 bg-muted/30">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-primary mb-4">Our Services</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive solutions for capacity building, research, and community development
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {services.map((service, index) => (
-                <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all group">
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
-                      <service.icon className="h-8 w-8 text-accent" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-primary mb-2">{service.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
-                    <Button 
-                      variant="outline" 
-                      className="group-hover:bg-accent group-hover:text-white transition-colors"
-                      onClick={() => window.location.href = service.link}
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+  {services.map((service, index) => (
+    <Card key={index} className="border-0 shadow-lg hover:shadow-xl transition-all group">
+      <CardContent className="p-6 text-center">
+        <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors">
+          <service.icon className="h-8 w-8 text-accent" />
+        </div>
+        <h3 className="text-lg font-semibold text-primary mb-2">{service.title}</h3>
+        <p className="text-muted-foreground mb-4 text-sm">{service.description}</p>
+        
+        <Link to={service.link}>
+          <Button 
+            variant="outline" 
+            className="group-hover:bg-accent group-hover:text-white transition-colors w-full"
+          >
+            Learn More
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
+      </CardContent>
+    </Card>
+  ))}
+</div>
+
         </section>
 
         {/* Client Testimonials */}
