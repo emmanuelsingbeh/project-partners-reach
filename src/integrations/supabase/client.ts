@@ -7,6 +7,64 @@ const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiO
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/client";
+
+// 1. SELECT: Fetch all users
+const fetchUsers = async () => {
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+  
+  if (error) console.error('Error fetching users:', error)
+  return data
+}
+
+// 2. INSERT: Create a new user
+const createUser = async (userData) => {
+  const { data, error } = await supabase
+    .from('users')
+    .insert(userData)
+    .select()
+  
+  if (error) console.error('Error creating user:', error)
+  return data
+}
+
+// 3. UPDATE: Update a user's information
+const updateUser = async (userId, updateData) => {
+  const { data, error } = await supabase
+    .from('users')
+    .update(updateData)
+    .eq('id', userId)
+    .select()
+  
+  if (error) console.error('Error updating user:', error)
+  return data
+}
+
+// 4. DELETE: Remove a user
+const deleteUser = async (userId) => {
+  const { data, error } = await supabase
+    .from('users')
+    .delete()
+    .eq('id', userId)
+  
+  if (error) console.error('Error deleting user:', error)
+  return data
+}
+
+// 5. ADVANCED: Filtering and Sorting
+const fetchFilteredUsers = async () => {
+  const { data, error } = await supabase
+    .from('users')
+    .select('*')
+    .gt('age', 18)  // Greater than 18
+    .order('created_at', { ascending: false })
+    .limit(10)
+  
+  if (error) console.error('Error fetching filtered users:', error)
+  return data
+}
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
