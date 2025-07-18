@@ -146,4 +146,3 @@ const Training = () => {
 };
 
 export default Training;
-import { createClient } from '@supabase/supabase-js';
