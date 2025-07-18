@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import logo from '@/assets/logo.png';
+import logo from '@/assets/logo.jpg';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
