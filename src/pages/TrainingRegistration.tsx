@@ -1,3 +1,5 @@
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -5,6 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
+import { BookOpen, Clock, Users, Award, ArrowRight, CheckCircle } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const TrainingRegistration = () => {
   const [educationLevel, setEducationLevel] = useState("");
@@ -35,10 +40,26 @@ const TrainingRegistration = () => {
   };
 
   console.log("Submitted Form Data:", formData);
-  alert("Form submitted! (Check console for data)");
+  alert("Form submitted! (Check email for confirmation)"); // Simulate form submission
 };
-
-
+<section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
+                Training Registration
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Fill out the form below to register for our training programs.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-accent hover:bg-accent/90 text-white"
+              onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              View Programs
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </div>
+        </section>
   return (
     <div className="max-w-3xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold text-primary mb-6">Training Registration</h1>
