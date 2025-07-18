@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { supabase } from '@/lib/supabaseClient'; 
 
 const Volunteering = () => {
   const [applicationForm, setApplicationForm] = useState({
@@ -100,20 +101,39 @@ const Volunteering = () => {
     "Minimum 3-month commitment"
   ];
 
-  const handleApplicationSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // This would typically send data to backend
-    console.log('Volunteer application submitted:', applicationForm);
-    alert('Thank you for your application! We will review it and contact you within one week.');
-    setApplicationForm({
-      fullName: '',
-      email: '',
-      phone: '',
-      skills: '',
-      motivation: '',
-      availability: ''
-    });
-  };
+  const handleApplicationSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const { fullName, email, phone, skills, motivation, availability } = applicationForm;
+
+  const { error } = await supabase.from('volunteer_applications').insert([
+    {
+      full_name: fullName,
+      email,
+      phone,
+      skills,
+      motivation,
+      availability,
+    },
+  ]);
+
+  if (error) {
+    console.error('Supabase insert error:', error.message);
+    alert('❌ Submission failed: ' + error.message);
+    return;
+  }
+
+  alert('✅ Thank you for your application! We will contact you soon.');
+
+  setApplicationForm({
+    fullName: '',
+    email: '',
+    phone: '',
+    skills: '',
+    motivation: '',
+    availability: '',
+  });
+};
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setApplicationForm({
