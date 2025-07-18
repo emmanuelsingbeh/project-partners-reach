@@ -4,31 +4,32 @@ import { Button } from '@/components/ui/button';
 import hero1 from '@/assets/hero-1.jpg';
 import hero2 from '@/assets/hero-2.jpg';
 import hero3 from '@/assets/hero-3.jpg';
+import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const slides = [
     {
       image: hero1,
       title: "Empowering Communities Through Research",
       subtitle: "Professional training, consultancy, and data solutions for sustainable development",
       cta: "Explore Training",
-      ctaLink: "#training"
+      ctaLink: "/training"
     },
     {
       image: hero2,
       title: "Excellence in Professional Training",
       subtitle: "Build your capacity with our comprehensive training programs",
       cta: "View Programs",
-      ctaLink: "#training"
+      ctaLink: "/training"
     },
     {
       image: hero3,
       title: "Join Our Volunteer Network",
       subtitle: "Make a difference in your community through meaningful volunteer opportunities",
       cta: "Get Involved",
-      ctaLink: "#volunteering"
+      ctaLink: "/volunteering"
     }
   ];
 
@@ -86,14 +87,15 @@ const HeroSection = () => {
               {slides[currentSlide].subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                onClick={() => scrollToSection(slides[currentSlide].ctaLink)}
-                className="bg-accent hover:bg-accent/90 text-white professional-hover group"
-              >
-                {slides[currentSlide].cta}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </Button>
+              <Link to={slides[currentSlide].ctaLink}>
+                <Button
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90 text-white professional-hover group"
+                >
+                  {slides[currentSlide].cta}
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"
@@ -132,8 +134,8 @@ const HeroSection = () => {
             key={index}
             onClick={() => setCurrentSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-accent scale-125' 
+              index === currentSlide
+                ? 'bg-accent scale-125'
                 : 'bg-white/50 hover:bg-white/75'
             }`}
           />
