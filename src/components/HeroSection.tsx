@@ -102,9 +102,8 @@ const HeroSection = () => {
               </Link>
               <Button
   size="lg"
-  variant="outline"
-  onClick={() => navigate('/about')}
-  className="border-white text-white hover:bg-white hover:text-primary professional-hover"
+  onClick={() => scrollToSection("/about")}
+  className="bg-accent text-white hover:bg-accent/90 professional-hover"
 >
   Learn More
 </Button>
@@ -115,6 +114,7 @@ const HeroSection = () => {
 
       {/* Navigation arrows */}
       <Button
+  variant="default"  // or simply remove this line if default is implicit
   size="sm"
   onClick={prevSlide}
   className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-accent hover:bg-accent-dark w-12 h-12 rounded-full"
