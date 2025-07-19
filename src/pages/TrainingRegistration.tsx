@@ -65,7 +65,7 @@ const TrainingRegistration = () => {
           <Button 
             size="lg" 
             className="bg-accent hover:bg-accent/90 text-white"
-            onClick={() => navigate('/training#programs')}
+            onClick={() => navigate('/training#our-training-programs')}
           >
             View Our Training Program
             <ArrowRight className="ml-2 h-5 w-5" />
