@@ -102,7 +102,7 @@ const HeroSection = () => {
               </Link>
               <Button
   size="lg"
-  onClick={() => scrollToSection('/about')}
+  onClick={() => navigate('/about')}
   className="bg-accent text-white hover:bg-accent/90 professional-hover"
 >
   Learn More
