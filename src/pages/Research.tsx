@@ -1,9 +1,53 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Search, FileText, BarChart3, Globe, BookOpen, Download, Calendar, Users } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import {
+  Search,
+  FileText,
+  BarChart3,
+  Globe,
+  BookOpen,
+  Download,
+  Calendar,
+  Users,
+  ClipboardList,
+  Microscope,
+  PieChart,
+  Landmark,
+  Network,
+  Activity,
+} from 'lucide-react';
+
+import { motion } from "framer-motion";
+
+// Animation config
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.2, duration: 0.6 },
+  }),
+};
+
+// Methodology data
+const methodology = [
+  { icon: <ClipboardList className="h-6 w-6 text-accent" />, title: "Surveys & Questionnaires", description: "Structured tools used to gather quantifiable data from participants." },
+  { icon: <Microscope className="h-6 w-6 text-accent" />, title: "Field Observations", description: "In-person visits and contextual observations for qualitative insights." },
+  { icon: <PieChart className="h-6 w-6 text-accent" />, title: "Focus Group Discussions", description: "Group dialogue sessions designed to explore community perspectives." },
+  { icon: <Users className="h-6 w-6 text-accent" />, title: "Key Informant Interviews", description: "One-on-one expert interviews for deep context and nuanced understanding." },
+  { icon: <Landmark className="h-6 w-6 text-accent" />, title: "Case Studies", description: "In-depth analysis of specific programs or events over time." },
+  { icon: <Network className="h-6 w-6 text-accent" />, title: "Mixed Methods", description: "Integrating both qualitative and quantitative approaches." },
+];
+
+// Research Areas data
+const researchAreas = [
+  { icon: <Activity className="h-6 w-6 text-accent" />, title: "Health & Nutrition", description: "Research on community health systems, nutrition, and interventions." },
+  { icon: <FileText className="h-6 w-6 text-accent" />, title: "Education", description: "Studies on education quality, access, and learning outcomes." },
+  { icon: <Users className="h-6 w-6 text-accent" />, title: "Youth & Employment", description: "Exploring opportunities and barriers for youth employment." },
+];
 
 const Research = () => {
   const researchServices = [
@@ -110,7 +154,7 @@ const Research = () => {
     }
   ];
 
-  const researchAreas = [
+  const researchAreasList = [
     "Health and Nutrition",
     "Education and Capacity Building",
     "Economic Development",
@@ -119,25 +163,6 @@ const Research = () => {
     "Gender and Social Inclusion",
     "Governance and Policy",
     "Technology and Innovation"
-  ];
-
-  const methodology = [
-    {
-      title: "Quantitative Research",
-      description: "Statistical surveys, experiments, and numerical data analysis"
-    },
-    {
-      title: "Qualitative Research",
-      description: "Interviews, focus groups, ethnographic studies, and thematic analysis"
-    },
-    {
-      title: "Mixed Methods",
-      description: "Integrated approaches combining quantitative and qualitative methods"
-    },
-    {
-      title: "Participatory Research",
-      description: "Community-engaged research with stakeholder involvement throughout"
-    }
   ];
 
   return (
@@ -174,27 +199,40 @@ const Research = () => {
           </div>
         </section>
 
-        {/* Research Areas */}
-        <section className="py-16 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-primary mb-4">Research Areas</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                We conduct research across diverse sectors to address critical development challenges
-              </p>
-            </div>
+        {/* Research Areas Section */}
+<section className="py-20 bg-white">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-primary mb-4">Our Research Areas</h2>
+      <p className="text-muted-foreground max-w-2xl mx-auto">
+        We focus on the most pressing issues affecting communities and development.
+      </p>
+    </div>
 
-            <div className="grid md:grid-cols-4 gap-4">
-              {researchAreas.map((area, index) => (
-                <Card key={index} className="border-0 shadow-sm hover:shadow-md transition-shadow">
-                  <CardContent className="p-4 text-center">
-                    <p className="font-medium text-primary">{area}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {researchAreas.map((area, index) => (
+        <motion.div
+          key={index}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={index}
+          variants={fadeIn}
+        >
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+            <CardContent className="p-6">
+              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                {area.icon}
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">{area.title}</h3>
+              <p className="text-muted-foreground text-sm">{area.description}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
         {/* Research Services */}
         <section id="services" className="py-20 bg-muted/30">
@@ -231,29 +269,40 @@ const Research = () => {
           </div>
         </section>
 
-        {/* Methodology */}
-        <section className="py-16 bg-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-primary mb-4">Our Research Methodology</h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                We employ diverse research methodologies to ensure robust and credible findings
-              </p>
-            </div>
+       {/* Research Methodology Section */}
+<section className="py-20 bg-muted/30">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl font-bold text-primary mb-4">Our Research Methodology</h2>
+      <p className="text-muted-foreground max-w-2xl mx-auto">
+        We employ diverse research methodologies to ensure robust and credible findings.
+      </p>
+    </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {methodology.map((method, index) => (
-                <Card key={index} className="border-0 shadow-lg text-center">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold text-primary mb-2">{method.title}</h3>
-                    <p className="text-muted-foreground text-sm">{method.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {methodology.map((method, index) => (
+        <motion.div
+          key={index}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          custom={index}
+          variants={fadeIn}
+        >
+          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+            <CardContent className="p-6">
+              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                {method.icon}
+              </div>
+              <h3 className="text-xl font-bold text-primary mb-3">{method.title}</h3>
+              <p className="text-muted-foreground text-sm">{method.description}</p>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
         {/* Recent Research */}
         <section id="research" className="py-20 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
