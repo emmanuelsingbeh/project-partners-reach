@@ -47,7 +47,7 @@ const Training = () => {
         "Impact Assessment"
       ],
       price: "Contact for pricing",
-      featured: false
+      featured: true
     },
     {
       title: "Digital Literacy and Technology Skills",
@@ -63,7 +63,7 @@ const Training = () => {
         "Digital Security"
       ],
       price: "Contact for pricing",
-      featured: false
+      featured: true
     },
     {
       title: "Leadership and Organizational Development",
