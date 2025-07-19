@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/Footer';
 import { Link } from "react-router-dom";
-
+import AboutSection from '@/components/AboutSection';
 
 const Index = () => {
   const services = [
@@ -61,6 +61,7 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
+        <AboutSection />
         
         {/* Services Overview */}
         <section className="py-20 bg-muted/30">
