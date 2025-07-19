@@ -437,37 +437,31 @@ const Research = () => {
 
        {/* Research Methodology Section */}
 <section className="py-20 bg-muted/30">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-primary mb-4">Our Research Methodology</h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">
-        We employ diverse research methodologies to ensure robust and credible findings.
-      </p>
-    </div>
+  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {methodologies.map((method, index) => (
+    <motion.div
+      key={index}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      custom={index}
+      variants={fadeIn}
+      className="bg-white rounded-2xl shadow-md p-6"
+    >
+      <div className="flex items-center mb-4">
+        {method.icon}
+        <h3 className="ml-3 text-lg font-semibold text-primary">{method.title}</h3>
+      </div>
+      <p className="text-muted-foreground mb-3">{method.description}</p>
+      <ul className="list-disc list-inside space-y-1 pl-1">
+        {method.points.map((point, idx) => (
+          <li key={idx} className="text-green-600">{point}</li>
+        ))}
+      </ul>
+    </motion.div>
+  ))}
+</div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {methodologies.map((method, index) => (
-        <motion.div
-          key={index}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={index}
-          variants={fadeIn}
-        >
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                {method.icon}
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">{method.title}</h3>
-              <p className="text-muted-foreground text-sm">{method.description}</p>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  </div>
 </section>
         {/* Recent Research */}
         <section id="research" className="py-20 bg-muted/30">
