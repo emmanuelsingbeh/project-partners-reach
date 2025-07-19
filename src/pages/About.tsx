@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Users, Target, Eye, Heart, Star, CheckCircle } from 'lucide-react';
+import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
@@ -21,7 +21,11 @@ const About = () => {
         achievements: ["Led 15+ community development programs", "Established M&E frameworks for 3 NGOs"],
         skills: ["Program Management", "M&E Systems", "Data Analysis", "Community Engagement"]
       },
-      social: { linkedin: "#", twitter: "#", email: "levi@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/levituwleh",
+        facebook: "https://facebook.com/levi.tuwleh",
+        whatsapp: "https://wa.me/12345678901"
+      }
     },
     {
       name: "Dr. Utham",
@@ -34,7 +38,11 @@ const About = () => {
         achievements: ["Published 25+ research papers", "Led data initiatives across West Africa"],
         skills: ["Statistical Analysis", "Research Design", "Scientific Writing", "Data Visualization"]
       },
-      social: { linkedin: "#", twitter: "#", email: "utham@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/drutham",
+        facebook: "https://facebook.com/drutham",
+        whatsapp: "https://wa.me/12345678902"
+      }
     },
     {
       name: "Joseph Worlo",
@@ -47,7 +55,11 @@ const About = () => {
         achievements: ["Managed logistics for 20+ field operations", "Reduced operational costs by 30%"],
         skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
       },
-      social: { linkedin: "#", twitter: "#", email: "joseph@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/josephworlo",
+        facebook: "https://facebook.com/joseph.worlo",
+        whatsapp: "https://wa.me/12345678903"
+      }
     },
     {
       name: "Barzee Sumo",
@@ -60,7 +72,11 @@ const About = () => {
         achievements: ["Coordinated 50+ field surveys", "Trained 200+ data collectors"],
         skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
       },
-      social: { linkedin: "#", twitter: "#", email: "barzee@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/barzeesumo",
+        facebook: "https://facebook.com/barzee.sumo",
+        whatsapp: "https://wa.me/12345678904"
+      }
     },
     {
       name: "Alpha Daoda Kanneh",
@@ -73,7 +89,11 @@ const About = () => {
         achievements: ["Mapped 100+ communities", "Developed GIS training curricula"],
         skills: ["GIS Analysis", "Remote Sensing", "Spatial Analysis", "Mapping Technology"]
       },
-      social: { linkedin: "#", twitter: "#", email: "alpha@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/alphakanneh",
+        facebook: "https://facebook.com/alpha.kanneh",
+        whatsapp: "https://wa.me/12345678905"
+      }
     },
     {
       name: "Emmanuel Singbeh",
@@ -89,7 +109,11 @@ const About = () => {
         ],
         skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
       },
-      social: { linkedin: "#", twitter: "#", email: "emmanuel@projectpartners.org" }
+      social: {
+        linkedin: "https://linkedin.com/in/emmanuelsingbeh",
+        facebook: "https://facebook.com/emmanuel.singbeh",
+        whatsapp: "https://wa.me/12345678906"
+      }
     }
   ];
 
@@ -218,8 +242,8 @@ const About = () => {
                         className="w-full h-64 object-contain bg-gray-100"
                         style={{ objectPosition: 'center top' }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                        <div className="p-4 w-full">
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none">
+                        <div className="p-4 w-full pointer-events-auto">
                           <Button
                             onClick={() => handleMemberClick(member)}
                             className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
@@ -330,6 +354,28 @@ const About = () => {
                           {skill}
                         </span>
                       ))}
+                    </div>
+                  </div>
+
+                  {/* Social Links */}
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember.name.split(' ')[0]}</h4>
+                    <div className="flex space-x-4">
+                      {selectedMember.social.linkedin && (
+                        <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
+                          <Linkedin className="h-6 w-6" />
+                        </a>
+                      )}
+                      {selectedMember.social.facebook && (
+                        <a href={selectedMember.social.facebook} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="Facebook">
+                          <Facebook className="h-6 w-6" />
+                        </a>
+                      )}
+                      {selectedMember.social.whatsapp && (
+                        <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
+                          <MessageSquare className="h-6 w-6" />
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
