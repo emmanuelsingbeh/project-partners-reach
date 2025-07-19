@@ -102,7 +102,7 @@ const HeroSection = () => {
               </Link>
               <Button
   size="lg"
-  onClick={() => scrollToSection("/about")}
+  onClick={() => scrollToSection('/about')}
   className="bg-accent text-white hover:bg-accent/90 professional-hover"
 >
   Learn More
@@ -114,7 +114,7 @@ const HeroSection = () => {
 
       {/* Navigation arrows */}
       <Button
-  variant="default"  // or simply remove this line if default is implicit
+  variant="ghost"  // or simply remove this line if default is implicit
   size="sm"
   onClick={prevSlide}
   className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-accent hover:bg-accent-dark w-12 h-12 rounded-full"
@@ -122,7 +122,7 @@ const HeroSection = () => {
   <ChevronLeft className="h-6 w-6" />
 </Button>
 <Button
-  variant="default"
+  variant="ghost"
   size="sm"
   onClick={nextSlide}
   className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white bg-accent hover:bg-accent-dark w-12 h-12 rounded-full"
