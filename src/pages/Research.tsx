@@ -18,13 +18,22 @@ import {
   Landmark,
   Network,
   Activity,
+  Users2,
+  Mic,
+  SearchCheck,
+  HeartPulse,
+  GraduationCap,
+  TrendingUp,
+  Leaf,
+  ShieldCheck,
+  VenetianMask,
+  Gavel,
+  Cpu,
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 import { useNavigate } from 'react-router-dom';
-import { HeartPulse, GraduationCap, TrendingUp, Leaf, ShieldCheck, VenetianMask, Gavel, Cpu, Users2, Mic, SearchCheck } from 'lucide-react';
 
-const navigate = useNavigate();
 // Animation config
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -34,20 +43,21 @@ const fadeIn = {
     transition: { delay: i * 0.2, duration: 0.6 },
   }),
 };
+
 interface ResearchArea {
   icon: ReactNode;
   title: string;
   description: string;
   points: string[];
 }
-// BONUS: Type definition for Research Methodology items
+
 type Methodology = {
   icon: JSX.Element;
   title: string;
   description: string;
   points: string[];
 };
-// Methodology data
+
 const methodologies: Methodology[] = [
   {
     icon: <ClipboardList className="h-6 w-6 text-accent" />,
@@ -117,14 +127,6 @@ const methodologies: Methodology[] = [
   }
 ];
 
-// BONUS: Type definition for strong typing and better IntelliSense
-type ResearchAreas = {
-  icon: JSX.Element;
-  title: string;
-  description: string;
-  points: string[];
-};
-// Research Areas data
 const researchAreas: ResearchArea[] = [
   {
     icon: <HeartPulse className="h-6 w-6 text-accent" />,
@@ -208,9 +210,9 @@ const researchAreas: ResearchArea[] = [
   }
 ];
 
-
-
 const Research = () => {
+  const navigate = useNavigate(); // <--- MUST be inside component
+
   const researchServices = [
     {
       icon: BarChart3,
@@ -315,21 +317,10 @@ const Research = () => {
     }
   ];
 
-  const researchAreasList = [
-    "Health and Nutrition",
-    "Education and Capacity Building",
-    "Economic Development",
-    "Environmental Sustainability",
-    "Social Protection",
-    "Gender and Social Inclusion",
-    "Governance and Policy",
-    "Technology and Innovation"
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="pt-16">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
@@ -361,45 +352,44 @@ const Research = () => {
         </section>
 
         {/* Research Areas Section */}
-<section className="py-20 bg-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-primary mb-4">Our Research Areas</h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">
-        We focus on the most pressing issues affecting communities and development.
-      </p>
-    </div>
+        <section className="py-20 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Our Research Areas</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We focus on the most pressing issues affecting communities and development.
+              </p>
+            </div>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {researchAreas.map((area, index) => (
-        <motion.div
-          key={index}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={index}
-          variants={fadeIn}
-        >
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                {area.icon}
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">{area.title}</h3>
-             <p className="text-muted-foreground mb-3 text-sm">{area.description}</p>
-<ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
-  {area.points.map((point, idx) => (
-    <li key={idx}>{point}</li>
-  ))}
-</ul>
-
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {researchAreas.map((area, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={index}
+                  variants={fadeIn}
+                >
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                        {area.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-primary mb-3">{area.title}</h3>
+                      <p className="text-muted-foreground mb-3 text-sm">{area.description}</p>
+                      <ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+                        {area.points.map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Research Services */}
         <section id="services" className="py-20 bg-muted/30">
@@ -436,51 +426,48 @@ const Research = () => {
           </div>
         </section>
 
-       {/* Research Methodology Section */}
-<section className="py-20 bg-muted/30">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Section heading */}
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-primary mb-4">Research Methodology</h2>
-      <p className="text-muted-foreground max-w-2xl mx-auto">
-        We employ diverse research methodologies to ensure robust and credible findings.
-      </p>
-    </div>
+        {/* Research Methodology Section */}
+        <section className="py-20 bg-muted/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-primary mb-4">Research Methodology</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                We employ diverse research methodologies to ensure robust and credible findings.
+              </p>
+            </div>
 
-    {/* Methodology cards */}
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {methodologies.map((method, index) => (
-        <motion.div
-          key={index}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          custom={index}
-          variants={fadeIn}
-        >
-          <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
-            <CardContent className="p-6">
-              <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                {method.icon}
-              </div>
-              <h3 className="text-xl font-bold text-primary mb-3">{method.title}</h3>
-              <p className="text-muted-foreground mb-3">{method.description}</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {methodologies.map((method, index) => (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  custom={index}
+                  variants={fadeIn}
+                >
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                        {method.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-primary mb-3">{method.title}</h3>
+                      <p className="text-muted-foreground mb-3">{method.description}</p>
 
-              {/* Bullet points with green bullets only */}
-              <ul className="list-disc list-inside space-y-1 pl-5 marker:text-green-600">
-                {method.points.map((point, idx) => (
-                  <li key={idx} className="text-muted-foreground">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+                      <ul className="list-disc list-inside space-y-1 pl-5 marker:text-green-600">
+                        {method.points.map((point, idx) => (
+                          <li key={idx} className="text-muted-foreground">
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
         {/* Recent Research */}
         <section id="research" className="py-20 bg-muted/30">
@@ -511,16 +498,17 @@ const Research = () => {
                     
                     <h3 className="text-xl font-bold text-primary mb-3">{research.title}</h3>
                     <p className="text-muted-foreground mb-4">{research.description}</p>
-                    
-                    <div className="flex justify-between items-center">
-                      <Badge className="bg-accent/10 text-accent">{research.category}</Badge>
-                      {research.downloadUrl && (
-                        <Button size="sm" variant="outline" className="group">
-                          <Download className="h-4 w-4 mr-2 group-hover:translate-y-0.5 transition-transform" />
-                          Download
-                        </Button>
-                      )}
-                    </div>
+
+                    {research.downloadUrl ? (
+                      <Button size="sm" className="bg-accent hover:bg-accent/90 text-white" onClick={() => window.open(research.downloadUrl, '_blank')}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download
+                      </Button>
+                    ) : (
+                      <Button size="sm" variant="outline" disabled>
+                        Download Not Available
+                      </Button>
+                    )}
                   </CardContent>
                 </Card>
               ))}
@@ -528,35 +516,32 @@ const Research = () => {
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="py-20 bg-primary text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Need Research Support?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Let us help you generate the evidence you need for informed decision-making and impactful programming.
+        {/* CTA: Need Research Support? */}
+        <section className="py-16 bg-primary text-white text-center">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold mb-6">Need Research Support?</h2>
+            <p className="mb-8 text-lg max-w-xl mx-auto">
+              Whether you need consultancy or want to discuss your specific research requirements, we’re here to help.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             <a href="/contact">
-  <Button 
-    size="lg" 
-    variant="outline" 
-    className="border-white text-white hover:bg-white hover:text-primary"
-  >
-    <Users className="mr-2 h-5 w-5" />
-    Discuss Your Needs
-  </Button>
-</a>
+            <div className="flex justify-center gap-6 flex-wrap">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-primary"
+                onClick={() => navigate('/contact')}
+              >
+                <Users className="mr-2 h-5 w-5" />
+                Discuss Your Need
+              </Button>
 
-<a href="/consultancy">
-  <Button 
-    size="lg" 
-    className="bg-accent hover:bg-accent/90"
-  >
-    <Search className="mr-2 h-5 w-5" />
-    Research Consultancy
-  </Button>
-</a>
-
+              <Button
+                size="lg"
+                className="bg-accent hover:bg-accent/90"
+                onClick={() => navigate('/consultancy')}
+              >
+                <Search className="mr-2 h-5 w-5" />
+                Research Consultancy
+              </Button>
             </div>
           </div>
         </section>
