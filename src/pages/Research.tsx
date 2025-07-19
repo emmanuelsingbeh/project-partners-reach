@@ -19,8 +19,10 @@ import {
   Network,
   Activity,
 } from 'lucide-react';
-
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
+import { HeartPulse, GraduationCap, TrendingUp, Leaf, ShieldCheck, VenetianMask, Gavel, Cpu } from 'lucide-react';
+
 
 // Animation config
 const fadeIn = {
@@ -31,23 +33,162 @@ const fadeIn = {
     transition: { delay: i * 0.2, duration: 0.6 },
   }),
 };
-
+interface ResearchArea {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  points: string[];
+}
 // Methodology data
 const methodology = [
-  { icon: <ClipboardList className="h-6 w-6 text-accent" />, title: "Surveys & Questionnaires", description: "Structured tools used to gather quantifiable data from participants." },
-  { icon: <Microscope className="h-6 w-6 text-accent" />, title: "Field Observations", description: "In-person visits and contextual observations for qualitative insights." },
-  { icon: <PieChart className="h-6 w-6 text-accent" />, title: "Focus Group Discussions", description: "Group dialogue sessions designed to explore community perspectives." },
-  { icon: <Users className="h-6 w-6 text-accent" />, title: "Key Informant Interviews", description: "One-on-one expert interviews for deep context and nuanced understanding." },
-  { icon: <Landmark className="h-6 w-6 text-accent" />, title: "Case Studies", description: "In-depth analysis of specific programs or events over time." },
-  { icon: <Network className="h-6 w-6 text-accent" />, title: "Mixed Methods", description: "Integrating both qualitative and quantitative approaches." },
+  {
+    icon: <ClipboardList className="h-6 w-6 text-accent" />,
+    title: "Surveys & Questionnaires",
+    description: "Structured tools used to gather quantifiable data from participants.",
+    points: [
+      "Standardized questions for comparability",
+      "Large sample sizes for statistical power",
+      "Efficient for collecting numerical data"
+    ]
+  },
+  {
+    icon: <Microscope className="h-6 w-6 text-accent" />,
+    title: "Field Observations",
+    description: "In-person visits and contextual observations for qualitative insights.",
+    points: [
+      "Captures non-verbal behaviors and environmental factors",
+      "Useful in natural or uncontrolled settings",
+      "Ideal for early-stage discovery"
+    ]
+  },
+  {
+    icon: <PieChart className="h-6 w-6 text-accent" />,
+    title: "Focus Group Discussions",
+    description: "Group dialogue sessions designed to explore community perspectives.",
+    points: [
+      "Interactive discussions among stakeholders",
+      "Facilitates opinion-sharing and debate",
+      "Generates qualitative data"
+    ]
+  },
+  {
+    icon: <Users className="h-6 w-6 text-accent" />,
+    title: "Key Informant Interviews",
+    description: "One-on-one expert interviews for deep context and nuanced understanding.",
+    points: [
+      "Gathers insights from sector experts or leaders",
+      "Explores sensitive or complex issues",
+      "Flexible and in-depth"
+    ]
+  },
+  {
+    icon: <Landmark className="h-6 w-6 text-accent" />,
+    title: "Case Studies",
+    description: "In-depth analysis of specific programs or events over time.",
+    points: [
+      "Context-rich and detailed",
+      "Highlights best practices and challenges",
+      "Combines multiple data sources"
+    ]
+  },
+  {
+    icon: <Network className="h-6 w-6 text-accent" />,
+    title: "Mixed Methods",
+    description: "Integrating both qualitative and quantitative approaches.",
+    points: [
+      "Balanced data triangulation",
+      "Strengthens credibility of findings",
+      "Combines depth with generalizability"
+    ]
+  }
 ];
 
+
 // Research Areas data
-const researchAreas = [
-  { icon: <Activity className="h-6 w-6 text-accent" />, title: "Health & Nutrition", description: "Research on community health systems, nutrition, and interventions." },
-  { icon: <FileText className="h-6 w-6 text-accent" />, title: "Education", description: "Studies on education quality, access, and learning outcomes." },
-  { icon: <Users className="h-6 w-6 text-accent" />, title: "Youth & Employment", description: "Exploring opportunities and barriers for youth employment." },
+const researchAreas: ResearchArea[] = [
+  {
+    icon: <HeartPulse className="h-6 w-6 text-accent" />,
+    title: "Health and Nutrition",
+    description: "Improving access to healthcare and balanced nutrition.",
+    points: [
+      "Maternal and child health studies",
+      "Malnutrition and food security analysis",
+      "WASH (Water, Sanitation, Hygiene) assessments"
+    ]
+  },
+  {
+    icon: <GraduationCap className="h-6 w-6 text-accent" />,
+    title: "Education and Capacity Building",
+    description: "Strengthening learning systems and human capital.",
+    points: [
+      "Literacy and numeracy performance tracking",
+      "School enrollment and dropout trend analysis",
+      "Teacher training and infrastructure evaluations"
+    ]
+  },
+  {
+    icon: <TrendingUp className="h-6 w-6 text-accent" />,
+    title: "Economic Development",
+    description: "Creating sustainable livelihoods and reducing poverty.",
+    points: [
+      "Livelihoods and skills mapping",
+      "Access to finance and savings behavior",
+      "Income generation program assessments"
+    ]
+  },
+  {
+    icon: <Leaf className="h-6 w-6 text-accent" />,
+    title: "Environmental Sustainability",
+    description: "Preserving ecosystems and promoting climate action.",
+    points: [
+      "Natural resource management research",
+      "Climate vulnerability assessments",
+      "Sustainable agriculture studies"
+    ]
+  },
+  {
+    icon: <ShieldCheck className="h-6 w-6 text-accent" />,
+    title: "Social Protection",
+    description: "Ensuring support for vulnerable populations.",
+    points: [
+      "Cash transfer and safety net evaluations",
+      "Child protection program monitoring",
+      "Disability inclusion assessments"
+    ]
+  },
+  {
+    icon: <VenetianMask className="h-6 w-6 text-accent" />,
+    title: "Gender and Social Inclusion",
+    description: "Promoting equity across identity groups.",
+    points: [
+      "Gender mainstreaming in development",
+      "Barriers to women's participation",
+      "LGBTQ+ and disability inclusion tracking"
+    ]
+  },
+  {
+    icon: <Gavel className="h-6 w-6 text-accent" />,
+    title: "Governance and Policy",
+    description: "Advancing evidence-based policy and civic engagement.",
+    points: [
+      "Public accountability mechanisms",
+      "Citizen engagement metrics",
+      "Policy impact assessments"
+    ]
+  },
+  {
+    icon: <Cpu className="h-6 w-6 text-accent" />,
+    title: "Technology and Innovation",
+    description: "Leveraging digital tools to accelerate development.",
+    points: [
+      "ICT access and digital literacy",
+      "Use of mobile data collection",
+      "AI and big data in research"
+    ]
+  }
 ];
+
+
 
 const Research = () => {
   const researchServices = [
