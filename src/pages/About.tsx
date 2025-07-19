@@ -211,26 +211,24 @@ const About = () => {
               {teamMembers.map((member, index) => (
                 <Card key={index} className="team-card border-0 shadow-lg overflow-hidden">
                   <CardContent className="p-0 team-card-content">
-                  <div className="relative group cursor-pointer">
-  <img
-    src={member.image}
-    alt={member.name}
-    className="w-full h-64 object-contain bg-gray-100"
-    style={{ objectPosition: 'center top' }}
-  />
-  {/* Overlay that appears on hover */}
-  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-    <div className="p-4 w-full">
-      <Button
-        onClick={() => handleMemberClick(member)}
-        className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
-      >
-        View Portfolio
-      </Button>
-    </div>
-  </div>
-</div>
-
+                    <div className="relative group cursor-pointer">
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-64 object-contain bg-gray-100"
+                        style={{ objectPosition: 'center top' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="p-4 w-full">
+                          <Button
+                            onClick={() => handleMemberClick(member)}
+                            className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
+                          >
+                            View Portfolio
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
 
                     <div className="p-6">
                       <h4 className="text-lg font-semibold text-primary mb-1">{member.name}</h4>
@@ -275,70 +273,70 @@ const About = () => {
           </div>
         </section>
 
-       {/* Team Member Modal */}
-{selectedMember && (
-  <div
-    className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4"
-    style={{ backdropFilter: 'blur(5px)' }}
-  >
-    <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-6">
-          <div className="flex items-center">
-            <img
-              src={selectedMember.image}
-              alt={selectedMember.name}
-              className="w-20 h-20 rounded-full object-contain bg-gray-100 mr-4"
-              style={{ objectPosition: 'center top' }}
-            />
-            <div>
-              <h3 className="text-2xl font-bold text-primary">{selectedMember.name}</h3>
-              <p className="text-accent font-medium">{selectedMember.title}</p>
+        {/* Team Member Modal */}
+        {selectedMember && (
+          <div
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4"
+            style={{ backdropFilter: 'blur(5px)' }}
+          >
+            <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center">
+                    <img
+                      src={selectedMember.image}
+                      alt={selectedMember.name}
+                      className="w-20 h-20 rounded-full object-contain bg-gray-100 mr-4"
+                      style={{ objectPosition: 'center top' }}
+                    />
+                    <div>
+                      <h3 className="text-2xl font-bold text-primary">{selectedMember.name}</h3>
+                      <p className="text-accent font-medium">{selectedMember.title}</p>
+                    </div>
+                  </div>
+                  <Button onClick={closeModal} variant="ghost" className="text-muted-foreground text-2xl leading-none">
+                    &times;
+                  </Button>
+                </div>
+
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
+                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
+                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
+                    <ul className="space-y-2 list-disc list-inside">
+                      {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-muted-foreground">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
+                        <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <Button onClick={closeModal} variant="ghost" className="text-muted-foreground text-2xl leading-none">
-            &times;
-          </Button>
-        </div>
-
-        <div className="space-y-6">
-          <div>
-            <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
-            <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
-            <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
-            <ul className="space-y-2 list-disc list-inside">
-              {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
-                <li key={index} className="flex items-start">
-                  <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                  <span className="text-muted-foreground">{achievement}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
-            <div className="flex flex-wrap gap-2">
-              {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
-                <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)}
+        )}
       </main>
 
       <Footer />
