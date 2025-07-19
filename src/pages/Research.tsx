@@ -526,7 +526,6 @@ const Research = () => {
             <div className="flex justify-center gap-6 flex-wrap">
               <Button
                 size="lg"
-                variant="outline"
                 className="border-white text-white hover:bg-white hover:text-primary"
                 onClick={() => navigate('/contact')}
               >
