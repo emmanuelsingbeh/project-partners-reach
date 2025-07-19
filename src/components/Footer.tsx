@@ -93,8 +93,8 @@ const Footer: FC = () => {
               <div className="flex items-start">
                 <MapPin className="h-4 w-4 mr-2 text-accent mt-0.5" />
                 <span className="text-primary-foreground/80 text-sm">
-                  123 Development Street<br />
-                  Research City, RC 12345
+                  Phebe Compound<br />
+                  Phebe, Bong County, Liberia
                 </span>
               </div>
             </div>
