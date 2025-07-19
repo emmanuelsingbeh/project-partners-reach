@@ -1,3 +1,4 @@
+// TrainingRegistration.tsx
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { useState, useEffect } from "react";
@@ -51,10 +52,8 @@ const TrainingRegistration = () => {
 
   return (
     <div>
-      {/* Navbar */}
       <Navigation />
 
-      {/* Header Section */}
       <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
@@ -68,13 +67,12 @@ const TrainingRegistration = () => {
             className="bg-accent hover:bg-accent/90 text-white"
             onClick={() => navigate('/training#programs')}
           >
-            View Our Trainings 
+            View Our Training Program
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </section>
 
-      {/* Registration Form */}
       <div id="registration-form" className="max-w-3xl mx-auto py-10 px-4">
         <h2 className="text-3xl font-bold text-primary mb-6">Register Now</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -162,7 +160,6 @@ const TrainingRegistration = () => {
         </form>
       </div>
 
-      {/* Footer */}
       <Footer />
     </div>
   );

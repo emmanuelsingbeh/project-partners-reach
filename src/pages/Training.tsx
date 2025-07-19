@@ -4,7 +4,7 @@ import { BookOpen, Clock, Users, Award, ArrowRight, CheckCircle } from 'lucide-r
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Training = () => {
@@ -141,7 +141,7 @@ const Training = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="pt-16">
         {/* Hero Section */}
         <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
@@ -155,7 +155,10 @@ const Training = () => {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-accent/90 text-white"
-              onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const section = document.getElementById('our-training-programs');
+                if (section) section.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
               View Programs
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -163,7 +166,7 @@ const Training = () => {
           </div>
         </section>
 
-        {/* Features Section */}
+        {/* Features */}
         <section className="py-16 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-primary text-center mb-12">Why Choose Our Training?</h2>
@@ -183,8 +186,8 @@ const Training = () => {
           </div>
         </section>
 
-        {/* Training Programs */}
-        <section id="programs" className="py-20 bg-muted/30">
+        {/* Our Training Programs */}
+        <section id="our-training-programs" className="py-20 bg-muted/30">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-primary mb-4">Our Training Programs</h2>
@@ -200,10 +203,10 @@ const Training = () => {
                     {program.featured && (
                       <Badge className="bg-accent text-white mb-4">Featured Program</Badge>
                     )}
-                    
+
                     <h3 className="text-xl font-bold text-primary mb-3">{program.title}</h3>
                     <p className="text-muted-foreground mb-4">{program.description}</p>
-                    
+
                     <div className="grid grid-cols-2 gap-4 mb-6 text-sm">
                       <div className="flex items-center">
                         <Clock className="h-4 w-4 text-accent mr-2" />
@@ -237,14 +240,13 @@ const Training = () => {
                       <div className="flex justify-between items-center mb-4">
                         <span className="text-lg font-semibold text-primary">{program.price}</span>
                       </div>
-                     <Button 
-  onClick={() => handleRegistration(program.title)}
-  className={`w-full ${program.featured ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'} text-white group`}
->
-  Register Now
-  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-</Button>
-
+                      <Button 
+                        onClick={() => handleRegistration(program.title)}
+                        className={`w-full ${program.featured ? 'bg-accent hover:bg-accent/90' : 'bg-primary hover:bg-primary/90'} text-white group`}
+                      >
+                        Register Now
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -253,34 +255,34 @@ const Training = () => {
           </div>
         </section>
 
-        {/* Call to Action */}
-       <section className="py-20 bg-primary text-white">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-3xl font-bold mb-4">Ready to Enhance Your Skills?</h2>
-    <p className="text-xl mb-8 opacity-90">
-      Join hundreds of professionals who have transformed their careers through our training programs.
-    </p>
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-      <Link to="/contact" className="w-full sm:w-auto">
-        <Button 
-          size="lg" 
-          variant="outline" 
-          className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
-        >
-          Contact Us
-        </Button>
-      </Link>
-      <Link to="/student-portal" className="w-full sm:w-auto">
-        <Button 
-          size="lg" 
-          className="bg-accent hover:bg-accent/90 w-full sm:w-auto"
-        >
-          Student Portal
-        </Button>
-      </Link>
-    </div>
-  </div>
-</section>
+        {/* CTA */}
+        <section className="py-20 bg-primary text-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold mb-4">Ready to Enhance Your Skills?</h2>
+            <p className="text-xl mb-8 opacity-90">
+              Join hundreds of professionals who have transformed their careers through our training programs.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-primary w-full sm:w-auto"
+                >
+                  Contact Us
+                </Button>
+              </Link>
+              <Link to="/student-portal" className="w-full sm:w-auto">
+                <Button 
+                  size="lg" 
+                  className="bg-accent hover:bg-accent/90 w-full sm:w-auto"
+                >
+                  Student Portal
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
