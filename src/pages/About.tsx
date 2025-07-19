@@ -47,7 +47,7 @@ const About = () => {
     {
       name: "Joseph Worlo",
       title: "Logistics/Supply Chain Specialist",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=300&h=300&fit=crop&crop=faces",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=faces",
       bio: "Expert in logistics coordination and supply chain management",
       fullPortfolio: {
         experience: "10+ years in logistics and supply chain",
