@@ -21,7 +21,7 @@ import {
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
-import { HeartPulse, GraduationCap, TrendingUp, Leaf, ShieldCheck, VenetianMask, Gavel, Cpu } from 'lucide-react';
+import { HeartPulse, GraduationCap, TrendingUp, Leaf, ShieldCheck, VenetianMask, Gavel, Cpu, Users2, Mic, SearchCheck } from 'lucide-react';
 
 
 // Animation config
@@ -39,71 +39,90 @@ interface ResearchArea {
   description: string;
   points: string[];
 }
+// BONUS: Type definition for Research Methodology items
+type Methodology = {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  points: string[];
+};
 // Methodology data
-const methodology = [
+const methodologies: Methodology[] = [
   {
     icon: <ClipboardList className="h-6 w-6 text-accent" />,
-    title: "Surveys & Questionnaires",
-    description: "Structured tools used to gather quantifiable data from participants.",
+    title: "Baseline and Endline Studies",
+    description: "Comprehensive assessments conducted before and after implementation to measure changes.",
     points: [
-      "Standardized questions for comparability",
-      "Large sample sizes for statistical power",
-      "Efficient for collecting numerical data"
+      "Pre-implementation baseline data collection",
+      "Post-implementation impact assessment",
+      "Comparative analysis and reporting",
+      "Stakeholder engagement throughout"
     ]
   },
   {
-    icon: <Microscope className="h-6 w-6 text-accent" />,
-    title: "Field Observations",
-    description: "In-person visits and contextual observations for qualitative insights.",
+    icon: <SearchCheck className="h-6 w-6 text-accent" />,
+    title: "Monitoring and Evaluation (M&E)",
+    description: "Ongoing tracking and final evaluation of program activities and outputs.",
     points: [
-      "Captures non-verbal behaviors and environmental factors",
-      "Useful in natural or uncontrolled settings",
-      "Ideal for early-stage discovery"
+      "Development of indicators and M&E plans",
+      "Data collection tools and templates",
+      "Performance tracking and dashboarding",
+      "Final project evaluations"
     ]
   },
   {
-    icon: <PieChart className="h-6 w-6 text-accent" />,
-    title: "Focus Group Discussions",
-    description: "Group dialogue sessions designed to explore community perspectives.",
+    icon: <FileText className="h-6 w-6 text-accent" />,
+    title: "Surveys and Data Collection",
+    description: "Design and execution of surveys for qualitative and quantitative data.",
     points: [
-      "Interactive discussions among stakeholders",
-      "Facilitates opinion-sharing and debate",
-      "Generates qualitative data"
+      "Questionnaire design and pretesting",
+      "Enumerator training and supervision",
+      "Household and community-level data collection",
+      "Use of digital tools (e.g. Kobo, ODK)"
     ]
   },
   {
-    icon: <Users className="h-6 w-6 text-accent" />,
-    title: "Key Informant Interviews",
-    description: "One-on-one expert interviews for deep context and nuanced understanding.",
+    icon: <Users2 className="h-6 w-6 text-accent" />,
+    title: "Focus Group Discussions (FGDs)",
+    description: "Structured group interviews to gather qualitative insights.",
     points: [
-      "Gathers insights from sector experts or leaders",
-      "Explores sensitive or complex issues",
-      "Flexible and in-depth"
+      "Topic guide development",
+      "Participant segmentation (age, gender, location)",
+      "Moderation and note-taking techniques",
+      "Transcription and thematic coding"
     ]
   },
   {
-    icon: <Landmark className="h-6 w-6 text-accent" />,
-    title: "Case Studies",
-    description: "In-depth analysis of specific programs or events over time.",
+    icon: <Mic className="h-6 w-6 text-accent" />,
+    title: "Key Informant Interviews (KIIs)",
+    description: "In-depth interviews with stakeholders and subject matter experts.",
     points: [
-      "Context-rich and detailed",
-      "Highlights best practices and challenges",
-      "Combines multiple data sources"
+      "Identification of key stakeholders",
+      "Semi-structured interview guides",
+      "Audio recording and transcription",
+      "Narrative synthesis and triangulation"
     ]
   },
   {
-    icon: <Network className="h-6 w-6 text-accent" />,
-    title: "Mixed Methods",
-    description: "Integrating both qualitative and quantitative approaches.",
+    icon: <BarChart3 className="h-6 w-6 text-accent" />,
+    title: "Data Analysis & Reporting",
+    description: "Transforming raw data into actionable insights and recommendations.",
     points: [
-      "Balanced data triangulation",
-      "Strengthens credibility of findings",
-      "Combines depth with generalizability"
+      "Descriptive and inferential statistics",
+      "Data visualization and dashboarding",
+      "Report writing and policy briefs",
+      "Stakeholder dissemination workshops"
     ]
   }
 ];
 
-
+// BONUS: Type definition for strong typing and better IntelliSense
+type ResearchAreas = {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  points: string[];
+};
 // Research Areas data
 const researchAreas: ResearchArea[] = [
   {
@@ -366,7 +385,13 @@ const Research = () => {
                 {area.icon}
               </div>
               <h3 className="text-xl font-bold text-primary mb-3">{area.title}</h3>
-              <p className="text-muted-foreground text-sm">{area.description}</p>
+             <p className="text-muted-foreground mb-3 text-sm">{area.description}</p>
+<ul className="list-disc pl-5 space-y-1 text-sm text-muted-foreground">
+  {area.points.map((point, idx) => (
+    <li key={idx}>{point}</li>
+  ))}
+</ul>
+
             </CardContent>
           </Card>
         </motion.div>
@@ -421,7 +446,7 @@ const Research = () => {
     </div>
 
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {methodology.map((method, index) => (
+      {methodologies.map((method, index) => (
         <motion.div
           key={index}
           initial="hidden"
