@@ -149,40 +149,40 @@ const Contact = () => {
             </Card>
           </div>
         </section>
-
+        
         {/* Quick Contact Options */}
-        <section className="py-16 bg-primary text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
-            <p className="text-xl mb-8 opacity-90">
-              Choose the best way to reach us based on your needs
-            </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="border-0 bg-white/10 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <Phone className="h-8 w-8 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Call Us</h3>
-                  <p className="text-sm opacity-90">For urgent inquiries</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 bg-white/10 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <Mail className="h-8 w-8 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Email Us</h3>
-                  <p className="text-sm opacity-90">For detailed inquiries</p>
-                </CardContent>
-              </Card>
-              <Card className="border-0 bg-white/10 backdrop-blur-sm">
-                <CardContent className="p-6 text-center">
-                  <MapPin className="h-8 w-8 mx-auto mb-3" />
-                  <h3 className="font-semibold mb-2">Visit Us</h3>
-                  <p className="text-sm opacity-90">For in-person consultation</p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-      </main>
+<section className="py-16 bg-gray-50 text-gray-900">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-3xl font-bold mb-4 text-primary">Need Immediate Assistance?</h2>
+    <p className="text-xl mb-8 opacity-90 text-muted-foreground">
+      Choose the best way to reach us based on your needs
+    </p>
+    <div className="grid md:grid-cols-3 gap-6">
+      <Card className="border-0 bg-white shadow-sm hover:shadow-md cursor-pointer">
+        <CardContent className="p-6 text-center">
+          <Phone className="h-8 w-8 mx-auto mb-3 text-accent" />
+          <h3 className="font-semibold mb-2">Call Us</h3>
+          <p className="text-sm opacity-90">For urgent inquiries</p>
+        </CardContent>
+      </Card>
+      <Card className="border-0 bg-white shadow-sm hover:shadow-md cursor-pointer">
+        <CardContent className="p-6 text-center">
+          <Mail className="h-8 w-8 mx-auto mb-3 text-accent" />
+          <h3 className="font-semibold mb-2">Email Us</h3>
+          <p className="text-sm opacity-90">For detailed inquiries</p>
+        </CardContent>
+      </Card>
+      <Card className="border-0 bg-white shadow-sm hover:shadow-md cursor-pointer">
+        <CardContent className="p-6 text-center">
+          <MapPin className="h-8 w-8 mx-auto mb-3 text-accent" />
+          <h3 className="font-semibold mb-2">Visit Us</h3>
+          <p className="text-sm opacity-90">For in-person consultation</p>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</section>
+     </main>
 
       <Footer />
     </div>
