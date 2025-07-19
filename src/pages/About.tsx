@@ -211,25 +211,25 @@ const About = () => {
               {teamMembers.map((member, index) => (
                 <Card key={index} className="team-card border-0 shadow-lg overflow-hidden">
                   <CardContent className="p-0 team-card-content">
-                    <div className="relative">
-                      {/* Use object-fit contain and background color to avoid weird cropping */}
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-64 object-contain bg-gray-100"
-                        style={{ objectPosition: 'center top' }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
-                        <div className="p-4 w-full">
-                          <Button
-                            onClick={() => handleMemberClick(member)}
-                            className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
-                          >
-                            View Portfolio
-                          </Button>
-                        </div>
-                      </div>
-                    </div>
+                   <div className="relative group cursor-pointer">
+  <img
+    src={member.image}
+    alt={member.name}
+    className="w-full h-64 object-contain bg-gray-100"
+    style={{ objectPosition: 'center top' }}
+  />
+  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none">
+    <div className="p-4 w-full pointer-events-auto">
+      <Button
+        onClick={() => handleMemberClick(member)}
+        className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
+      >
+        View Portfolio
+      </Button>
+    </div>
+  </div>
+</div>
+
                     <div className="p-6">
                       <h4 className="text-lg font-semibold text-primary mb-1">{member.name}</h4>
                       <p className="text-accent font-medium mb-3">{member.title}</p>
