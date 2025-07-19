@@ -75,10 +75,10 @@ const Footer: FC = () => {
               <div className="flex items-center">
                 <Mail className="h-4 w-4 mr-2 text-accent" />
                 <a 
-                  href="mailto:info@projectpartners.org" 
+                  href="mailto:projectpartnersresearchanddata@gmail.com" 
                   className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
                 >
-                  info@projectpartners.org
+                  projectpartnersresearchanddata@gmail.com
                 </a>
               </div>
               <div className="flex items-center">
@@ -87,7 +87,7 @@ const Footer: FC = () => {
                   href="tel:+15551234567" 
                   className="text-primary-foreground/80 hover:text-accent transition-colors text-sm"
                 >
-                  +1 (555) 123-4567
+                  +231 (555) 914-150
                 </a>
               </div>
               <div className="flex items-start">
