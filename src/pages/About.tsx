@@ -98,7 +98,7 @@ const About = () => {
     {
       name: "Emmanuel Singbeh",
       title: "IT and Data Systems Support Officer",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face",
+      image: "/src/assets/es.jpg",
       bio: "IT specialist and data systems support expert",
       fullPortfolio: {
         experience: "6+ years in IT and data systems",
