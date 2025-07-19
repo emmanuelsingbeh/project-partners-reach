@@ -50,7 +50,7 @@ const Index = () => {
       rating: 5
     },
     {
-      name: "Fatima Hassan",
+      name: "Catherine G. Nimely",
       organization: "Women's Empowerment Network",
       message: "Their consultancy services helped us redesign our programs for maximum impact. Highly recommended!",
       rating: 5
