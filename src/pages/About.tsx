@@ -103,16 +103,8 @@ const About = () => {
       fullPortfolio: {
         experience: "6+ years in IT and data systems",
         education: "BSc in Computer Science, Certified Data Systems Administrator",
-        achievements: [
-          "Implemented 10+ data management systems",
-          "Provided IT training to 500+ users"
-        ],
-        skills: [
-          "System Administration",
-          "Database Management",
-          "IT Training",
-          "Technical Support"
-        ]
+        achievements: ["Implemented 10+ data management systems", "Provided IT training to 500+ users"],
+        skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
       },
       social: {
         linkedin: "#",
@@ -122,35 +114,12 @@ const About = () => {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Dr. Mary Johnson",
-      organization: "Community Health Initiative",
-      message: "Project Partners transformed our data collection process. Their training was comprehensive and the results exceeded our expectations.",
-      rating: 5
-    },
-    {
-      name: "Samuel Roberts",
-      organization: "Rural Development Foundation",
-      message: "The research quality and timeliness of delivery was outstanding. We couldn't have asked for better partners.",
-      rating: 5
-    },
-    {
-      name: "Fatima Hassan",
-      organization: "Women's Empowerment Network",
-      message: "Their consultancy services helped us redesign our programs for maximum impact. Highly recommended!",
-      rating: 5
-    }
-  ];
-
   const handleMemberClick = (member: any) => setSelectedMember(member);
   const closeModal = () => setSelectedMember(null);
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-
-      {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10 text-center">
         <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">About Us</h1>
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
@@ -158,10 +127,6 @@ const About = () => {
         </p>
       </section>
 
-      {/* Mission & Vision */}
-      {/* [Same as your current section — leave untouched if no issues] */}
-
-      {/* Team Section */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -173,23 +138,18 @@ const About = () => {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="team-card border-0 shadow-lg overflow-hidden">
-                <CardContent className="p-0 team-card-content group relative">
+              <Card key={index} className="border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-0 group relative">
                   <div className="relative overflow-hidden">
                     <img
                       src={member.image}
                       alt={member.name}
                       className="w-full h-64 object-cover object-top"
                     />
-                    <div className="absolute inset-0 bg-primary/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                      <div className="p-4 w-full">
-                        <Button
-                          onClick={() => handleMemberClick(member)}
-                          className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
-                        >
-                          View Portfolio
-                        </Button>
-                      </div>
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Button onClick={() => handleMemberClick(member)} className="bg-white text-black hover:bg-gray-100">
+                        View Portfolio
+                      </Button>
                     </div>
                   </div>
                   <div className="p-6">
@@ -204,13 +164,9 @@ const About = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      {/* [Same as your current section — leave untouched if no issues] */}
-
-      {/* Modal */}
       {selectedMember && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex justify-between items-start mb-6">
                 <div className="flex items-center">
@@ -234,16 +190,14 @@ const About = () => {
                   <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
                   <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
                 </div>
-
                 <div>
                   <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
                   <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
                 </div>
-
                 <div>
                   <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
                   <ul className="space-y-2">
-                    {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
+                    {selectedMember.fullPortfolio.achievements.map((achievement, index) => (
                       <li key={index} className="flex items-start">
                         <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
                         <span className="text-muted-foreground">{achievement}</span>
@@ -251,11 +205,10 @@ const About = () => {
                     ))}
                   </ul>
                 </div>
-
                 <div>
                   <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
                   <div className="flex flex-wrap gap-2">
-                    {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
+                    {selectedMember.fullPortfolio.skills.map((skill, index) => (
                       <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
                         {skill}
                       </span>
