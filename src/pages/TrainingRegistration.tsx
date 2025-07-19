@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,6 +12,11 @@ import { ArrowRight } from 'lucide-react';
 const TrainingRegistration = () => {
   const [educationLevel, setEducationLevel] = useState("");
   const [otherEducation, setOtherEducation] = useState("");
+
+  // Scroll to top on mount to fix 404 / scroll landing at bottom issue
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -43,10 +48,10 @@ const TrainingRegistration = () => {
 
   return (
     <div>
-      {/* ✅ Navbar */}
+      {/* Navbar */}
       <Navigation />
 
-      {/* ✅ Header Section */}
+      {/* Header Section */}
       <section className="py-20 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
@@ -56,17 +61,17 @@ const TrainingRegistration = () => {
             Fill out the form below to register for our training programs.
           </p>
           <Button 
-  size="lg" 
-  className="bg-accent hover:bg-accent/90 text-white"
-  onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
->
-  View Our Trainings 
-  <ArrowRight className="ml-2 h-5 w-5" />
-</Button>
+            size="lg" 
+            className="bg-accent hover:bg-accent/90 text-white"
+            onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            View Our Trainings 
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Button>
         </div>
       </section>
 
-      {/* ✅ Registration Form */}
+      {/* Registration Form */}
       <div id="registration-form" className="max-w-3xl mx-auto py-10 px-4">
         <h2 className="text-3xl font-bold text-primary mb-6">Register Now</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
@@ -154,7 +159,7 @@ const TrainingRegistration = () => {
         </form>
       </div>
 
-      {/* ✅ Footer */}
+      {/* Footer */}
       <Footer />
     </div>
   );
