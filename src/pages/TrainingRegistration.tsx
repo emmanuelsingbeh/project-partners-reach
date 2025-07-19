@@ -8,10 +8,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const TrainingRegistration = () => {
   const [educationLevel, setEducationLevel] = useState("");
   const [otherEducation, setOtherEducation] = useState("");
+
+  const navigate = useNavigate();
 
   // Scroll to top on mount to fix 404 / scroll landing at bottom issue
   useEffect(() => {
@@ -63,7 +66,7 @@ const TrainingRegistration = () => {
           <Button 
             size="lg" 
             className="bg-accent hover:bg-accent/90 text-white"
-            onClick={() => document.getElementById('programs')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => navigate('/training#programs')}
           >
             View Our Trainings 
             <ArrowRight className="ml-2 h-5 w-5" />
