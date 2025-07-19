@@ -75,7 +75,7 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      content: '123 Development Street, Research City, RC 12345',
+      content: 'Phebe Compound, Phebe, Bong County, Liberia',
       link: 'https://www.google.com/maps/place/Phebe+Hospital/@6.2603099,-11.9758599,8z/data=!4m10!1m2!2m1!1sphebe!3m6!1s0xfa65fd0880a2bf9:0xde9b9ece5bdeca3a!8m2!3d7.024692!4d-9.5534406!15sCgVwaGViZZIBCGhvc3BpdGFsqgE4EAEqCSIFcGhlYmUoADIeEAEiGlHR7vnTADQCXH-XBo0GRF7QBH8tHBRPyVzEMgkQAiIFcGhlYmXgAQA!16s%2Fg%2F11b6xjykbh?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D'
     }
   ];
