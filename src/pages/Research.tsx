@@ -21,9 +21,10 @@ import {
 } from 'lucide-react';
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import { useNavigate } from 'react-router-dom';
 import { HeartPulse, GraduationCap, TrendingUp, Leaf, ShieldCheck, VenetianMask, Gavel, Cpu, Users2, Mic, SearchCheck } from 'lucide-react';
 
-
+const navigate = useNavigate();
 // Animation config
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -535,23 +536,26 @@ const Research = () => {
               Let us help you generate the evidence you need for informed decision-making and impactful programming.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-primary"
-                onClick={() => window.location.href = '/contact'}
-              >
-                <Users className="mr-2 h-5 w-5" />
-                Discuss Your Needs
-              </Button>
-              <Button 
-                size="lg" 
-                className="bg-accent hover:bg-accent/90"
-                onClick={() => window.location.href = '/consultancy'}
-              >
-                <Search className="mr-2 h-5 w-5" />
-                Research Consultancy
-              </Button>
+             <a href="/contact">
+  <Button 
+    size="lg" 
+    className="border-white text-white hover:bg-white hover:text-primary"
+  >
+    <Users className="mr-2 h-5 w-5" />
+    Discuss Your Needs
+  </Button>
+</a>
+
+<a href="/consultancy">
+  <Button 
+    size="lg" 
+    className="bg-accent hover:bg-accent/90"
+  >
+    <Search className="mr-2 h-5 w-5" />
+    Research Consultancy
+  </Button>
+</a>
+
             </div>
           </div>
         </section>
