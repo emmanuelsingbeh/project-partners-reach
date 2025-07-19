@@ -5,6 +5,8 @@ import { Users, Target, Eye, Heart, Star, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
+import emmanuelImg from '@/assets/es.jpg'; // ✅ adjust if your path uses ../assets/es.jpg
+
 
 const About = () => {
   const [selectedMember, setSelectedMember] = useState<any>(null);
@@ -95,25 +97,32 @@ const About = () => {
         email: "alpha@projectpartners.org"
       }
     },
-    {
-      name: "Emmanuel Singbeh",
-      title: "IT and Data Systems Support Officer",
-      image: "src/assets/es.jpg",
-      bio: "IT specialist and data systems support expert",
-      fullPortfolio: {
-        experience: "6+ years in IT and data systems",
-        education: "BSc in Computer Science, Certified Data Systems Administrator",
-        achievements: ["Implemented 10+ data management systems", "Provided IT training to 500+ users"],
-        skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
-      },
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "emmanuel@projectpartners.org"
-      }
-    }
+   {
+  name: "Emmanuel Singbeh",
+  title: "IT and Data Systems Support Officer",
+  image: emmanuelImg, // ✅ Now using the imported image
+  bio: "IT specialist and data systems support expert",
+  fullPortfolio: {
+    experience: "6+ years in IT and data systems",
+    education: "BSc in Computer Science, Certified Data Systems Administrator",
+    achievements: [
+      "Implemented 10+ data management systems",
+      "Provided IT training to 500+ users"
+    ],
+    skills: [
+      "System Administration",
+      "Database Management",
+      "IT Training",
+      "Technical Support"
+    ]
+  },
+  social: {
+    linkedin: "#",
+    twitter: "#",
+    email: "emmanuel@projectpartners.org"
+  }
+},
   ];
-
   const testimonials = [
     {
       name: "Dr. Mary Johnson",
