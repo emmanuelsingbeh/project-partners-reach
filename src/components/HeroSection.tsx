@@ -4,10 +4,14 @@ import { Button } from '@/components/ui/button';
 import hero1 from '@/assets/hero-1.jpg';
 import hero2 from '@/assets/hero-2.jpg';
 import hero3 from '@/assets/hero-3.jpg';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const navigate = useNavigate();
+
 
   const slides = [
     {
@@ -97,13 +101,13 @@ const HeroSection = () => {
                 </Button>
               </Link>
               <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollToSection("#about")}
-                className="border-white text-white hover:bg-white hover:text-primary professional-hover"
-              >
-                Learn More
-              </Button>
+  size="lg"
+  variant="outline"
+  onClick={() => navigate('/about')}
+  className="border-white text-white hover:bg-white hover:text-primary professional-hover"
+>
+  Learn More
+</Button>
             </div>
           </div>
         </div>
@@ -111,21 +115,21 @@ const HeroSection = () => {
 
       {/* Navigation arrows */}
       <Button
-        variant="ghost"
-        size="sm"
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-12 h-12 rounded-full"
-      >
-        <ChevronLeft className="h-6 w-6" />
-      </Button>
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white hover:bg-white/20 w-12 h-12 rounded-full"
-      >
-        <ChevronRight className="h-6 w-6" />
-      </Button>
+  variant="default"  // or simply remove this line if default is implicit
+  size="sm"
+  onClick={prevSlide}
+  className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-accent hover:bg-accent-dark w-12 h-12 rounded-full"
+>
+  <ChevronLeft className="h-6 w-6" />
+</Button>
+<Button
+  variant="default"
+  size="sm"
+  onClick={nextSlide}
+  className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white bg-accent hover:bg-accent-dark w-12 h-12 rounded-full"
+>
+  <ChevronRight className="h-6 w-6" />
+</Button>
 
       {/* Slide indicators */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3">
