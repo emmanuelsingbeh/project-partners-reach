@@ -63,17 +63,17 @@ const TrainingRegistration = () => {
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Fill out the form below to register for our training programs.
           </p>
-          <Button 
-            size="lg" 
-            className="bg-accent hover:bg-accent/90 text-white"
-            onClick={() => navigate('/training#trainingPrograms')}
-          >
-            View Our Trainings 
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
+         <Button 
+  size="lg" 
+  className="bg-accent hover:bg-accent/90 text-white"
+  onClick={() => navigate('/training#programs')}
+>
+  View Our Trainings 
+  <ArrowRight className="ml-2 h-5 w-5" />
+</Button>
+
         </div>
       </section>
-
       {/* Registration Form */}
       <div id="registration-form" className="max-w-3xl mx-auto py-10 px-4">
         <h2 className="text-3xl font-bold text-primary mb-6">Register Now</h2>
