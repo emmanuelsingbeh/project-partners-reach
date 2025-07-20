@@ -1,59 +1,58 @@
-import { useState } from 'react';
-import { supabase } from '../integrations/supabase/client';
-import { useNavigate } from 'react-router-dom';
+// src/pages/Login.tsx
 
-export default function StudentLogin() {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState('');
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/lib/supabaseClient";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+
+export default function Login() {
   const navigate = useNavigate();
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
-
-    const { error: loginError } = await supabase.auth.signInWithPassword({
+  const handleLogin = async () => {
+    setLoading(true);
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: form.email,
       password: form.password,
     });
 
-    if (loginError) {
-      setError('Invalid email or password.');
+    if (error) {
+      alert(error.message);
+    } else if (!data.user.email_confirmed_at) {
+      alert("Please confirm your email before logging in.");
     } else {
-      navigate('/studentportal');
+      navigate("/student-portal");
     }
+
+    setLoading(false);
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-4 border rounded-lg shadow">
-      <h1 className="text-xl font-bold mb-4">Student Login</h1>
-      <form onSubmit={handleLogin} className="space-y-4">
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-          className="w-full border p-2 rounded"
-        />
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">
-          Login
-        </button>
-        {error && <p className="text-red-600">{error}</p>}
-      </form>
+    <div className="max-w-md mx-auto mt-10">
+      <Card>
+        <CardContent className="space-y-4 pt-6">
+          <h2 className="text-xl font-bold text-center">Student Login</h2>
+          <div>
+            <Label>Email</Label>
+            <Input name="email" value={form.email} onChange={handleChange} />
+          </div>
+          <div>
+            <Label>Password</Label>
+            <Input type="password" name="password" value={form.password} onChange={handleChange} />
+          </div>
+          <Button className="w-full" onClick={handleLogin} disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   );
 }

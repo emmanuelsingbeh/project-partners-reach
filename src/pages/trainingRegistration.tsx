@@ -1,27 +1,21 @@
 import { useState } from "react";
 import { supabase } from "../integrations/supabase/client";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
+import { CalendarIcon } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 
-const educationOptions = [
-  "Vocational School",
-  "High School",
-  "Some University Courses",
-  "Associate Degree",
-  "Bachelor Degree",
-  "Master Degree",
-  "Other",
-];
-
-export default function TrainingRegistration() {
+export default function StudentRegistration() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    email: "",
+    password: "",
     full_name: "",
     gender: "",
     education_level: "",
@@ -30,54 +24,71 @@ export default function TrainingRegistration() {
     parent_name: "",
     parent_contact: "",
   });
-  const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (field: string, value: string | Date) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const educationOptions = [
+    "Vocational School",
+    "High School",
+    "Some University Courses",
+    "Associate Degree",
+    "Bachelor Degree",
+    "Master Degree",
+    "Other",
+  ];
+
+  const handleChange = (field: string, value: any) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async () => {
     setSubmitting(true);
+    setMessage("");
 
-    const { data: userData, error: userError } = await supabase.auth.getUser();
-    if (userError || !userData?.user) {
-      alert("You must be logged in to register");
+    // Step 1: Create user via email/password
+    const { data: authData, error: authError } = await supabase.auth.signUp({
+      email: formData.email,
+      password: formData.password,
+    });
+
+    if (authError || !authData.user) {
+      setMessage("Signup failed: " + authError?.message);
       setSubmitting(false);
       return;
     }
 
-    const user = userData.user;
+    const user = authData.user;
     const education =
       formData.education_level === "Other"
         ? formData.other_education
         : formData.education_level;
 
-    // Type-safe payload
-    const payload = {
-      auth_id: user.id,
-      full_name: formData.full_name,
-      gender: formData.gender,
-      grade: education,
-      dob: formData.dob?.toISOString(), // store as ISO string
-      parent_name: formData.parent_name,
-      parent_contact: formData.parent_contact,
-      status: "pending",
-      created_at: new Date().toISOString(),
-    };
+    // Step 2: Insert student profile into "students" table
+    const { error: insertError } = await supabase
+      .from("students")
+      .insert([
+        {
+          auth_id: user.id,
+          full_name: formData.full_name,
+          gender: formData.gender,
+          grade: education,
+          dob: formData.dob.toISOString().split("T")[0],
+          parent_name: formData.parent_name,
+          parent_contact: formData.parent_contact,
+          status: "pending",
+          created_at: new Date().toISOString(),
+        },
+      ] as any); // 👈 TypeScript fix
 
-    const { error } = await supabase
-  .from("students")
-  .insert([payload as any]);
+    if (insertError) {
+      setMessage("Failed to save student record: " + insertError.message);
+    } else {
+      setMessage("Signup successful! Please check your email to confirm your account.");
+    }
 
     setSubmitting(false);
-
-    if (error) {
-      console.error("Insert error", error);
-      alert("Failed to register. Check your inputs or permissions.");
-    } else {
-      alert("Registration successful");
-      navigate("/student-portal");
-    }
   };
 
   return (
@@ -91,8 +102,29 @@ export default function TrainingRegistration() {
         <div className="text-center mb-6">
           <Button onClick={() => navigate("/Training")}>Back to Trainings</Button>
         </div>
+
+        {message && (
+          <p className="text-center text-sm text-blue-700 mb-4">{message}</p>
+        )}
+
         <Card className="shadow-xl">
           <CardContent className="space-y-4 pt-6">
+            <div>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                value={formData.email}
+                onChange={(e) => handleChange("email", e.target.value)}
+              />
+            </div>
+            <div>
+              <Label>Password</Label>
+              <Input
+                type="password"
+                value={formData.password}
+                onChange={(e) => handleChange("password", e.target.value)}
+              />
+            </div>
             <div>
               <Label>Full Name</Label>
               <Input
@@ -110,7 +142,6 @@ export default function TrainingRegistration() {
                 <option value="">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Other">Other</option>
               </select>
             </div>
             <div>
@@ -136,11 +167,30 @@ export default function TrainingRegistration() {
             </div>
             <div>
               <Label>Date of Birth</Label>
-              <Calendar
-                mode="single"
-                selected={formData.dob}
-                onSelect={(date) => handleChange("dob", date!)}
-              />
+              <Popover open={showCalendar} onOpenChange={setShowCalendar}>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start text-left font-normal"
+                  >
+                    {formData.dob.toDateString()}
+                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0">
+                  <Calendar
+                    mode="single"
+                    selected={formData.dob}
+                    onSelect={(date) => {
+                      if (date) handleChange("dob", date);
+                      setShowCalendar(false);
+                    }}
+                    captionLayout="dropdown"
+                    fromYear={1950}
+                    toYear={new Date().getFullYear()}
+                  />
+                </PopoverContent>
+              </Popover>
             </div>
             <div>
               <Label>Parent Name</Label>
