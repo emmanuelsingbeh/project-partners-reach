@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../integrations/supabase/client';
 import type { Database } from '../types';
-import { useUser, useSessionContext } from '@supabase/auth-helpers-react';
+import { useSessionContext } from '@supabase/auth-helpers-react';
 
 type EnrollmentWithProgram = Database['public']['Tables']['enrollments']['Row'] & {
   school_programs: Pick<Database['public']['Tables']['school_programs']['Row'], 'name' | 'description'>;
 };
 
 export default function StudentPortal() {
-  const user = useUser(); // ✅ no destructuring
-  const { isLoading: authLoading } = useSessionContext(); // ✅ track auth loading state
+  const { session, isLoading } = useSessionContext();
+  const user = session?.user;
   const [enrollments, setEnrollments] = useState<EnrollmentWithProgram[]>([]);
   const [loading, setLoading] = useState(true);
   const [studentName, setStudentName] = useState('');
@@ -47,12 +47,29 @@ export default function StudentPortal() {
       setLoading(false);
     };
 
-    if (!authLoading) {
+    if (!isLoading && user) {
       fetchStudentData();
     }
-  }, [user, authLoading]);
+  }, [isLoading, user]);
 
-  if (loading || authLoading) return <p className="p-4 text-center">Loading...</p>;
+  if (isLoading || loading) {
+    return <p className="p-4 text-center">Loading...</p>;
+  }
+
+  if (!user) {
+    return (
+      <div className="p-4 text-center">
+        <h2 className="text-xl font-bold mb-2">Not Logged In</h2>
+        <p className="mb-4">You must be logged in to view your student portal.</p>
+        <a
+          href="/login"
+          className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+        >
+          Go to Login
+        </a>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-3xl mx-auto p-4">
