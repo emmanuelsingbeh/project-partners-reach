@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -13,7 +16,7 @@ import { CalendarIcon } from 'lucide-react';
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
@@ -28,8 +31,9 @@ const educationOptions = [
   'Other'
 ];
 
-export default function StudentRegistrationForm({ onBack }) {
+export default function StudentRegistrationForm() {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     full_name: '',
     email: '',
@@ -39,7 +43,7 @@ export default function StudentRegistrationForm({ onBack }) {
     gender: '',
     education: '',
     other_education: '',
-    dob: null,
+    dob: null
   });
   const [loading, setLoading] = useState(false);
 
@@ -58,9 +62,9 @@ export default function StudentRegistrationForm({ onBack }) {
       other_education,
       dob
     } = formData;
+
     const education_level = education === 'Other' ? other_education : education;
 
-    // Sign up the user
     const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
       email,
       password
@@ -76,14 +80,13 @@ export default function StudentRegistrationForm({ onBack }) {
       return;
     }
 
-    // Insert student data
     const { error: insertError } = await supabase.from('students').insert({
       auth_id: signUpData.user.id,
       full_name,
       parent_name,
       parent_contact,
       gender,
-      age: dob,
+      dob,
       grade: education_level,
       status: 'active',
       enrollment_date: new Date()
@@ -92,7 +95,10 @@ export default function StudentRegistrationForm({ onBack }) {
     if (insertError) {
       toast({ title: 'Failed to Save', description: insertError.message, variant: 'destructive' });
     } else {
-      toast({ title: 'Success', description: 'Student registered successfully. Please verify your email.' });
+      toast({
+        title: 'Success',
+        description: 'Student registered. Check your email to confirm your account.'
+      });
       setFormData({ full_name: '', email: '', password: '', parent_name: '', parent_contact: '', gender: '', education: '', other_education: '', dob: null });
     }
 
@@ -113,10 +119,12 @@ export default function StudentRegistrationForm({ onBack }) {
               Training Registration
             </CardTitle>
             <p className="text-center text-muted-foreground text-sm mt-2">
-              Start your journey. Complete the form below to register.
+              Begin your learning journey today. Fill out the form below.
             </p>
             <div className="flex justify-center mt-4">
-              <Button variant="outline" onClick={onBack}>Back to Trainings</Button>
+              <Button variant="outline" onClick={() => navigate('/Training')}>
+                Back to Trainings
+              </Button>
             </div>
           </CardHeader>
           <CardContent>
@@ -219,6 +227,9 @@ export default function StudentRegistrationForm({ onBack }) {
                       selected={formData.dob}
                       onSelect={(date) => setFormData({ ...formData, dob: date })}
                       initialFocus
+                      captionLayout="dropdown"
+                      fromYear={1950}
+                      toYear={new Date().getFullYear()}
                     />
                   </PopoverContent>
                 </Popover>
