@@ -1,247 +1,168 @@
-"use client";
-
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/lib/supabaseClient';
-import { format } from 'date-fns';
-import { motion } from 'framer-motion';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
-import { CalendarIcon } from 'lucide-react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger
-} from '@/components/ui/popover';
-import { Calendar } from '@/components/ui/calendar';
-import { cn } from '@/lib/utils';
+import { useState } from "react";
+import { supabase } from "../integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent } from "@/components/ui/card";
+import { Calendar } from "@/components/ui/calendar";
+import Navigation from "../components/Navigation";
+import Footer from "../components/Footer";
 
 const educationOptions = [
-  'Vocational School',
-  'High School',
-  'Some University Courses',
-  'Associate Degree',
-  'Bachelor Degree',
-  'Master Degree',
-  'Other'
+  "Vocational School",
+  "High School",
+  "Some University Courses",
+  "Associate Degree",
+  "Bachelor Degree",
+  "Master Degree",
+  "Other",
 ];
 
-export default function StudentRegistrationForm() {
-  const { toast } = useToast();
+export default function TrainingRegistration() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    full_name: '',
-    email: '',
-    password: '',
-    parent_name: '',
-    parent_contact: '',
-    gender: '',
-    education: '',
-    other_education: '',
-    dob: null
+    full_name: "",
+    gender: "",
+    education_level: "",
+    other_education: "",
+    dob: new Date(),
+    parent_name: "",
+    parent_contact: "",
   });
-  const [loading, setLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  const handleChange = (field: string, value: string | Date) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
 
-    const {
-      full_name,
-      email,
-      password,
-      parent_name,
-      parent_contact,
-      gender,
-      education,
-      other_education,
-      dob
-    } = formData;
+  const handleSubmit = async () => {
+    setSubmitting(true);
 
-    const education_level = education === 'Other' ? other_education : education;
-
-    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-      email,
-      password
-    });
-
-    if (signUpError || !signUpData?.user) {
-      toast({
-        title: 'Signup Error',
-        description: signUpError?.message || 'Failed to create user',
-        variant: 'destructive'
-      });
-      setLoading(false);
+    const { data: userData, error: userError } = await supabase.auth.getUser();
+    if (userError || !userData?.user) {
+      alert("You must be logged in to register");
+      setSubmitting(false);
       return;
     }
 
-    const { error: insertError } = await supabase.from('students').insert({
-      auth_id: signUpData.user.id,
-      full_name,
-      parent_name,
-      parent_contact,
-      gender,
-      dob,
-      grade: education_level,
-      status: 'active',
-      enrollment_date: new Date()
-    });
+    const user = userData.user;
+    const education =
+      formData.education_level === "Other"
+        ? formData.other_education
+        : formData.education_level;
 
-    if (insertError) {
-      toast({ title: 'Failed to Save', description: insertError.message, variant: 'destructive' });
+    // Type-safe payload
+    const payload = {
+      auth_id: user.id,
+      full_name: formData.full_name,
+      gender: formData.gender,
+      grade: education,
+      dob: formData.dob?.toISOString(), // store as ISO string
+      parent_name: formData.parent_name,
+      parent_contact: formData.parent_contact,
+      status: "pending",
+      created_at: new Date().toISOString(),
+    };
+
+    const { error } = await supabase
+  .from("students")
+  .insert([payload as any]);
+
+    setSubmitting(false);
+
+    if (error) {
+      console.error("Insert error", error);
+      alert("Failed to register. Check your inputs or permissions.");
     } else {
-      toast({
-        title: 'Success',
-        description: 'Student registered. Check your email to confirm your account.'
-      });
-      setFormData({ full_name: '', email: '', password: '', parent_name: '', parent_contact: '', gender: '', education: '', other_education: '', dob: null });
+      alert("Registration successful");
+      navigate("/student-portal");
     }
-
-    setLoading(false);
   };
 
   return (
-    <>
+    <div>
       <Navigation />
-      <motion.div
-        className="max-w-xl mx-auto py-10 px-4"
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-center text-3xl font-bold text-primary">
-              Training Registration
-            </CardTitle>
-            <p className="text-center text-muted-foreground text-sm mt-2">
-              Begin your learning journey today. Fill out the form below.
-            </p>
-            <div className="flex justify-center mt-4">
-              <Button variant="outline" onClick={() => navigate('/Training')}>
-                Back to Trainings
-              </Button>
+      <div className="max-w-xl mx-auto p-6 animate-fade-in">
+        <h1 className="text-3xl font-bold text-center mb-2">Training Registration</h1>
+        <p className="text-center text-muted mb-4">
+          Get ready to unlock your potential and explore transformative opportunities!
+        </p>
+        <div className="text-center mb-6">
+          <Button onClick={() => navigate("/Training")}>Back to Trainings</Button>
+        </div>
+        <Card className="shadow-xl">
+          <CardContent className="space-y-4 pt-6">
+            <div>
+              <Label>Full Name</Label>
+              <Input
+                value={formData.full_name}
+                onChange={(e) => handleChange("full_name", e.target.value)}
+              />
             </div>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label>Email</Label>
+            <div>
+              <Label>Gender</Label>
+              <select
+                value={formData.gender}
+                onChange={(e) => handleChange("gender", e.target.value)}
+                className="w-full border rounded px-3 py-2"
+              >
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <Label>Highest Level of Education</Label>
+              <select
+                value={formData.education_level}
+                onChange={(e) => handleChange("education_level", e.target.value)}
+                className="w-full border rounded px-3 py-2"
+              >
+                <option value="">Select</option>
+                {educationOptions.map((opt) => (
+                  <option key={opt}>{opt}</option>
+                ))}
+              </select>
+              {formData.education_level === "Other" && (
                 <Input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
+                  placeholder="Please specify"
+                  value={formData.other_education}
+                  onChange={(e) => handleChange("other_education", e.target.value)}
+                  className="mt-2"
                 />
-              </div>
-              <div>
-                <Label>Password</Label>
-                <Input
-                  type="password"
-                  value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Full Name</Label>
-                <Input
-                  value={formData.full_name}
-                  onChange={(e) => setFormData({ ...formData, full_name: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Parent/Guardian Name</Label>
-                <Input
-                  value={formData.parent_name}
-                  onChange={(e) => setFormData({ ...formData, parent_name: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Parent Contact</Label>
-                <Input
-                  value={formData.parent_contact}
-                  onChange={(e) => setFormData({ ...formData, parent_contact: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Gender</Label>
-                <select
-                  className="w-full border rounded px-3 py-2"
-                  value={formData.gender}
-                  onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                  required
-                >
-                  <option value="">Select Gender</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div>
-                <Label>Highest Level of Education</Label>
-                <select
-                  className="w-full border rounded px-3 py-2"
-                  value={formData.education}
-                  onChange={(e) => setFormData({ ...formData, education: e.target.value })}
-                  required
-                >
-                  <option value="">Select Education</option>
-                  {educationOptions.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-              </div>
-              {formData.education === 'Other' && (
-                <div>
-                  <Label>Specify Education</Label>
-                  <Input
-                    value={formData.other_education}
-                    onChange={(e) => setFormData({ ...formData, other_education: e.target.value })}
-                    required
-                  />
-                </div>
               )}
-              <div className="flex flex-col space-y-2">
-                <Label>Date of Birth</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={cn("w-full justify-start text-left font-normal", !formData.dob && "text-muted-foreground")}
-                    >
-                      <CalendarIcon className="mr-2 h-4 w-4" />
-                      {formData.dob ? format(formData.dob, "PPP") : "Select date"}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0">
-                    <Calendar
-                      mode="single"
-                      selected={formData.dob}
-                      onSelect={(date) => setFormData({ ...formData, dob: date })}
-                      initialFocus
-                      captionLayout="dropdown"
-                      fromYear={1950}
-                      toYear={new Date().getFullYear()}
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <Button type="submit" disabled={loading} className="w-full bg-primary hover:bg-primary/90">
-                {loading ? 'Registering...' : 'Submit Registration'}
-              </Button>
-            </form>
+            </div>
+            <div>
+              <Label>Date of Birth</Label>
+              <Calendar
+                mode="single"
+                selected={formData.dob}
+                onSelect={(date) => handleChange("dob", date!)}
+              />
+            </div>
+            <div>
+              <Label>Parent Name</Label>
+              <Input
+                value={formData.parent_name}
+                onChange={(e) => handleChange("parent_name", e.target.value)}
+              />
+            </div>
+            <div>
+              <Label>Parent Contact</Label>
+              <Input
+                value={formData.parent_contact}
+                onChange={(e) => handleChange("parent_contact", e.target.value)}
+              />
+            </div>
+            <Button onClick={handleSubmit} disabled={submitting} className="w-full">
+              {submitting ? "Submitting..." : "Submit Registration"}
+            </Button>
           </CardContent>
         </Card>
-      </motion.div>
+      </div>
       <Footer />
-    </>
+    </div>
   );
 }
