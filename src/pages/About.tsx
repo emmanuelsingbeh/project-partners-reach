@@ -1,13 +1,13 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Mail, MessageSquare } from 'lucide-react';
+import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, Mail, MessageSquare } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import josephImg from '@/assets/jw.jpg';
-import barzeeImg from '@/assets/bs.png';
-import emmanuelImg from '@/assets/es.jpg';
+import josephImg from '@/assets/team/joseph.png';
+import barzeeImg from '@/assets/team/barzee.png';
+import emmanuelImg from '@/assets/team/emmanuel.png';
 
 const teamMembers = [
   {
@@ -22,7 +22,7 @@ const teamMembers = [
       skills: ['Supply Chain Management', 'Logistics Coordination', 'Vendor Management', 'Cost Optimization']
     },
     social: {
-      linkedin: 'https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D',
+      linkedin: 'https://www.linkedin.com/in/joseph-m-worlo-742752360',
       mail: 'mailto:josephworlo99@gmail.com',
       whatsapp: 'https://wa.me/+231778010356'
     }
@@ -39,7 +39,7 @@ const teamMembers = [
       skills: ['Field Operations', 'Training Design', 'Data Collection', 'Team Leadership']
     },
     social: {
-      linkedin: 'https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D',
+      linkedin: 'https://www.linkedin.com/in/barzee-sumo-1482a6152',
       mail: 'mailto:sumo4009@gmail.com',
       whatsapp: 'https://wa.me/+231776793733'
     }
@@ -81,7 +81,7 @@ export default function About() {
     <>
       <Navigation />
       <main className="pt-16">
-        {/* ... other sections like Hero, Mission, Vision, etc. ... */}
+        {/* ... your other sections (Hero, Mission, Vision, etc.) remain untouched ... */}
 
         <section className="bg-white py-16 px-4 md:px-8">
           <div className="max-w-7xl mx-auto text-center">
@@ -150,18 +150,47 @@ export default function About() {
                 <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember?.name.split(' ')[0]}</h4>
                 <div className="flex space-x-4">
                   {selectedMember?.social.linkedin && (
-                    <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
+                    <a
+                      href={selectedMember.social.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:text-accent/80"
+                      aria-label="LinkedIn"
+                    >
                       <Linkedin className="h-6 w-6" />
                     </a>
                   )}
-                  {selectedMember?.social.mail && (
-                    <a href={selectedMember.social.mail} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="Email">
-                      <Mail className="h-6 w-6" />
+                  {selectedMember?.social.facebook && (
+                    <a
+                      href={selectedMember.social.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:text-accent/80"
+                      aria-label="Facebook"
+                    >
+                      <Facebook className="h-6 w-6" />
                     </a>
                   )}
                   {selectedMember?.social.whatsapp && (
-                    <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
+                    <a
+                      href={selectedMember.social.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:text-accent/80"
+                      aria-label="WhatsApp"
+                    >
                       <MessageSquare className="h-6 w-6" />
+                    </a>
+                  )}
+                  {selectedMember?.social.mail && (
+                    <a
+                      href={selectedMember.social.mail}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-accent hover:text-accent/80"
+                      aria-label="Email"
+                    >
+                      <Mail className="h-6 w-6" />
                     </a>
                   )}
                 </div>
