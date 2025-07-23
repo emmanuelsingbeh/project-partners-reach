@@ -1,56 +1,49 @@
-// src/pages/Login.tsx
+// src/pages/studentLogin.tsx
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { supabase } from "@/lib/supabaseClient";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from 'react';
+import { supabase } from '../integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
-export default function Login() {
-  const navigate = useNavigate();
-  const [form, setForm] = useState({ email: "", password: "" });
+export default function StudentLogin() {
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: form.email,
-      password: form.password,
-    });
+    setMessage('');
 
-    if (error) {
-      alert(error.message);
-    } else if (!data.user.email_confirmed_at) {
-      alert("Please confirm your email before logging in.");
-    } else {
-      navigate("/student-portal");
+    const { email, password } = formData;
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+
+    if (error || !data.session) {
+      setLoading(false);
+      return setMessage(`Login failed: ${error?.message}`);
     }
 
-    setLoading(false);
+    // Redirect to student portal after login
+    navigate('/StudentPortal');
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <Card>
-        <CardContent className="space-y-4 pt-6">
-          <h2 className="text-xl font-bold text-center">Student Login</h2>
-          <div>
-            <Label>Email</Label>
-            <Input name="email" value={form.email} onChange={handleChange} />
-          </div>
-          <div>
-            <Label>Password</Label>
-            <Input type="password" name="password" value={form.password} onChange={handleChange} />
-          </div>
-          <Button className="w-full" onClick={handleLogin} disabled={loading}>
-            {loading ? "Logging in..." : "Login"}
-          </Button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <Card className="max-w-md w-full p-6">
+        <CardContent>
+          <h2 className="text-2xl font-semibold mb-6 text-center">Student Login</h2>
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input name="email" type="email" placeholder="Email" onChange={handleChange} required className="w-full p-2 border rounded" />
+            <input name="password" type="password" placeholder="Password" onChange={handleChange} required className="w-full p-2 border rounded" />
+            <Button disabled={loading} type="submit" className="w-full">{loading ? 'Logging in...' : 'Login'}</Button>
+          </form>
+          {message && <p className="text-center text-sm mt-4 text-red-500">{message}</p>}
         </CardContent>
       </Card>
     </div>

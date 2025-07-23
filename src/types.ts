@@ -6,6 +6,21 @@ export type Json =
   | { [key: string]: Json }
   | Json[];
 
+// src/types/supabase.ts
+export type Student = {
+  full_name: string;
+  email: string;
+  dob: string;
+  grade: string;
+  parent_name: string;
+  parent_contact: string;
+  gender: string;
+  auth_id: string;
+  created_at?: string;
+  updated_at?: string;
+  status?: string;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -16,18 +31,21 @@ export type Database = {
           program_id: number;
           approved: boolean;
           created_at: string;
+          email: string;
         };
         Insert: {
           student_id: number;
           program_id: number;
           approved?: boolean;
           created_at?: string;
+          email: string;
         };
         Update: {
           student_id?: number;
           program_id?: number;
           approved?: boolean;
           created_at?: string;
+          email: string;
         };
         Relationships: [
           {
