@@ -59,7 +59,7 @@ const About = () => {
       },
       social: {
         linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D",
-        gmail: "mailto:josephworlo99@gmail.com",
+        email: "mailto:josephworlo99@gmail.com",
         whatsapp: "https://wa.me/+231778010356"
       
       }
@@ -77,7 +77,7 @@ const About = () => {
       },
       social: {
         linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D",
-        gmail: "mailto:sumo4009@gmail.com",
+        email: "mailto:sumo4009@gmail.com",
         whatsapp: "https://wa.me/+231776793733"
       }
     },
