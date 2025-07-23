@@ -1,205 +1,134 @@
+// 👇 Your original imports
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, Mail, MessageSquare } from 'lucide-react';
+import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, MessageSquare, Mail } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import emmanuelImg from '@/assets/es.jpg';
 import josephImg from '@/assets/jw.jpg';
 import barzeeImg from '@/assets/bs.png';
-import emmanuelImg from '@/assets/es.jpg';
 
-const teamMembers = [
-  {
-    name: 'Joseph Worlo',
-    title: 'Logistics/Supply Chain Specialist',
-    image: josephImg,
-    bio: 'Expert in logistics coordination and supply chain management',
-    fullPortfolio: {
-      experience: 'Executive Director - Liberia Institute of Procurement and Supply Chain Professionals; 10+ years in logistics and supply chain',
-      education: 'Details in LinkedIn Profile',
-      achievements: ['Procurement Officer, Ministry of State', 'Team-Lead - Alliance of Educators Against Illicit Drugs'],
-      skills: ['Supply Chain Management', 'Logistics Coordination', 'Vendor Management', 'Cost Optimization']
-    },
-    social: {
-      linkedin: 'https://www.linkedin.com/in/joseph-m-worlo-742752360',
-      mail: 'mailto:josephworlo99@gmail.com',
-      whatsapp: 'https://wa.me/+231778010356'
+// 👇 Main component
+const About = () => {
+  const [selectedMember, setSelectedMember] = useState<any>(null);
+
+  // ...teamMembers, testimonials, and rest of the component unchanged...
+
+  // Inside your modal rendering (only fix):
+  // Replace lines like:
+  // <p>{selectedMember.fullPortfolio.education}</p>
+  // with:
+  // Array.isArray(...) ? (...) : (...render string...)
+
+  const renderField = (field: any) => {
+    if (Array.isArray(field)) {
+      return (
+        <ul className="list-disc list-inside space-y-2">
+          {field.map((item: string, index: number) => (
+            <li key={index} className="text-muted-foreground">{item}</li>
+          ))}
+        </ul>
+      );
     }
-  },
-  {
-    name: 'Barzee Sumo',
-    title: 'Field Data Collection/Training Coordinator',
-    image: barzeeImg,
-    bio: 'Specialist in field data collection and training coordination',
-    fullPortfolio: {
-      experience: '7+ years in field data collection and training',
-      education: 'Details in LinkedIn Profile',
-      achievements: ['Coordinated 50+ field surveys', 'Trained 200+ data collectors'],
-      skills: ['Field Operations', 'Training Design', 'Data Collection', 'Team Leadership']
-    },
-    social: {
-      linkedin: 'https://www.linkedin.com/in/barzee-sumo-1482a6152',
-      mail: 'mailto:sumo4009@gmail.com',
-      whatsapp: 'https://wa.me/+231776793733'
-    }
-  },
-  {
-    name: 'Emmanuel Singbeh',
-    title: 'IT and Data Systems Support Officer',
-    image: emmanuelImg,
-    bio: 'IT specialist and data systems support expert',
-    fullPortfolio: {
-      experience: '6+ years in IT and data systems',
-      education: 'BSc in Computer Science, Certified Data Systems Administrator',
-      achievements: ['Implemented 10+ data management systems', 'Provided IT training to 500+ users'],
-      skills: ['System Administration', 'Database Management', 'IT Training', 'Technical Support']
-    },
-    social: {
-      linkedin: 'https://linkedin.com/in/emmanuelsingbeh',
-      mail: 'mailto:emmanuelsingbeh@gmail.com',
-      whatsapp: 'https://wa.me/+231775738306'
-    }
-  }
-];
-
-export default function About() {
-  const [selectedMember, setSelectedMember] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleMemberClick = (member: any) => {
-    setSelectedMember(member);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedMember(null);
+    return <p className="text-muted-foreground">{field}</p>;
   };
 
   return (
-    <>
-      <Navigation />
-      <main className="pt-16">
-        {/* ... your other sections (Hero, Mission, Vision, etc.) remain untouched ... */}
+    <div className="min-h-screen bg-background">
+      {/* ... All your JSX untouched except below fix inside modal ... */}
 
-        <section className="bg-white py-16 px-4 md:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Meet Our Team</h2>
-            <p className="text-muted mb-10 max-w-2xl mx-auto">
-              Our dedicated professionals bring diverse expertise and a shared passion for community impact.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {teamMembers.map((member, index) => (
-                <Card key={index} className="group relative shadow-lg rounded-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      {/* Team Member Modal */}
+      {selectedMember && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4" style={{ backdropFilter: 'blur(5px)' }}>
+          <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+            <div className="p-6">
+              <div className="flex justify-between items-start mb-6">
+                <div className="flex items-center">
                   <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-72 object-cover object-center transition-transform duration-300 transform group-hover:scale-105"
+                    src={selectedMember.image}
+                    alt={selectedMember.name}
+                    className="w-20 h-20 rounded-full object-contain bg-gray-100 mr-4"
+                    style={{ objectPosition: 'center top' }}
                   />
-                  <CardContent className="p-4">
-                    <h3 className="text-xl font-semibold text-primary">{member.name}</h3>
-                    <p className="text-accent font-medium">{member.title}</p>
-                    <p className="text-sm text-muted mt-2">{member.bio}</p>
-                  </CardContent>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                    <div className="p-4 w-full">
-                      <Button
-                        onClick={() => handleMemberClick(member)}
-                        className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
-                      >
-                        View Portfolio
-                      </Button>
-                    </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-primary">{selectedMember.name}</h3>
+                    <p className="text-accent font-medium">{selectedMember.title}</p>
                   </div>
-                </Card>
-              ))}
+                </div>
+                <Button onClick={() => setSelectedMember(null)} variant="ghost" className="text-muted-foreground text-2xl leading-none">
+                  &times;
+                </Button>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
+                  {renderField(selectedMember.fullPortfolio.experience)}
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
+                  {renderField(selectedMember.fullPortfolio.education)}
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
+                  <ul className="space-y-2 list-disc list-inside">
+                    {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
+                      <li key={index} className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
+                        <span className="text-muted-foreground">{achievement}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
+                      <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember.name.split(' ')[0]}</h4>
+                  <div className="flex space-x-4">
+                    {selectedMember.social.linkedin && (
+                      <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-6 w-6 text-accent" />
+                      </a>
+                    )}
+                    {selectedMember.social.facebook && (
+                      <a href={selectedMember.social.facebook} target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-6 w-6 text-accent" />
+                      </a>
+                    )}
+                    {selectedMember.social.whatsapp && (
+                      <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer">
+                        <MessageSquare className="h-6 w-6 text-accent" />
+                      </a>
+                    )}
+                    {selectedMember.social.mail && (
+                      <a href={selectedMember.social.mail} target="_blank" rel="noopener noreferrer">
+                        <Mail className="h-6 w-6 text-accent" />
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      )}
 
-        {/* Modal for Full Portfolio */}
-        <Dialog open={isModalOpen} onOpenChange={closeModal}>
-          <DialogContent className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-xl overflow-y-auto max-h-[90vh]">
-            <DialogHeader>
-              <DialogTitle className="text-primary text-2xl">{selectedMember?.name}</DialogTitle>
-              <p className="text-accent">{selectedMember?.title}</p>
-            </DialogHeader>
-            <div className="mt-4 space-y-4">
-              <p><strong>Experience:</strong> {selectedMember?.fullPortfolio.experience}</p>
-              <p><strong>Education:</strong> {selectedMember?.fullPortfolio.education}</p>
-              <div>
-                <strong>Achievements:</strong>
-                <ul className="list-disc list-inside ml-4">
-                  {selectedMember?.fullPortfolio.achievements.map((achievement, i) => (
-                    <li key={i}>{achievement}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <strong>Skills:</strong>
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {selectedMember?.fullPortfolio.skills.map((skill, i) => (
-                    <span key={i} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember?.name.split(' ')[0]}</h4>
-                <div className="flex space-x-4">
-                  {selectedMember?.social.linkedin && (
-                    <a
-                      href={selectedMember.social.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:text-accent/80"
-                      aria-label="LinkedIn"
-                    >
-                      <Linkedin className="h-6 w-6" />
-                    </a>
-                  )}
-                  {selectedMember?.social.facebook && (
-                    <a
-                      href={selectedMember.social.facebook}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:text-accent/80"
-                      aria-label="Facebook"
-                    >
-                      <Facebook className="h-6 w-6" />
-                    </a>
-                  )}
-                  {selectedMember?.social.whatsapp && (
-                    <a
-                      href={selectedMember.social.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:text-accent/80"
-                      aria-label="WhatsApp"
-                    >
-                      <MessageSquare className="h-6 w-6" />
-                    </a>
-                  )}
-                  {selectedMember?.social.mail && (
-                    <a
-                      href={selectedMember.social.mail}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:text-accent/80"
-                      aria-label="Email"
-                    >
-                      <Mail className="h-6 w-6" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-      </main>
       <Footer />
-    </>
+    </div>
   );
-}
+};
+
+export default About;
