@@ -58,7 +58,7 @@ const About = () => {
         skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
       },
       social: {
-        linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360",
+        linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D",
         mail: "mailto:josephworlo99@gmail.com",
         whatsapp: "https://wa.me/+231778010356"
       }
@@ -75,7 +75,7 @@ const About = () => {
         skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
       },
       social: {
-        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152",
+        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D",
         mail: "mailto:sumo4009@gmail.com",
         whatsapp: "https://wa.me/+231776793733"
       }
@@ -105,7 +105,10 @@ const About = () => {
       fullPortfolio: {
         experience: "6+ years in IT and data systems",
         education: "BSc in Computer Science, Certified Data Systems Administrator",
-        achievements: ["Implemented 10+ data management systems", "Provided IT training to 500+ users"],
+        achievements: [
+          "Implemented 10+ data management systems",
+          "Provided IT training to 500+ users"
+        ],
         skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
       },
       social: {
@@ -115,6 +118,7 @@ const About = () => {
       }
     }
   ];
+  
 
   const testimonials = [
     {
