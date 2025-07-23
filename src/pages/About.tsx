@@ -53,12 +53,13 @@ const About = () => {
       bio: "Expert in logistics coordination and supply chain management",
       fullPortfolio: {
         experience: ["Executive Director - Liberia Institute of Procurement and Supply Chain Professionals","10+ years in logistics and supply chain"],
+        education: ["Detail in Linkedin Profile"],
         achievements: ["Procurement Officer, Ministry of State", "Team-Lead - Alliance of Educators Against Illicit Drugs"],
         skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
       },
       social: {
         linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D",
-        facebook: "https://facebook.com/joseph.worlo",
+        gmail: "mailto:josephworlo99@gmail.com",
         whatsapp: "https://wa.me/+231778010356"
       
       }
@@ -66,18 +67,18 @@ const About = () => {
     {
       name: "Barzee Sumo",
       title: "Field Data Collection/Training Coordinator",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=faces",
+      image: barzeeImg,
       bio: "Specialist in field data collection and training coordination",
       fullPortfolio: {
         experience: "7+ years in field data collection and training",
-        education: "BSc in Statistics, Certified Training Professional",
+        education: ["Details in Linked in Profile"],
         achievements: ["Coordinated 50+ field surveys", "Trained 200+ data collectors"],
         skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
       },
       social: {
-        linkedin: "https://linkedin.com/in/barzeesumo",
-        facebook: "https://facebook.com/barzee.sumo",
-        whatsapp: "https://wa.me/12345678904"
+        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D",
+        gmail: "mailto:sumo4009@gmail.com",
+        whatsapp: "https://wa.me/+231776793733"
       }
     },
     {
