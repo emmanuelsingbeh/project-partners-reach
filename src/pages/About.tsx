@@ -1,8 +1,6 @@
-// ...[imports remain the same]
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Linkedin, MessageSquare, Mail, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Linkedin, MessageSquare, Mail } from 'lucide-react';
 import { useState } from 'react';
 import emmanuelImg from '@/assets/es.jpg';
 import josephImg from '@/assets/jw.jpg';
@@ -56,6 +54,7 @@ const About = () => {
           "Executive Director - Liberia Institute of Procurement and Supply Chain Professionals",
           "10+ years in logistics and supply chain"
         ],
+        education: "MBA in Logistics & Supply Chain Management",
         achievements: ["Procurement Officer, Ministry of State", "Team-Lead - Alliance of Educators Against Illicit Drugs"],
         skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
       },
@@ -75,14 +74,12 @@ const About = () => {
           "7+ years in field data collection and training",
           "Associate Research Assistant, University of North Carolina (UNC)"
         ],
+        education: "BSc in Public Health",
         achievements: [
-          "Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond",
+          "Public Health Leader and Lecturer impacting healthcare systems in Liberia and beyond",
           "Trained 200+ data collectors"
         ],
-        skills: [
-          "Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond",
-          "Field Operations", "Training Design", "Data Collection", "Team Leadership"
-        ]
+        skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
       },
       social: {
         linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152",
@@ -133,101 +130,91 @@ const About = () => {
     setSelectedMember(member);
   };
 
-  const closeModal = () => {
-    setSelectedMember(null);
-  };
-
   return (
-    <div className="min-h-screen bg-background">
+    <>
       <Navigation />
       <main className="pt-16">
-        {/* Team Member Modal */}
+        {/* Team Section */}
+        <section className="py-16 px-4 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-primary">Meet Our Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <div
+                key={index}
+                onClick={() => handleMemberClick(member)}
+                className="cursor-pointer bg-white dark:bg-gray-800 p-4 rounded-xl shadow hover:shadow-lg transition duration-300"
+              >
+                <img
+                  src={typeof member.image === 'string' ? member.image : (member.image as any).src}
+                  alt={member.name}
+                  className="w-full h-56 object-cover rounded-lg mb-4"
+                />
+                <h3 className="text-xl font-semibold text-primary">{member.name}</h3>
+                <p className="text-muted-foreground">{member.title}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Modal */}
         {selectedMember && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4" style={{ backdropFilter: 'blur(5px)' }}>
-            <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center">
-                    <img
-                      src={selectedMember.image}
-                      alt={selectedMember.name}
-                      className="w-20 h-20 rounded-full object-contain bg-gray-100 mr-4"
-                      style={{ objectPosition: 'center top' }}
-                    />
-                    <div>
-                      <h3 className="text-2xl font-bold text-primary">{selectedMember.name}</h3>
-                      <p className="text-accent font-medium">{selectedMember.title}</p>
-                    </div>
-                  </div>
-                  <Button onClick={closeModal} variant="ghost" className="text-muted-foreground text-2xl leading-none">
-                    &times;
-                  </Button>
+          <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+            <div className="bg-white dark:bg-gray-900 rounded-lg p-6 max-w-xl w-full relative overflow-y-auto max-h-[90vh]">
+              <button
+                className="absolute top-4 right-4 text-muted-foreground hover:text-primary"
+                onClick={() => setSelectedMember(null)}
+              >
+                ✕
+              </button>
+              <img
+                src={typeof selectedMember.image === 'string' ? selectedMember.image : (selectedMember.image as any).src}
+                alt={selectedMember.name}
+                className="w-32 h-32 rounded-full object-cover mx-auto mb-4"
+              />
+              <h3 className="text-2xl font-bold text-center">{selectedMember.name}</h3>
+              <p className="text-center text-muted-foreground">{selectedMember.title}</p>
+              <p className="mt-4 text-sm text-center">{selectedMember.bio}</p>
+              <div className="mt-6 space-y-4">
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
+                  {Array.isArray(selectedMember.fullPortfolio.experience)
+                    ? selectedMember.fullPortfolio.experience.map((exp: string, i: number) => (
+                        <p key={i} className="text-sm text-muted-foreground">• {exp}</p>
+                      ))
+                    : <p className="text-sm text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>}
                 </div>
-
-                <div className="space-y-6">
+                {selectedMember.fullPortfolio.education && (
                   <div>
-                    <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
-                    {Array.isArray(selectedMember.fullPortfolio.experience) ? (
-                      <ul className="list-disc list-inside text-muted-foreground space-y-1">
-                        {selectedMember.fullPortfolio.experience.map((item: string, i: number) => (
-                          <li key={i}>{item}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
-                    )}
+                    <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
+                    <p className="text-sm text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
                   </div>
-
-                  {selectedMember.fullPortfolio.education && (
-                    <div>
-                      <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
-                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
-                    </div>
+                )}
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Achievements</h4>
+                  {selectedMember.fullPortfolio.achievements.map((ach: string, i: number) => (
+                    <p key={i} className="text-sm text-muted-foreground">• {ach}</p>
+                  ))}
+                </div>
+                <div>
+                  <h4 className="text-lg font-semibold text-primary mb-2">Skills</h4>
+                  <p className="text-sm text-muted-foreground">{selectedMember.fullPortfolio.skills.join(', ')}</p>
+                </div>
+                <div className="flex justify-center space-x-4 mt-4">
+                  {selectedMember.social.linkedin && (
+                    <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
+                      <Linkedin className="h-6 w-6" />
+                    </a>
                   )}
-
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
-                    <ul className="space-y-2 list-disc list-inside">
-                      {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
-                        <li key={index} className="flex items-start">
-                          <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
-                          <span className="text-muted-foreground">{achievement}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
-                        <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember.name.split(' ')[0]}</h4>
-                    <div className="flex space-x-4">
-                      {selectedMember.social.linkedin && (
-                        <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
-                          <Linkedin className="h-6 w-6" />
-                        </a>
-                      )}
-                      {selectedMember.social.email && (
-                        <a href={selectedMember.social.email} className="text-accent hover:text-accent/80" aria-label="Email">
-                          <Mail className="h-6 w-6" />
-                        </a>
-                      )}
-                      {selectedMember.social.whatsapp && (
-                        <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
-                          <MessageSquare className="h-6 w-6" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
+                  {selectedMember.social.email && (
+                    <a href={selectedMember.social.email} className="text-accent hover:text-accent/80" aria-label="Email">
+                      <Mail className="h-6 w-6" />
+                    </a>
+                  )}
+                  {selectedMember.social.whatsapp && (
+                    <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
+                      <MessageSquare className="h-6 w-6" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -235,7 +222,7 @@ const About = () => {
         )}
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 
