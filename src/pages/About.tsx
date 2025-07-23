@@ -52,7 +52,10 @@ const About = () => {
       image: josephImg,
       bio: "Expert in logistics coordination and supply chain management",
       fullPortfolio: {
-        experience: ["Executive Director - Liberia Institute of Procurement and Supply Chain Professionals","10+ years in logistics and supply chain"],
+        experience: [
+          "Executive Director - Liberia Institute of Procurement and Supply Chain Professionals",
+          "10+ years in logistics and supply chain"
+        ],
         achievements: ["Procurement Officer, Ministry of State", "Team-Lead - Alliance of Educators Against Illicit Drugs"],
         skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
       },
@@ -68,12 +71,21 @@ const About = () => {
       image: barzeeImg,
       bio: "Specialist in field data collection and training coordination",
       fullPortfolio: {
-        experience: ["7+ years in field data collection and training", "Associate Research Assistant, University of North Carolina (UNC)",],
-        achievements: [ "Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond", "Trained 200+ data collectors"],
-        skills: ["Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond", "Field Operations", "Training Design", "Data Collection", "Team Leadership"]
+        experience: [
+          "7+ years in field data collection and training",
+          "Associate Research Assistant, University of North Carolina (UNC)"
+        ],
+        achievements: [
+          "Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond",
+          "Trained 200+ data collectors"
+        ],
+        skills: [
+          "Public Health Leader, and a dedicated Lecturer impacting healthcare systems in Liberia and beyond",
+          "Field Operations", "Training Design", "Data Collection", "Team Leadership"
+        ]
       },
       social: {
-        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2Bq7%2FMBHlREW36k7pqo%2F5kw%3D%3D",
+        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152",
         email: "mailto:sumo4009@gmail.com",
         whatsapp: "https://wa.me/+231776793733"
       }
@@ -117,29 +129,114 @@ const About = () => {
     }
   ];
 
-  // ... [Rest of your code is unchanged until social icons rendering]
+  const handleMemberClick = (member: any) => {
+    setSelectedMember(member);
+  };
 
-  // Inside the Team Member Modal's Social Section, update to:
-  <div className="flex space-x-4">
-    {selectedMember.social.linkedin && (
-      <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
-        <Linkedin className="h-6 w-6" />
-      </a>
-    )}
-    {selectedMember.social.email && (
-      <a href={selectedMember.social.email} className="text-accent hover:text-accent/80" aria-label="Email">
-        <Mail className="h-6 w-6" />
-      </a>
-    )}
-    {selectedMember.social.whatsapp && (
-      <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
-        <MessageSquare className="h-6 w-6" />
-      </a>
-    )}
-  </div>;
+  const closeModal = () => {
+    setSelectedMember(null);
+  };
 
-  // ... [Everything else remains unchanged]
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <main className="pt-16">
+        {/* Your About page content like Hero, Mission, Vision, Team section, etc. */}
+        
+        {/* Team Member Modal */}
+        {selectedMember && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4" style={{ backdropFilter: 'blur(5px)' }}>
+            <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-6">
+                  <div className="flex items-center">
+                    <img
+                      src={selectedMember.image}
+                      alt={selectedMember.name}
+                      className="w-20 h-20 rounded-full object-contain bg-gray-100 mr-4"
+                      style={{ objectPosition: 'center top' }}
+                    />
+                    <div>
+                      <h3 className="text-2xl font-bold text-primary">{selectedMember.name}</h3>
+                      <p className="text-accent font-medium">{selectedMember.title}</p>
+                    </div>
+                  </div>
+                  <Button onClick={closeModal} variant="ghost" className="text-muted-foreground text-2xl leading-none">
+                    &times;
+                  </Button>
+                </div>
 
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
+                    {Array.isArray(selectedMember.fullPortfolio.experience) ? (
+                      <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                        {selectedMember.fullPortfolio.experience.map((item: string, i: number) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
+                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
+                    <ul className="space-y-2 list-disc list-inside">
+                      {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
+                        <li key={index} className="flex items-start">
+                          <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="text-muted-foreground">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Core Skills</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedMember.fullPortfolio.skills.map((skill: string, index: number) => (
+                        <span key={index} className="bg-accent/10 text-accent px-3 py-1 rounded-full text-sm">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember.name.split(' ')[0]}</h4>
+                    <div className="flex space-x-4">
+                      {selectedMember.social.linkedin && (
+                        <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
+                          <Linkedin className="h-6 w-6" />
+                        </a>
+                      )}
+                      {selectedMember.social.email && (
+                        <a href={selectedMember.social.email} className="text-accent hover:text-accent/80" aria-label="Email">
+                          <Mail className="h-6 w-6" />
+                        </a>
+                      )}
+                      {selectedMember.social.whatsapp && (
+                        <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
+                          <MessageSquare className="h-6 w-6" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default About;
