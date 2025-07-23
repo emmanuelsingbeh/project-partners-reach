@@ -5,9 +5,9 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import josephImg from '@/assets/team/jw.jpg';
-import barzeeImg from '@/assets/team/bs.png';
-import emmanuelImg from '@/assets/team/emmanuel.png';
+import josephImg from '@/assets/jw.jpg';
+import barzeeImg from '@/assets/bs.png';
+import emmanuelImg from '@/assets/es.jpg';
 
 const teamMembers = [
   {
