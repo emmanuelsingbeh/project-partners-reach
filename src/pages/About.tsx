@@ -1,7 +1,7 @@
+// ...[imports remain the same]
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, MessageSquare, Mail } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+import { Linkedin, MessageSquare, Mail, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import emmanuelImg from '@/assets/es.jpg';
@@ -141,8 +141,6 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <main className="pt-16">
-        {/* Your About page content like Hero, Mission, Vision, Team section, etc. */}
-        
         {/* Team Member Modal */}
         {selectedMember && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4" style={{ backdropFilter: 'blur(5px)' }}>
@@ -180,10 +178,12 @@ const About = () => {
                     )}
                   </div>
 
-                  <div>
-                    <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
-                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
-                  </div>
+                  {selectedMember.fullPortfolio.education && (
+                    <div>
+                      <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
+                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
+                    </div>
+                  )}
 
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
