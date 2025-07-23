@@ -1,6 +1,6 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
-import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, MessageSquare } from 'lucide-react';
+import { Users, Target, Eye, Heart, Star, CheckCircle, Linkedin, Facebook, MessageSquare, MailIcon } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
