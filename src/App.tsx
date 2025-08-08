@@ -17,6 +17,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import TrainingRegistration from "./pages/trainingRegistration";
 import Login from "./pages/studentLogin"; // 👈 New import
+import StudentDashboard from "./pages/StudentDashboard";
 import { Analytics } from "@vercel/analytics/react"
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/student-portal" element={<StudentPortal />} />
+          <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
           <Route path="/login" element={<Login />} /> {/* 👈 Added login route */}
