@@ -1,7 +1,7 @@
 // src/pages/studentLogin.tsx
 
 import { useState } from 'react';
-import { supabase } from '../integrations/supabase/client';
+
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -21,16 +21,14 @@ export default function StudentLogin() {
     setLoading(true);
     setMessage('');
 
-    const { email, password } = formData;
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    // Frontend-only mode: create a mock session
+    const name = formData.email.split('@')[0] || 'Student';
+    localStorage.setItem('studentUser', JSON.stringify({ name, email: formData.email }));
 
-    if (error || !data.session) {
+    setTimeout(() => {
       setLoading(false);
-      return setMessage(`Login failed: ${error?.message}`);
-    }
-
-    // Redirect to student portal after login
-    navigate('/StudentPortal');
+      navigate('/student-dashboard');
+    }, 200);
   };
 
   return (

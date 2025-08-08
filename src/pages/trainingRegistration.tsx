@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { supabase } from '../integrations/supabase/client';
+
 import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -70,38 +70,12 @@ export default function StudentSignup() {
     setLoading(true);
     setMessage('');
 
-    const { email, password, ...profile } = formData;
-
-    try {
-      const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-        email,
-        password,
-      });
-
-      if (signUpData?.user) {
-        const userId = signUpData.user.id;
-        const { error: insertError } = await supabase
-          .from('students')
-          .insert<NewStudent>({
-            auth_id: userId,
-            email,
-            ...profile,
-          });
-
-        if (insertError) {
-          setMessage(`Saved locally. We'll sync later: ${insertError.message}`);
-        } else {
-          setMessage('Signup successful! We also created your dashboard.');
-        }
-      } else if (signUpError) {
-        setMessage(`Signup failed (proceeding locally): ${signUpError.message}`);
-      }
-    } catch (err) {
-      // Network or unexpected error: continue locally
-    } finally {
+    // Frontend-only mode: proceed locally and build the dashboard
+    setTimeout(() => {
       setLoading(false);
+      setMessage('Signup successful (local). Your dashboard is ready.');
       proceedToDashboard();
-    }
+    }, 300);
   };
 
   return (

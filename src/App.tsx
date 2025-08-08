@@ -12,7 +12,7 @@ import Research from "./pages/Research";
 import Volunteering from "./pages/Volunteering";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
-import StudentPortal from "./pages/StudentPortal";
+
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 import TrainingRegistration from "./pages/trainingRegistration";
@@ -38,7 +38,7 @@ const App = () => (
           <Route path="/volunteering" element={<Volunteering />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
-          <Route path="/student-portal" element={<StudentPortal />} />
+          <Route path="/student-portal" element={<StudentDashboard />} />
           <Route path="/student-dashboard" element={<StudentDashboard />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
