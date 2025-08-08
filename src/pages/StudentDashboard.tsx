@@ -7,16 +7,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Play, Trophy, CheckCircle2, Clock, ArrowRight, User } from "lucide-react";
+import { useStudentData } from "@/hooks/useStudentData";
+import { StudentCard } from "@/components/shared/StudentCard";
+import { Enrollment } from "@/types/users";
 
-// Types for mock data compatible with future backend wiring
-type Enrollment = {
-  id: string;
-  title: string;
-  description: string;
-  progress: number; // 0-100
-  status: "enrolled" | "in_progress" | "completed";
-  startDate: string; // ISO
-};
 
 const setMetaTags = (title: string, description: string, canonicalPath = "/student-dashboard") => {
   document.title = title;
@@ -41,39 +35,47 @@ const setMetaTags = (title: string, description: string, canonicalPath = "/stude
 
 export default function StudentDashboard() {
   const navigate = useNavigate();
-  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
+  const { getCurrentStudent, updateStudentEnrollment } = useStudentData();
   const [student, setStudent] = useState<{ name: string; email: string } | null>(null);
+  const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
 
-  // Read from localStorage (mock) – will be swapped to Supabase later
+  // Read current student data
   useEffect(() => {
     setMetaTags(
       "Student Dashboard | Learn with Us",
       "Student dashboard for your enrolled courses: continue learning, track progress, and access certificates.",
     );
 
-    const s = localStorage.getItem("studentUser");
-    const e = localStorage.getItem("mock_enrollments");
-
-    if (s) setStudent(JSON.parse(s));
-
-    if (e) {
-      setEnrollments(JSON.parse(e));
+    const currentStudent = getCurrentStudent();
+    if (currentStudent) {
+      setStudent({ name: currentStudent.name, email: currentStudent.email });
+      setEnrollments(currentStudent.enrollments);
     } else {
-      // Fallback sample to avoid empty UI
-      const sample: Enrollment[] = [
-        {
-          id: "sample-1",
-          title: "Introduction to Data Analysis",
-          description: "Start exploring core concepts and tools for data insights.",
-          progress: 20,
-          status: "in_progress",
-          startDate: new Date().toISOString(),
-        },
-      ];
-      setEnrollments(sample);
-      localStorage.setItem("mock_enrollments", JSON.stringify(sample));
+      // Fallback to localStorage for compatibility
+      const s = localStorage.getItem("studentUser");
+      const e = localStorage.getItem("mock_enrollments");
+
+      if (s) setStudent(JSON.parse(s));
+
+      if (e) {
+        setEnrollments(JSON.parse(e));
+      } else {
+        // Fallback sample
+        const sample: Enrollment[] = [
+          {
+            id: "sample-1",
+            title: "Introduction to Data Analysis",
+            description: "Start exploring core concepts and tools for data insights.",
+            progress: 20,
+            status: "in_progress",
+            startDate: new Date().toISOString(),
+          },
+        ];
+        setEnrollments(sample);
+        localStorage.setItem("mock_enrollments", JSON.stringify(sample));
+      }
     }
-  }, []);
+  }, [getCurrentStudent]);
 
   const stats = useMemo(() => {
     const total = enrollments.length;
@@ -137,48 +139,19 @@ export default function StudentDashboard() {
             <TabsContent value="courses" className="mt-6">
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {enrollments.map((course, idx) => (
-                  <motion.div key={course.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * idx }} className="hover-scale">
-                    <Card className="border-0 shadow-lg">
-                      <CardHeader>
-                        <CardTitle className="text-primary text-lg flex items-center justify-between">
-                          <span>{course.title}</span>
-                          {course.status === "completed" ? (
-                            <Badge className="bg-accent text-white">Completed</Badge>
-                          ) : (
-                            <Badge variant="outline">Enrolled</Badge>
-                          )}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-sm text-muted-foreground">{course.description}</p>
-                        <div>
-                          <div className="flex items-center justify-between mb-2 text-sm">
-                            <span className="text-muted-foreground">Progress</span>
-                            <span className="text-primary font-medium">{course.progress}%</span>
-                          </div>
-                          <Progress value={course.progress} />
-                        </div>
-                        <div className="flex gap-2">
-                          <Button className="bg-primary hover:bg-primary/90">
-                            <Play className="h-4 w-4 mr-2" />
-                            {course.progress > 0 ? "Continue" : "Start"}
-                          </Button>
-                          {course.status !== "completed" && (
-                            <Button variant="outline" onClick={() => {
-                              // Mock complete for demo
-                              const updated = enrollments.map((e) =>
-                                e.id === course.id ? { ...e, status: "completed" as const, progress: 100 } : e
-                              );
-                              setEnrollments(updated);
-                              localStorage.setItem("mock_enrollments", JSON.stringify(updated));
-                            }}>
-                              <CheckCircle2 className="h-4 w-4 mr-2" /> Mark Complete
-                            </Button>
-                          )}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                  <StudentCard
+                    key={course.id}
+                    enrollment={course}
+                    onContinue={() => console.log("Continue course:", course.title)}
+                    onComplete={() => {
+                      // Mock complete for demo
+                      const updated = enrollments.map((e) =>
+                        e.id === course.id ? { ...e, status: "completed" as const, progress: 100 } : e
+                      );
+                      setEnrollments(updated);
+                      localStorage.setItem("mock_enrollments", JSON.stringify(updated));
+                    }}
+                  />
                 ))}
               </div>
 
