@@ -14,108 +14,73 @@ const About = () => {
   const teamMembers = [
     {
       name: "Levi Tuwleh",
-      title: "Program/M&E Officer",
+      title: "Founder and CEO",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces",
-      bio: "Experienced program management and monitoring & evaluation specialist",
+      bio: "Founder and CEO of PPRDSH, Ph.D. student in Epidemiology and Biostatistics",
       fullPortfolio: {
-        experience: "8+ years in program management and M&E",
-        education: "Master's in Development Studies",
-        achievements: ["Led 15+ community development programs", "Established M&E frameworks for 3 NGOs"],
-        skills: ["Program Management", "M&E Systems", "Data Analysis", "Community Engagement"]
+        experience: "Accomplished early-career researcher in public health with specialty in infectious disease epidemiology and applied behavioral research",
+        education: ["Ph.D. student in Epidemiology and Biostatistics, University of Port Harcourt", "MPH and MSc in Epidemiology", "Bachelor of Science in Biology, William V. S. Tubman University, Liberia"],
+        achievements: [
+          "Co-authored several peer-reviewed articles",
+          "Ranks among the top 10 in Epidemiology and Public Health at Obafemi Awolowo University on AD Scientific Index",
+          "Ranks among the top 10 in Epidemiology and Public Health in Nigeria on AD Scientific Index"
+        ],
+        skills: ["Project Management", "Scientific Writing", "Data Analysis", "Infectious Disease Epidemiology", "Applied Behavioral Research"]
       },
       social: {
-        linkedin: "https://linkedin.com/in/levituwleh",
-        facebook: "https://facebook.com/levi.tuwleh",
-        whatsapp: "https://wa.me/12345678901"
+        linkedin: "#",
+        mail: "mailto:levi@projectpartners.org",
+        whatsapp: "#"
       }
     },
     {
-      name: "Dr. Utham",
+      name: "Dr. Uthman Tinuoye Jamiu",
       title: "Research and Development Manager/Data Analyst",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=faces",
-      bio: "PhD researcher and data analyst specializing in evidence-based solutions",
+      bio: "Developmental Psychologist, Behavioral Analyst, Data Analyst, and Deception Diagnosis specialist",
       fullPortfolio: {
-        experience: "12+ years in research and data analysis",
-        education: "PhD in Statistics, MSc in Data Science",
-        achievements: ["Published 25+ research papers", "Led data initiatives across West Africa"],
-        skills: ["Statistical Analysis", "Research Design", "Scientific Writing", "Data Visualization"]
+        experience: "Expert in developmental psychology, behavioral analysis, data analysis, and deception diagnosis",
+        education: "Advanced qualifications in Psychology and Data Analysis",
+        achievements: [
+          "Specialized in developmental psychology research",
+          "Expert in behavioral analysis and assessment",
+          "Advanced skills in deception diagnosis techniques"
+        ],
+        skills: ["Developmental Psychology", "Behavioral Analysis", "Data Analysis", "Deception Diagnosis", "Research Methodology"]
       },
       social: {
-        linkedin: "https://linkedin.com/in/drutham",
-        facebook: "https://facebook.com/drutham",
-        whatsapp: "https://wa.me/12345678902"
-      }
-    },
-    {
-      name: "Joseph Worlo",
-      title: "Logistics/Supply Chain Specialist",
-      image: josephImg,
-      bio: "Expert in logistics coordination and supply chain management",
-      fullPortfolio: {
-        experience: ["Executive Director - Liberia Institute of Procurement and Supply Chain Professionals","10+ years in logistics and supply chain"],
-        education: ["Detail in Linkedin Profile"],
-        achievements: ["Procurement Officer, Ministry of State", "Team-Lead - Alliance of Educators Against Illicit Drugs"],
-        skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
-      },
-      social: {
-        linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D",
-        mail: "mailto:josephworlo99@gmail.com",
-        whatsapp: "https://wa.me/+231778010356"
-      
-      }
-    },
-    {
-      name: "Barzee Sumo",
-      title: "Field Data Collection/Training Coordinator",
-      image: barzeeImg,
-      bio: "Specialist in field data collection and training coordination",
-      fullPortfolio: {
-        experience: "7+ years in field data collection and training",
-        education: ["Details in Linkedin Profile"],
-        achievements: ["Coordinated 50+ field surveys", "Trained 200+ data collectors"],
-        skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
-      },
-      social: {
-        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D",
-        mail: "mailto:sumo4009@gmail.com",
-        whatsapp: "https://wa.me/+231776793733"
+        linkedin: "#",
+        mail: "mailto:uthman@projectpartners.org",
+        whatsapp: "#"
       }
     },
     {
       name: "Alpha Daoda Kanneh",
-      title: "GIS/Remote Sensing Lead",
+      title: "Development Practitioner | Environmental Management Graduate Student",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces",
-      bio: "GIS expert and remote sensing specialist",
+      bio: "Purpose-driven development practitioner with expertise in Geography, Remote Sensing & GIS, and Environmental Management",
       fullPortfolio: {
-        experience: "9+ years in GIS and remote sensing",
-        education: "MSc in GIS and Remote Sensing",
-        achievements: ["Mapped 100+ communities", "Developed GIS training curricula"],
-        skills: ["GIS Analysis", "Remote Sensing", "Spatial Analysis", "Mapping Technology"]
-      },
-      social: {
-        linkedin: "https://linkedin.com/in/alphakanneh",
-        facebook: "https://facebook.com/alpha.kanneh",
-        whatsapp: "https://wa.me/12345678905"
-      }
-    },
-    {
-      name: "Emmanuel Singbeh",
-      title: "IT and Data Systems Support Officer",
-      image: emmanuelImg,
-      bio: "IT specialist and data systems support expert",
-      fullPortfolio: {
-        experience: "6+ years in IT and data systems",
-        education: "BSc in Computer Science, Certified Data Systems Administrator",
-        achievements: [
-          "Implemented 10+ data management systems",
-          "Provided IT training to 500+ users"
+        experience: [
+          "National Assistant Secretary General - Organization of Liberian Communities in Nigeria (OLICON)",
+          "Field coordination across humanitarian and community-based projects",
+          "Applied skills in data analysis, photography, and problem solving"
         ],
-        skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
+        education: [
+          "MSc in Environmental Control & Management (in view) – Obafemi Awolowo University",
+          "Postgraduate Diploma in Remote Sensing & GIS – ARCSSTE-E", 
+          "BSc in Geography – Obafemi Awolowo University"
+        ],
+        achievements: [
+          "Leadership role in Organization of Liberian Communities in Nigeria",
+          "Extensive experience in humanitarian aid projects",
+          "Applied expertise across multiple development initiatives"
+        ],
+        skills: ["Monitoring & Evaluation (M&E)", "Remote Sensing & GIS Data Analysis", "Humanitarian Aid Photography", "Data Collection & Analysis", "Graphic Design"]
       },
       social: {
-        linkedin: "https://linkedin.com/in/emmanuelsingbeh",
-        facebook: "https://facebook.com/emmanuel.singbeh",
-        whatsapp: "https://wa.me/12345678906"
+        linkedin: "#",
+        mail: "mailto:emaildkanneh@gmail.com",
+        whatsapp: "https://wa.me/+2348107498665"
       }
     }
   ];
@@ -305,8 +270,12 @@ const About = () => {
           <div
             className="fixed inset-0 bg-black/50 flex items-center justify-center z-[9999] p-4"
             style={{ backdropFilter: 'blur(5px)' }}
+            onClick={closeModal}
           >
-            <div className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg">
+            <div 
+              className="bg-background rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-lg"
+              onClick={(e) => e.stopPropagation()}
+            >
               <div className="p-6">
                 <div className="flex justify-between items-start mb-6">
                   <div className="flex items-center">
@@ -329,17 +298,33 @@ const About = () => {
                 <div className="space-y-6">
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-2">Experience</h4>
-                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
+                    {Array.isArray(selectedMember.fullPortfolio.experience) ? (
+                      <ul className="space-y-1">
+                        {selectedMember.fullPortfolio.experience.map((exp: string, index: number) => (
+                          <li key={index} className="text-muted-foreground">• {exp}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.experience}</p>
+                    )}
                   </div>
 
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-2">Education</h4>
-                    <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
+                    {Array.isArray(selectedMember.fullPortfolio.education) ? (
+                      <ul className="space-y-1">
+                        {selectedMember.fullPortfolio.education.map((edu: string, index: number) => (
+                          <li key={index} className="text-muted-foreground">• {edu}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-muted-foreground">{selectedMember.fullPortfolio.education}</p>
+                    )}
                   </div>
 
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-2">Key Achievements</h4>
-                    <ul className="space-y-2 list-disc list-inside">
+                    <ul className="space-y-2">
                       {selectedMember.fullPortfolio.achievements.map((achievement: string, index: number) => (
                         <li key={index} className="flex items-start">
                           <CheckCircle className="h-5 w-5 text-accent mr-2 mt-0.5 flex-shrink-0" />
@@ -364,17 +349,22 @@ const About = () => {
                   <div>
                     <h4 className="text-lg font-semibold text-primary mb-2">Connect with {selectedMember.name.split(' ')[0]}</h4>
                     <div className="flex space-x-4">
-                      {selectedMember.social.linkedin && (
+                      {selectedMember.social.linkedin && selectedMember.social.linkedin !== "#" && (
                         <a href={selectedMember.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="LinkedIn">
                           <Linkedin className="h-6 w-6" />
                         </a>
                       )}
-                       {selectedMember.social.mail && (
-                       <a href={selectedMember.social.mail} className="text-accent hover:text-accent/80" aria-label="Email">
-                      <Mail className="h-6 w-6" />
-                      </a>
+                      {selectedMember.social.mail && (
+                        <a href={selectedMember.social.mail} className="text-accent hover:text-accent/80" aria-label="Email">
+                          <Mail className="h-6 w-6" />
+                        </a>
                       )}
-                      {selectedMember.social.whatsapp && (
+                      {selectedMember.social.facebook && selectedMember.social.facebook !== "#" && (
+                        <a href={selectedMember.social.facebook} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="Facebook">
+                          <Facebook className="h-6 w-6" />
+                        </a>
+                      )}
+                      {selectedMember.social.whatsapp && selectedMember.social.whatsapp !== "#" && (
                         <a href={selectedMember.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-accent hover:text-accent/80" aria-label="WhatsApp">
                           <MessageSquare className="h-6 w-6" />
                         </a>
