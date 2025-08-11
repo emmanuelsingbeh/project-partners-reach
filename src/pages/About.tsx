@@ -15,7 +15,7 @@ const About = () => {
     {
       name: "Levi Tuwleh",
       title: "Founder and CEO",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces",
+      image: "/lovable-uploads/d24bd380-cc71-422c-83d2-8083f5a0e479.png",
       bio: "Founder and CEO of PPRDSH, Ph.D. student in Epidemiology and Biostatistics",
       fullPortfolio: {
         experience: "Accomplished early-career researcher in public health with specialty in infectious disease epidemiology and applied behavioral research",
@@ -36,7 +36,7 @@ const About = () => {
     {
       name: "Dr. Uthman Tinuoye Jamiu",
       title: "Research and Development Manager/Data Analyst",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=faces",
+      image: "/lovable-uploads/3e19a793-899a-4443-9112-495a4a4f9ed6.png",
       bio: "Developmental Psychologist, Behavioral Analyst, Data Analyst, and Deception Diagnosis specialist",
       fullPortfolio: {
         experience: "Expert in developmental psychology, behavioral analysis, data analysis, and deception diagnosis",
@@ -57,7 +57,7 @@ const About = () => {
     {
       name: "Alpha Daoda Kanneh",
       title: "Development Practitioner | Environmental Management Graduate Student",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces",
+      image: "/lovable-uploads/a17c477d-88b7-4d64-a8be-53f3f9dad3b0.png",
       bio: "Purpose-driven development practitioner with expertise in Geography, Remote Sensing & GIS, and Environmental Management",
       fullPortfolio: {
         experience: [
@@ -81,6 +81,60 @@ const About = () => {
         linkedin: "#",
         mail: "mailto:emaildkanneh@gmail.com",
         whatsapp: "https://wa.me/+2348107498665"
+      }
+    },
+    {
+      name: "Joseph Worlo",
+      title: "Logistics/Supply Chain Specialist",
+      image: josephImg,
+      bio: "Expert in logistics coordination and supply chain management",
+      fullPortfolio: {
+        experience: ["Executive Director - Liberia Institute of Procurement and Supply Chain Professionals","10+ years in logistics and supply chain"],
+        education: ["Detail in Linkedin Profile"],
+        achievements: ["Procurement Officer, Ministry of State", "Team-Lead - Alliance of Educators Against Illicit Drugs"],
+        skills: ["Supply Chain Management", "Logistics Coordination", "Vendor Management", "Cost Optimization"]
+      },
+      social: {
+        linkedin: "https://www.linkedin.com/in/joseph-m-worlo-742752360?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BiEdHQjoLTAqOeUxl%2BKRlmQ%3D%3D",
+        mail: "mailto:josephworlo99@gmail.com",
+        whatsapp: "https://wa.me/+231778010356"
+      }
+    },
+    {
+      name: "Barzee Sumo",
+      title: "Field Data Collection/Training Coordinator",
+      image: barzeeImg,
+      bio: "Specialist in field data collection and training coordination",
+      fullPortfolio: {
+        experience: "7+ years in field data collection and training",
+        education: ["Details in Linkedin Profile"],
+        achievements: ["Coordinated 50+ field surveys", "Trained 200+ data collectors"],
+        skills: ["Field Operations", "Training Design", "Data Collection", "Team Leadership"]
+      },
+      social: {
+        linkedin: "https://www.linkedin.com/in/barzee-sumo-1482a6152?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B9bsa%2BS0iS2WGMn5SgeRueQ%3D%3D",
+        mail: "mailto:sumo4009@gmail.com",
+        whatsapp: "https://wa.me/+231776793733"
+      }
+    },
+    {
+      name: "Emmanuel Singbeh",
+      title: "IT and Data Systems Support Officer",
+      image: emmanuelImg,
+      bio: "IT specialist and data systems support expert",
+      fullPortfolio: {
+        experience: "6+ years in IT and data systems",
+        education: "BSc in Computer Science, Certified Data Systems Administrator",
+        achievements: [
+          "Implemented 10+ data management systems",
+          "Provided IT training to 500+ users"
+        ],
+        skills: ["System Administration", "Database Management", "IT Training", "Technical Support"]
+      },
+      social: {
+        linkedin: "https://linkedin.com/in/emmanuelsingbeh",
+        facebook: "https://facebook.com/emmanuel.singbeh",
+        whatsapp: "https://wa.me/12345678906"
       }
     }
   ];
