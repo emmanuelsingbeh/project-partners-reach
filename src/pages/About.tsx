@@ -15,7 +15,7 @@ const About = () => {
     {
       name: "Levi Tuwleh",
       title: "Founder and CEO",
-      image: "/lovable-uploads/d24bd380-cc71-422c-83d2-8083f5a0e479.png",
+      image: "/lovable-uploads/a17c477d-88b7-4d64-a8be-53f3f9dad3b0.png",
       bio: "Founder and CEO of PPRDSH, Ph.D. student in Epidemiology and Biostatistics",
       fullPortfolio: {
         experience: "Accomplished early-career researcher in public health with specialty in infectious disease epidemiology and applied behavioral research",
@@ -57,7 +57,7 @@ const About = () => {
     {
       name: "Alpha Daoda Kanneh",
       title: "Development Practitioner | Environmental Management Graduate Student",
-      image: "/lovable-uploads/a17c477d-88b7-4d64-a8be-53f3f9dad3b0.png",
+      image: "/lovable-uploads/d24bd380-cc71-422c-83d2-8083f5a0e479.png",
       bio: "Purpose-driven development practitioner with expertise in Geography, Remote Sensing & GIS, and Environmental Management",
       fullPortfolio: {
         experience: [
@@ -257,18 +257,23 @@ const About = () => {
               {teamMembers.map((member, index) => (
                 <Card key={index} className="team-card border-0 shadow-lg overflow-hidden">
                   <CardContent className="p-0 team-card-content">
-                    <div className="relative group cursor-pointer">
+                    <div className="relative group cursor-pointer" onClick={() => handleMemberClick(member)}>
                       <img
                         src={member.image}
                         alt={member.name}
-                        className="w-full h-64 object-contain bg-gray-100"
+                        className="w-full h-64 object-cover bg-gray-100"
                         style={{ objectPosition: 'center top' }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end pointer-events-none">
-                        <div className="p-4 w-full pointer-events-auto">
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                        <div className="p-4 w-full">
                           <Button
-                            onClick={() => handleMemberClick(member)}
+                            type="button"
                             className="w-full bg-accent hover:bg-accent/90 text-white transform transition-transform hover:scale-105"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleMemberClick(member);
+                            }}
                           >
                             View Portfolio
                           </Button>
