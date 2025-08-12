@@ -3,7 +3,9 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import ScrollToTop from "@/components/ScrollToTop";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { UserProvider } from "@/contexts/UserContext";
 import Index from "./pages/Index";
 import About from "./pages/About";
@@ -25,35 +27,40 @@ import { Analytics } from "@vercel/analytics/react"
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <UserProvider>
-      <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/training" element={<Training />} />
-          <Route path="/consultancy" element={<Consultancy />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/volunteering" element={<Volunteering />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/student-portal" element={<StudentDashboard />} />
-          <Route path="/student-dashboard" element={<StudentDashboard />} />
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/students" element={<AdminStudentView />} />
-          <Route path="/instructor" element={<InstructorDashboard />} />
-          <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      </TooltipProvider>
-    </UserProvider>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <UserProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/training" element={<Training />} />
+                <Route path="/consultancy" element={<Consultancy />} />
+                <Route path="/research" element={<Research />} />
+                <Route path="/volunteering" element={<Volunteering />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/student-portal" element={<StudentDashboard />} />
+                <Route path="/student-dashboard" element={<StudentDashboard />} />
+                <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/admin/students" element={<AdminStudentView />} />
+                <Route path="/instructor" element={<InstructorDashboard />} />
+                <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+            <Analytics />
+          </TooltipProvider>
+        </UserProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
+  </ErrorBoundary>
 );
 
 export default App;
