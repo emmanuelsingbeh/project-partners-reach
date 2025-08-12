@@ -57,7 +57,7 @@ const About = () => {
     {
       name: "Alpha Daoda Kanneh",
       title: "Development Practitioner | Environmental Management Graduate Student",
-      image: "/lovable-uploads/d24bd380-cc71-422c-83d2-8083f5a0e479.png",
+      image: "/lovable-uploads/3b3909fe-e5e9-46aa-b444-53f2064c2a60.png",
       bio: "Purpose-driven development practitioner with expertise in Geography, Remote Sensing & GIS, and Environmental Management",
       fullPortfolio: {
         experience: [
