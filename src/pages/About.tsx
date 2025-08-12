@@ -262,7 +262,7 @@ const About = () => {
                         src={member.image}
                         alt={member.name}
                         className="w-full h-64 object-cover bg-gray-100"
-                        style={{ objectPosition: 'center top' }}
+                        style={{ objectPosition: 'center 20%' }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                         <div className="p-4 w-full">
