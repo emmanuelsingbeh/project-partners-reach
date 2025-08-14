@@ -22,6 +22,8 @@ import Login from "./pages/studentLogin";
 import StudentDashboard from "./pages/StudentDashboard";
 import AdminStudentView from "./pages/AdminStudentView";
 import InstructorDashboard from "./pages/InstructorDashboard";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 import { Analytics } from "@vercel/analytics/react"
 
 const queryClient = new QueryClient();
@@ -52,6 +54,8 @@ const App = () => (
                 <Route path="/instructor" element={<InstructorDashboard />} />
                 <Route path="/training-registration/:programTitle" element={<TrainingRegistration />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
