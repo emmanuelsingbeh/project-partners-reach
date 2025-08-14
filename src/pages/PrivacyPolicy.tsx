@@ -128,17 +128,42 @@ export default function PrivacyPolicy() {
               </section>
 
               <section>
-                <h2 className="text-2xl font-semibold mb-4">10. Changes to This Policy</h2>
+                <h2 className="text-2xl font-semibold mb-4">10. Cookies and Tracking Technologies</h2>
+                <p className="mb-4">We use cookies and similar tracking technologies to enhance your experience on our website.</p>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-lg font-medium mb-2">Types of Cookies We Use:</h3>
+                    <ul className="list-disc pl-6 space-y-2">
+                      <li><strong>Necessary Cookies:</strong> Essential for website functionality, cannot be disabled</li>
+                      <li><strong>Functional Cookies:</strong> Enable enhanced features and personalization</li>
+                      <li><strong>Analytics Cookies:</strong> Help us understand website usage and improve user experience</li>
+                      <li><strong>Marketing Cookies:</strong> Used for advertising and marketing purposes</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-medium mb-2">Managing Your Cookie Preferences:</h3>
+                    <p className="mb-2">You can control your cookie preferences at any time through:</p>
+                    <ul className="list-disc pl-6 space-y-1">
+                      <li>Our cookie banner when you first visit our website</li>
+                      <li>The "Cookie Settings" link in our website footer</li>
+                      <li>Your browser settings to block or delete cookies</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <h2 className="text-2xl font-semibold mb-4">11. Changes to This Policy</h2>
                 <p>We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our platform and updating the "Last updated" date.</p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-semibold mb-4">11. Contact Us</h2>
+                <h2 className="text-2xl font-semibold mb-4">12. Contact Us</h2>
                 <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
                 <div className="mt-4 p-4 bg-muted rounded-lg">
-                  <p><strong>Email:</strong> privacy@yourplatform.com</p>
-                  <p><strong>Address:</strong> [Your Business Address]</p>
-                  <p><strong>Phone:</strong> [Your Contact Number]</p>
+                  <p><strong>Email:</strong> projectpartnersresearchanddata@gmail.com</p>
+                  <p><strong>Address:</strong> Phebe Compound, Phebe, Bong County, Liberia</p>
+                  <p><strong>Phone:</strong> +231 (555) 914-150</p>
                 </div>
               </section>
             </div>

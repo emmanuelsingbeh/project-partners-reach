@@ -25,6 +25,7 @@ import InstructorDashboard from "./pages/InstructorDashboard";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import { Analytics } from "@vercel/analytics/react"
+import { CookieConsentBanner } from "@/components/CookieConsentBanner";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
+              <CookieConsentBanner />
             </BrowserRouter>
             <Analytics />
           </TooltipProvider>

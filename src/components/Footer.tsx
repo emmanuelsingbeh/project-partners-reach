@@ -114,6 +114,9 @@ const Footer: FC = () => {
               <Link to="/terms-of-service" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">
                 Terms of Service
               </Link>
+              <Link to="/privacy-policy#cookies" className="text-primary-foreground/60 hover:text-accent transition-colors text-sm">
+                Cookie Settings
+              </Link>
             </div>
           </div>
         </div>
