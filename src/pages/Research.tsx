@@ -289,7 +289,8 @@ const Research = () => {
       date: "2024",
       category: "Impact Assessment",
       status: "Published",
-      downloadUrl: "#"
+      downloadUrl: "/research-docs/digital-literacy-impact-study-2024.pdf",
+      fileSize: "2.4 MB"
     },
     {
       title: "Healthcare Access Barriers in Post-Conflict Settings",
@@ -297,7 +298,8 @@ const Research = () => {
       date: "2024",
       category: "Systematic Review",
       status: "In Progress",
-      downloadUrl: null
+      downloadUrl: null,
+      fileSize: null
     },
     {
       title: "Community-Based Natural Resource Management Effectiveness",
@@ -305,7 +307,8 @@ const Research = () => {
       date: "2023",
       category: "Evaluation",
       status: "Published",
-      downloadUrl: "#"
+      downloadUrl: "/research-docs/cbmnr-effectiveness-evaluation-2023.pdf",
+      fileSize: "3.1 MB"
     },
     {
       title: "Youth Employment Program Baseline Study",
@@ -313,7 +316,26 @@ const Research = () => {
       date: "2023",
       category: "Baseline Study",
       status: "Published",
-      downloadUrl: "#"
+      downloadUrl: "/research-docs/youth-employment-baseline-2023.pdf",
+      fileSize: "1.8 MB"
+    },
+    {
+      title: "Gender Inclusion in Agricultural Value Chains",
+      description: "Research on barriers and opportunities for women's participation in agricultural markets and value chains.",
+      date: "2023",
+      category: "Research Report",
+      status: "Published",
+      downloadUrl: "/research-docs/gender-agriculture-value-chains-2023.pdf",
+      fileSize: "2.7 MB"
+    },
+    {
+      title: "Climate Adaptation Strategies for Small-Scale Farmers",
+      description: "Assessment of climate-smart agricultural practices and their adoption by smallholder farmers.",
+      date: "2022",
+      category: "Impact Assessment",
+      status: "Published",
+      downloadUrl: "/research-docs/climate-adaptation-farmers-2022.pdf",
+      fileSize: "4.2 MB"
     }
   ];
 
@@ -499,16 +521,21 @@ const Research = () => {
                     <h3 className="text-xl font-bold text-primary mb-3">{research.title}</h3>
                     <p className="text-muted-foreground mb-4">{research.description}</p>
 
-                    {research.downloadUrl ? (
-                      <Button size="sm" className="bg-accent hover:bg-accent/90 text-white" onClick={() => window.open(research.downloadUrl, '_blank')}>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download
-                      </Button>
-                    ) : (
-                      <Button size="sm" variant="outline" disabled>
-                        Download Not Available
-                      </Button>
-                    )}
+                    <div className="flex justify-between items-center">
+                      {research.downloadUrl ? (
+                        <Button size="sm" className="bg-accent hover:bg-accent/90 text-white" onClick={() => window.open(research.downloadUrl, '_blank')}>
+                          <Download className="mr-2 h-4 w-4" />
+                          Download PDF
+                        </Button>
+                      ) : (
+                        <Button size="sm" variant="outline" disabled>
+                          Download Not Available
+                        </Button>
+                      )}
+                      {research.fileSize && (
+                        <span className="text-sm text-muted-foreground">{research.fileSize}</span>
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
               ))}
