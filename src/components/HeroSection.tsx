@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import hero1 from '@/assets/hero-1.jpg';
-import hero2 from '@/assets/hero-2.jpg';
-import hero3 from '@/assets/hero-3.jpg';
+import heroDataAnalysis from '@/assets/hero-data-analysis.jpg';
+import heroFieldResearch from '@/assets/hero-field-research.jpg';
+import heroTeamPhoto from '@/assets/hero-team-photo.jpg';
 import { useNavigate, Link } from 'react-router-dom';
 
 
@@ -15,25 +15,25 @@ const HeroSection = () => {
 
   const slides = [
     {
-      image: hero1,
+      image: heroDataAnalysis,
       title: "Empowering Communities Through Research",
       subtitle: "Professional training, consultancy, and data solutions for sustainable development",
       cta: "Explore Training",
       ctaLink: "/training"
     },
     {
-      image: hero2,
-      title: "Excellence in Professional Training",
-      subtitle: "Build your capacity with our comprehensive training programs",
-      cta: "View Programs",
-      ctaLink: "/training"
+      image: heroFieldResearch,
+      title: "Excellence in Field Research",
+      subtitle: "Evidence-based research solutions driving positive change in communities",
+      cta: "View Research",
+      ctaLink: "/research"
     },
     {
-      image: hero3,
-      title: "Join Our Volunteer Network",
-      subtitle: "Make a difference in your community through meaningful volunteer opportunities",
-      cta: "Get Involved",
-      ctaLink: "/volunteering"
+      image: heroTeamPhoto,
+      title: "Meet Our Expert Team",
+      subtitle: "Experienced professionals dedicated to delivering quality research and training",
+      cta: "About Us",
+      ctaLink: "/about"
     }
   ];
 

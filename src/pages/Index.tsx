@@ -1,5 +1,6 @@
 import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
+import WorkShowcase from '@/components/WorkShowcase';
 import AboutSection from '@/components/AboutSection';
 import { ArrowRight, BookOpen, Users, Search, Heart, Star, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -90,6 +91,7 @@ const Index = () => {
       <Navigation />
       <main>
         <HeroSection />
+        <WorkShowcase />
         <AboutSection />
 
         {/* Why Choose Us Section */}
