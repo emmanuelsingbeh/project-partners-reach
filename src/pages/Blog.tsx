@@ -3,8 +3,11 @@ import Footer from '@/components/Footer';
 import { Calendar, User, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = () => {
+  const navigate = useNavigate();
+  
   const blogPosts = [
     {
       title: "Resurgence of Diphtheria Cases in West Africa: A Public Health Analysis",
@@ -12,7 +15,17 @@ const Blog = () => {
       author: "Levi Tuwleh",
       date: "2024-08-20",
       category: "Public Health",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop"
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop",
+      link: "/publications/diphtheria-resurgence"
+    },
+    {
+      title: "Post-Conflict Research Methodologies in Liberia",
+      excerpt: "Innovative approaches to conducting research in post-conflict settings, building local capacity, and ensuring ethical data collection practices.",
+      author: "Levi Tuwleh",
+      date: "2024-07-15",
+      category: "Research Methodology",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop",
+      link: "/publications/post-conflict-methodology"
     },
     {
       title: "Post-Conflict Research Methodologies in Liberia",
@@ -105,7 +118,11 @@ const Blog = () => {
                       </div>
                       <h3 className="text-xl font-bold text-primary mb-2">{post.title}</h3>
                       <p className="text-muted-foreground mb-4">{post.excerpt}</p>
-                      <Button variant="outline" className="group">
+                      <Button 
+                        variant="outline" 
+                        className="group"
+                        onClick={() => navigate(post.link || '#')}
+                      >
                         Read More
                         <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                       </Button>

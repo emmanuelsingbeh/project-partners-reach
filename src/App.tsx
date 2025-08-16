@@ -13,6 +13,8 @@ import Training from "./pages/Training";
 import Consultancy from "./pages/Consultancy";
 import Research from "./pages/Research";
 import Volunteering from "./pages/Volunteering";
+import DiphtheriaResurgence from "./pages/publications/DiphtheriaResurgence";
+import PostConflictMethodology from "./pages/publications/PostConflictMethodology";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import AdminDashboard from "./pages/AdminDashboard";
@@ -48,6 +50,8 @@ const App = () => (
                 <Route path="/volunteering" element={<Volunteering />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/blog" element={<Blog />} />
+                <Route path="/publications/diphtheria-resurgence" element={<DiphtheriaResurgence />} />
+                <Route path="/publications/post-conflict-methodology" element={<PostConflictMethodology />} />
                 <Route path="/student-portal" element={<StudentDashboard />} />
                 <Route path="/student-dashboard" element={<StudentDashboard />} />
                 <Route path="/admin" element={<AdminDashboard />} />

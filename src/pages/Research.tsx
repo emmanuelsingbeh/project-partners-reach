@@ -284,6 +284,42 @@ const Research = () => {
 
   const recentResearch = [
     {
+      title: "Resurgence of Diphtheria Cases in West Africa: A Public Health Analysis",
+      description: "Investigating factors behind diphtheria outbreaks despite annual WHO vaccination initiatives and exploring preventive strategies for West African communities.",
+      date: "2024",
+      category: "Public Health",
+      status: "Published",
+      downloadUrl: "/research-docs/diphtheria-resurgence-west-africa-2024.pdf",
+      fileSize: "3.2 MB"
+    },
+    {
+      title: "Post-Conflict Research Methodologies in Liberia",
+      description: "Innovative approaches to conducting research in post-conflict settings, building local capacity, and ensuring ethical data collection practices.",
+      date: "2024",
+      category: "Research Methodology",
+      status: "Published",
+      downloadUrl: "/research-docs/post-conflict-research-methodology-2024.pdf",
+      fileSize: "2.8 MB"
+    },
+    {
+      title: "Community Health Programs in Post-Ebola Liberia",
+      description: "Strengthening community health systems through participatory action research and addressing barriers to maternal health services in Monrovia.",
+      date: "2024",
+      category: "Public Health",
+      status: "Published",
+      downloadUrl: "/research-docs/community-health-post-ebola-2024.pdf",
+      fileSize: "4.1 MB"
+    },
+    {
+      title: "Traditional Medicine and Non-Timber Forest Products in Liberia",
+      description: "Market profile analysis of medicinal plant products trade and traditional botanical uses across seven counties in Liberia.",
+      date: "2024",
+      category: "Ethnobotany",
+      status: "Published",
+      downloadUrl: "/research-docs/traditional-medicine-ntfp-liberia-2024.pdf",
+      fileSize: "5.6 MB"
+    },
+    {
       title: "Impact of Digital Literacy Training on Rural Communities",
       description: "A comprehensive study examining the effects of digital literacy programs on economic opportunities in rural Liberia.",
       date: "2024",
@@ -293,49 +329,13 @@ const Research = () => {
       fileSize: "2.4 MB"
     },
     {
-      title: "Healthcare Access Barriers in Post-Conflict Settings",
-      description: "Systematic review of healthcare accessibility challenges and potential solutions in post-conflict environments.",
+      title: "Peacebuilding and Development in Rural Liberia",
+      description: "Post-war peacebuilding initiatives and their impact on community development, with case studies from Ganta City and surrounding areas.",
       date: "2024",
-      category: "Systematic Review",
-      status: "In Progress",
-      downloadUrl: null,
-      fileSize: null
-    },
-    {
-      title: "Community-Based Natural Resource Management Effectiveness",
-      description: "Evaluation of community-led conservation initiatives and their impact on environmental sustainability.",
-      date: "2023",
-      category: "Evaluation",
+      category: "Peacebuilding",
       status: "Published",
-      downloadUrl: "/research-docs/cbmnr-effectiveness-evaluation-2023.pdf",
-      fileSize: "3.1 MB"
-    },
-    {
-      title: "Youth Employment Program Baseline Study",
-      description: "Baseline assessment for a national youth employment initiative focusing on skills development and job creation.",
-      date: "2023",
-      category: "Baseline Study",
-      status: "Published",
-      downloadUrl: "/research-docs/youth-employment-baseline-2023.pdf",
-      fileSize: "1.8 MB"
-    },
-    {
-      title: "Gender Inclusion in Agricultural Value Chains",
-      description: "Research on barriers and opportunities for women's participation in agricultural markets and value chains.",
-      date: "2023",
-      category: "Research Report",
-      status: "Published",
-      downloadUrl: "/research-docs/gender-agriculture-value-chains-2023.pdf",
-      fileSize: "2.7 MB"
-    },
-    {
-      title: "Climate Adaptation Strategies for Small-Scale Farmers",
-      description: "Assessment of climate-smart agricultural practices and their adoption by smallholder farmers.",
-      date: "2022",
-      category: "Impact Assessment",
-      status: "Published",
-      downloadUrl: "/research-docs/climate-adaptation-farmers-2022.pdf",
-      fileSize: "4.2 MB"
+      downloadUrl: "/research-docs/peacebuilding-rural-liberia-2024.pdf",
+      fileSize: "3.7 MB"
     }
   ];
 
