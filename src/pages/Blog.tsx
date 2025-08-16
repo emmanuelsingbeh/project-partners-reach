@@ -7,20 +7,68 @@ import { Button } from '@/components/ui/button';
 const Blog = () => {
   const blogPosts = [
     {
+      title: "Resurgence of Diphtheria Cases in West Africa: A Public Health Analysis",
+      excerpt: "Investigating factors behind outbreaks despite annual WHO vaccination initiatives and exploring preventive strategies for West African communities.",
+      author: "Levi Tuwleh",
+      date: "2024-08-20",
+      category: "Public Health",
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Post-Conflict Research Methodologies in Liberia",
+      excerpt: "Innovative approaches to conducting research in post-conflict settings, building local capacity, and ensuring ethical data collection practices.",
+      author: "Levi Tuwleh",
+      date: "2024-07-15",
+      category: "Research Methodology",
+      image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Livelihood Resilience and Escaping Poverty in Liberia",
+      excerpt: "Comprehensive analysis of livelihood strategies and poverty reduction mechanisms in post-conflict Liberia, with focus on community-driven development.",
+      author: "Project Partners Research Team",
+      date: "2024-06-28",
+      category: "Development",
+      image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Digital Literacy Training: Impact and Outcomes",
+      excerpt: "Results from our comprehensive digital literacy program and its transformative effects on rural communities across seven Liberian counties.",
+      author: "Barzee Sumo",
+      date: "2024-05-10",
+      category: "Training",
+      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Community Health Programs in Post-Ebola Liberia",
+      excerpt: "Strengthening community health systems through participatory action research and addressing barriers to maternal health services in Monrovia.",
+      author: "Levi Tuwleh & Research Team",
+      date: "2024-04-22",
+      category: "Public Health",
+      image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Traditional Medicine and Non-Timber Forest Products in Liberia",
+      excerpt: "Market profile analysis of medicinal plant products trade and traditional botanical uses across seven counties in Liberia.",
+      author: "Dr. Utham & Field Research Team",
+      date: "2024-03-18",
+      category: "Ethnobotany",
+      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=250&fit=crop"
+    },
+    {
+      title: "Peacebuilding and Development in Rural Liberia",
+      excerpt: "Post-war peacebuilding initiatives and their impact on community development, with case studies from Ganta City and surrounding areas.",
+      author: "Project Partners Team",
+      date: "2024-02-14",
+      category: "Peacebuilding",
+      image: "https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=400&h=250&fit=crop"
+    },
+    {
       title: "The Future of Research in Post-Conflict Settings",
-      excerpt: "Exploring innovative approaches to conducting research in challenging environments and building local capacity.",
+      excerpt: "Exploring innovative approaches to conducting research in challenging environments and building local capacity for sustainable development.",
       author: "Dr. Utham",
       date: "2024-01-15",
       category: "Research",
       image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop"
-    },
-    {
-      title: "Digital Literacy Training: Impact and Outcomes",
-      excerpt: "Results from our comprehensive digital literacy program and its transformative effects on rural communities.",
-      author: "Barzee Sumo",
-      date: "2024-01-10",
-      category: "Training",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop"
     }
   ];
 
